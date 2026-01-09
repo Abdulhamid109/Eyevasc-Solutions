@@ -16,7 +16,8 @@ const page = () => {
   });
 
 
-  const onsubmit = async()=>{
+  const onsubmit = async(e:React.FormEvent)=>{
+    e.preventDefault();
     try {
       const response = await axios.post("/api/admin/signup",data);
       if(response.status===200){
