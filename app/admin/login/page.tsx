@@ -1,3 +1,4 @@
+"use client"
 import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
