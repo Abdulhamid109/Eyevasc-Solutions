@@ -1,4 +1,5 @@
 "use client"
+import Navbar from '@/components/Navbar';
 import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -27,6 +28,8 @@ const Page = () => {
       console.log("Still some error is there "+error)
     }
 
+    setLoading(true);
+
    try {
      const response = await axios.post("/api/user/bookings",{
       "name":UserName,
@@ -50,6 +53,8 @@ const Page = () => {
       toast.error(error.response?.data.error);
     }
     throw error;
+   }finally{
+    setLoading(false);
    }
 
 
@@ -59,18 +64,7 @@ const Page = () => {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50'>
-      <nav className='w-full bg-white shadow-md sticky top-0 z-50'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center h-16 md:h-20'>
-            <div className='font-bold text-xl md:text-2xl text-blue-600'>
-              Eyevasc Solution
-            </div>
-            <Link href={"/admin/login"} className='px-4 py-2 md:px-6 md:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300 text-sm md:text-base font-medium shadow-md'>
-              Admin Login
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
 
       {/* Hero Section */}
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16'>
@@ -222,7 +216,7 @@ const Page = () => {
                   type='submit'
                   className='w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
                 >
-                  Book Appointment
+                  {loading?"Booking...":"Book Appointment"}
                 </button>
 
                 <p className='text-xs text-gray-500 text-center mt-4'>
