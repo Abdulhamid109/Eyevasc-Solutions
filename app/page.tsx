@@ -1,31 +1,64 @@
 "use client"
+import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+
+
 
 const Page = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    treatment: '',
-    city: ''
-  });
 
-  const handleSubmit = (e:React.FormEvent) => {
+  const [UserName,setUserName] = useState<string>('');
+  const [phone,setPhone] = useState<string>('');
+  const [treatment,setTreatment] = useState<string>('');
+  const [city,setCity] = useState<string>('');
+  const [loading,setLoading] = useState<boolean>(false);
+  const [error,setError] = useState<string|null>('');
+
+  const handleSubmit = async(e:React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Appointment request submitted! We will contact you soon.');
+    console.log("Name :"+UserName);
+    console.log("phone no : "+phone);
+    console.log("Treatment : "+treatment);
+    console.log("City : "+city);
+    console.log('Form submitted:',);
+
+    if(error!==""){
+      console.log("Still some error is there "+error)
+    }
+
+   try {
+     const response = await axios.post("/api/user/bookings",{
+      "name":UserName,
+      phone,
+      treatment,
+      city
+    });
+
+    if(response.status===200){
+      setUserName('');
+      setCity('');
+      setError('');
+      setTreatment('');
+      setPhone('');
+      toast.success(response.data.message);
+    }
+   } catch (error) {
+    console.log("Failed to perform the functionality"+error);
+    if(error instanceof AxiosError){
+      console.log("Error occured "+JSON.stringify(error));
+      toast.error(error.response?.data.error);
+    }
+    throw error;
+   }
+
+
+    
   };
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50'>
-      {/* Navigation */}
       <nav className='w-full bg-white shadow-md sticky top-0 z-50'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='flex justify-between items-center h-16 md:h-20'>
@@ -97,7 +130,6 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Right Form */}
           <div id='appointment-form' className='order-1 lg:order-2'>
             <div className='bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-100'>
               <h2 className='text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center'>
@@ -112,8 +144,8 @@ const Page = () => {
                   <input
                     type='text'
                     name='name'
-                    value={formData.name}
-                    onChange={handleChange}
+                    value={UserName!}
+                    onChange={(e)=>setUserName(e.target.value)}
                     required
                     className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                     placeholder='Enter your name'
@@ -125,14 +157,26 @@ const Page = () => {
                     Phone Number *
                   </label>
                   <input
-                    type='tel'
-                    name='phone'
-                    value={formData.phone}
-                    onChange={handleChange}
+                    type='text'
+                    value={phone!}
+                    onChange={(e)=>{
+                      if(e.target.value.length<10){
+                        setError("Invalid Phone no")
+                      }
+                      if(e.target.value.length===10 &&(e.target.value.startsWith("9") || e.target.value.startsWith("8") || e.target.value.startsWith("7"))){
+                        setError('')
+                        
+                      }else{
+                        setError("Invalid Phone no")
+                      }
+
+                      setPhone(e.target.value)
+                    }}
                     required
                     className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                     placeholder='+91 XXXXX XXXXX'
                   />
+                  <p className='text-sm text-red-500'>{error}</p>
                 </div>
 
                 <div>
@@ -141,8 +185,8 @@ const Page = () => {
                   </label>
                   <select
                     name='treatment'
-                    value={formData.treatment}
-                    onChange={handleChange}
+                    value={treatment}
+                    onChange={(e)=>setTreatment(e.target.value)}
                     required
                     className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
                   >
@@ -166,8 +210,8 @@ const Page = () => {
                   <input
                     type='text'
                     name='city'
-                    value={formData.city}
-                    onChange={handleChange}
+                    value={city}
+                    onChange={(e)=>setCity(e.target.value)}
                     required
                     className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                     placeholder='Enter your city'
