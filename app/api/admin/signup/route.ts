@@ -1,6 +1,7 @@
 import { connect } from "@/config/dbConfig";
 import admin from "@/models/adminModal";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
 
 connect();
@@ -23,11 +24,14 @@ export async function POST(request:NextRequest){
                 {status:404}
             )
         }
+
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password,salt);
         
         const newadmin = new admin({
             name,
             email,
-            password
+            password:hash
         });
         const savedAdmin = await newadmin.save();
 

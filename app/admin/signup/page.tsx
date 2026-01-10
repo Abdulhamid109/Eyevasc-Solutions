@@ -9,7 +9,7 @@ interface Data{
   email:string;
   password:string
 }
-const page = () => {
+const Page = () => {
   const [data,setdata]=useState<Data|null>({
     name:"",
     email:"",
@@ -108,4 +108,4 @@ const page = () => {
   );
 }
 
-export default page
+export default Page
