@@ -16,19 +16,26 @@ export async function POST(request:NextRequest){
                 error:"Form incomplete"
             },{status:404})
         }
-        const existingUser = await user.findOne({phoneno:phone,treatment:treatment});
+        const existingUser = await user.findOne({phoneno:phone});
         if(existingUser){
-            console.log("A user cannot enroll for the same treatment twice");
+            const alreadyItemPresent = await user.findOne({treatment:treatment});
+            if(alreadyItemPresent){
+                console.log("A user cannot enroll for the same treatment twice");
             return NextResponse.json(
                 {error:"Already enrolled"},
                 {status:401}
             )
+            }
+            
         }
+        const now = new Date();
+        console.log(now.toLocaleDateString("en-IN"));
         const newUser = new user({
             name,
             phoneno:phone,
             treatment,
-            city
+            city,
+            date:now.toLocaleDateString("en-IN")
         });
 
         const savedUser = await newUser.save();

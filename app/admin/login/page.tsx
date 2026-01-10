@@ -84,7 +84,7 @@ const Page = () => {
           </button>
         </form>
 
-        <div className="text-center text-sm text-gray-600">
+        <div className="text-center hidden text-sm text-gray-600">
           <p>or</p>
           <p>
             Don&apos;t have an account?{' '}

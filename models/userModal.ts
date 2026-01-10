@@ -8,7 +8,6 @@ const userModal = new mongoose.Schema({
     phoneno:{
         type:String,
         required:true,
-        unique:true
     },
     treatment:{
          type:String,
@@ -17,6 +16,10 @@ const userModal = new mongoose.Schema({
     city:{
          type:String,
         required:true
+    },
+    date:{
+        type:String,
+        
     }
 });
 
