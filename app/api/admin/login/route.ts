@@ -2,8 +2,9 @@ import admin from "@/models/adminModal";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { connect } from "@/config/dbConfig";
 
-
+connect();
 export async function POST(request:NextRequest){
     try {
         const {email,password} = await request.json();
