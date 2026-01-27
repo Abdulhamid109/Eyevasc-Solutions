@@ -3,6 +3,8 @@ import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { MdDelete } from "react-icons/md";
+
 
 interface Data{
     _id:string;
@@ -55,6 +57,29 @@ const AdminPanel = () => {
             toast.error("Failed to logout!!")
         }
     }
+  }
+
+  const deleteRecord = async(id:string)=>{
+    try {
+      const response = await axios.delete(`/api/deleteuser/${id}`);
+      if(response.status===200 && response.data.success){
+        //updating the state
+        toast.success(response.data.message);
+        updateTheStateAfterDelete(id);
+      }
+    } catch (error) {
+      console.log("Failed to perform the functionality");
+      if(error instanceof AxiosError){
+        toast.error("Failed to delete the user");
+        console.log("Error=>"+JSON.stringify(error));
+      }
+    }
+  }
+
+  const updateTheStateAfterDelete = (id:string)=>{
+    const updatedUsers = data.filter(d => d._id !== id);
+    console.log("Updated the user");
+    setdata(updatedUsers);
   }
 
   useEffect(()=>{
@@ -140,8 +165,9 @@ const AdminPanel = () => {
                             <td className='px-6 py-4 text-gray-700'>{apt.phoneno}</td>
                             <td className='px-6 py-4 text-gray-700'>{apt.treatment}</td>
                             <td className='px-6 py-4 text-gray-700'>{apt.city}</td>
-                            <td className='px-6 py-4'>
+                            <td className='px-6 py-4 flex gap-5 justify-center items-center'>
                               <div className='text-gray-700'>{apt.date}</div>
+                              <p><MdDelete onClick={()=>deleteRecord(apt._id)} className='text-red-500 hover:scale-105 transition-all duration-200' /></p>
                             </td>
                           </tr>
                         ))}
@@ -178,6 +204,9 @@ const AdminPanel = () => {
                         <div className='flex items-start'>
                           <span className='text-gray-600 font-medium min-w-24 text-sm'>Date:</span>
                           <span className='text-gray-900 text-sm'>{apt.date}</span>
+                        </div>
+                        <div className='flex items-start '>
+                          <MdDelete/>
                         </div>
                       </div>
                     </div>
