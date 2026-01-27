@@ -1,12 +1,14 @@
 import { connect } from "@/config/dbConfig";
 import user from "@/models/userModal";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
 
 connect();
 
-export async function DELETE({params}:{params:Promise<{id:string}>}){
+export async function DELETE(
+    request:NextRequest,
+    {params}:{params:Promise<{id:string}>}){
     try {
         const {id} = await params;
         console.log("ID to be deleted"+id);

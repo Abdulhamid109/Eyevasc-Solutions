@@ -206,7 +206,7 @@ const AdminPanel = () => {
                           <span className='text-gray-900 text-sm'>{apt.date}</span>
                         </div>
                         <div className='flex items-start '>
-                          <MdDelete/>
+                          <MdDelete onClick={()=>deleteRecord(apt._id)} className='text-red-500'/>
                         </div>
                       </div>
                     </div>
