@@ -61,7 +61,7 @@ const AdminPanel = () => {
 
   const deleteRecord = async(id:string)=>{
     try {
-      const response = await axios.delete(`/api/deleteuser/${id}`);
+      const response = await axios.get(`/api/deleteuser/${id}`);
       if(response.status===200 && response.data.success){
         //updating the state
         toast.success(response.data.message);

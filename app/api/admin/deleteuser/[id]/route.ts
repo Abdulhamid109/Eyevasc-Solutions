@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
-export async function DELETE(
+export async function GET(
     request:NextRequest,
     {params}:{params:Promise<{id:string}>}){
     try {
