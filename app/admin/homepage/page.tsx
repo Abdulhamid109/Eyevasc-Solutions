@@ -13,6 +13,7 @@ interface Data{
     treatment:string;
     city:string;
     date:string;
+    Time:string;
 }
 
 const AdminPanel = () => {
@@ -61,14 +62,15 @@ const AdminPanel = () => {
 
   const deleteRecord = async(id:string)=>{
     try {
-      const response = await axios.get(`/api/deleteuser/${id}`);
+      console.log("ID=>"+id)
+      const response = await axios.delete(`/api/admin/deleteuser?id=${id}`);
       if(response.status===200 && response.data.success){
         //updating the state
         toast.success(response.data.message);
         updateTheStateAfterDelete(id);
       }
     } catch (error) {
-      console.log("Failed to perform the functionality");
+      console.log("Failed to perform the functionality"+error);
       if(error instanceof AxiosError){
         toast.error("Failed to delete the user");
         console.log("Error=>"+JSON.stringify(error));
@@ -80,6 +82,10 @@ const AdminPanel = () => {
     const updatedUsers = data.filter(d => d._id !== id);
     console.log("Updated the user");
     setdata(updatedUsers);
+  }
+
+  const RefreshData = async()=>{
+    await getALLUsers();
   }
 
   useEffect(()=>{
@@ -114,12 +120,18 @@ const AdminPanel = () => {
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8'>
         {/* Header Section */}
-        <div className='mb-6'>
-          <h2 className='text-2xl md:text-3xl font-bold text-gray-900 mb-2'>Appointment Requests</h2>
+        <div className='mb-6 flex justify-between items-center'>
+          <div>
+            <h2 className='text-2xl md:text-3xl font-bold text-gray-900 mb-2'>Appointment Requests</h2>
           <p className='text-gray-600'>
             {loading ? 'Loading...' : `Total: ${data.length} appointments`}
           </p>
+          </div>
+          <div>
+            <button onClick={RefreshData} className='p-2 bg-green-900 rounded-md font-bold text-white'>Refresh </button>
+          </div>
         </div>
+        
 
         {/* Loading State */}
         {loading ? (
@@ -153,6 +165,8 @@ const AdminPanel = () => {
                           <th className='px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider'>Treatment</th>
                           <th className='px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider'>City</th>
                           <th className='px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider'>Date</th>
+                          <th className='px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider'>Time</th>
+                          <th className='px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider'></th>
                         </tr>
                       </thead>
                       <tbody className='divide-y divide-gray-200'>
@@ -167,8 +181,9 @@ const AdminPanel = () => {
                             <td className='px-6 py-4 text-gray-700'>{apt.city}</td>
                             <td className='px-6 py-4 flex gap-5 justify-center items-center'>
                               <div className='text-gray-700'>{apt.date}</div>
-                              <p><MdDelete onClick={()=>deleteRecord(apt._id)} className='text-red-500 hover:scale-105 transition-all duration-200' /></p>
                             </td>
+                            <td className='px-6 py-4 text-gray-700'>{apt.Time}</td>
+                              <p><MdDelete onClick={()=>{deleteRecord(apt._id)}} className='text-red-500 hover:scale-105 transition-all duration-200' /></p>
                           </tr>
                         ))}
                       </tbody>
@@ -205,8 +220,12 @@ const AdminPanel = () => {
                           <span className='text-gray-600 font-medium min-w-24 text-sm'>Date:</span>
                           <span className='text-gray-900 text-sm'>{apt.date}</span>
                         </div>
+                        <div className='flex items-start'>
+                          <span className='text-gray-600 font-medium min-w-24 text-sm'>Time:</span>
+                          <span className='text-gray-900 text-sm'>{apt.Time}</span>
+                        </div>
                         <div className='flex items-start '>
-                          <MdDelete onClick={()=>deleteRecord(apt._id)} className='text-red-500'/>
+                          <MdDelete onClick={()=>{deleteRecord(apt._id)}} className='text-red-500'/>
                         </div>
                       </div>
                     </div>

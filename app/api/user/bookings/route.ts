@@ -30,12 +30,14 @@ export async function POST(request:NextRequest){
         }
         const now = new Date();
         console.log(now.toLocaleDateString("en-IN"));
+        console.log("Time=> "+now.toLocaleTimeString("en-IN"));
         const newUser = new user({
             name,
             phoneno:phone,
             treatment,
             city,
-            date:now.toLocaleDateString("en-IN")
+            date:now.toLocaleDateString("en-IN"),
+            Time:now.toLocaleTimeString("en-IN")
         });
 
         const savedUser = await newUser.save();

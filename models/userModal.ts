@@ -19,7 +19,13 @@ const userModal = new mongoose.Schema({
     },
     date:{
         type:String,
-        
+    },
+    Time:{
+        type:String
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now
     }
 });
 

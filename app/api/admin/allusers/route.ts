@@ -7,7 +7,7 @@ connect();
 
 export async function GET(){
     try {
-        const allusers = await user.find();
+        const allusers = await user.find().sort({createdAt:-1});
         console.log(allusers);
         return NextResponse.json(
             {success:true,message:"Successfully fetched all the users",users:allusers},
