@@ -8,7 +8,7 @@ const Footer = () => {
       
       {/* Company Info */}
       <div>
-        <h3 className='text-xl font-bold text-blue-400 mb-4'>Eyevasc Solution</h3>
+        <h3 className='text-xl font-bold text-blue-400 mb-4'>EyeVasc Solution</h3>
         <p className='text-gray-400 text-sm mb-4'>
           Providing quality healthcare services across India with expert doctors and advanced facilities.
         </p>
@@ -77,7 +77,7 @@ const Footer = () => {
     <div className='border-t border-gray-800 pt-6 mt-6'>
       <div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
         <p className='text-gray-400 text-sm text-center md:text-left'>
-          © 2026 Eyevasc Solution. All rights reserved.
+          © 2026 EyeVasc Solution. All rights reserved.
         </p>
         <div className='flex space-x-6 text-sm text-gray-400'>
           <a href='#' className='hover:text-blue-400 transition-colors'>Privacy Policy</a>

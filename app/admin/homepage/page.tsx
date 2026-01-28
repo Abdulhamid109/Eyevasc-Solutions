@@ -21,42 +21,42 @@ const AdminPanel = () => {
   const [loading, setLoading] = useState(true); // Start with true
   const [searchTerm, setSearchTerm] = useState('');
 
-  const getALLUsers = async()=>{
+  const getALLUsers = async () => {
     setLoading(true);
     try {
-        const response = await axios.get("/api/admin/allusers");
-        if(response.status===200){
-            console.log(response.data);
-            
-            setdata(response.data.users || []);
-            toast.success(response.data.message || "Users loaded successfully");
-        }
+      const response = await axios.get("/api/admin/allusers");
+      if (response.status === 200) {
+        console.log(response.data);
+
+        setdata(response.data.users || []);
+        toast.success(response.data.message || "Users loaded successfully");
+      }
     } catch (error) {
-        console.log("Failed to perform the functionality", error);
-        if(error instanceof AxiosError){
-            toast.error(error.response?.data.error || "Failed to load users");
-        }
-        setdata([]);
+      console.log("Failed to perform the functionality", error);
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.error || "Failed to load users");
+      }
+      setdata([]);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   }
   const router = useRouter();
 
-  const logoutButton = async()=>{
+  const logoutButton = async () => {
     try {
-        const response = await axios.get("/api/admin/logout");
-        if(response.status===200){
-            console.log("Loggedd out!!");
+      const response = await axios.get("/api/admin/logout");
+      if (response.status === 200) {
+        console.log("Loggedd out!!");
 
-            toast.success(response.data.message);
-            router.push("/");
-        }
+        toast.success(response.data.message);
+        router.push("/");
+      }
     } catch (error) {
-        console.log("Failed to logout "+error);
-        if(error instanceof AxiosError){
-            toast.error("Failed to logout!!")
-        }
+      console.log("Failed to logout " + error);
+      if (error instanceof AxiosError) {
+        toast.error("Failed to logout!!")
+      }
     }
   }
 
@@ -90,14 +90,14 @@ const AdminPanel = () => {
 
   useEffect(()=>{
     getALLUsers();
-  },[])
+  }, [])
 
   const filteredAppointments = data.filter(apt => {
     if (!apt) return false;
     const matchesSearch = apt.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         apt.phoneno?.includes(searchTerm) ||
-                         apt.city?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         apt.treatment?.toLowerCase().includes(searchTerm.toLowerCase());
+      apt.phoneno?.includes(searchTerm) ||
+      apt.city?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      apt.treatment?.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSearch;
   });
 
@@ -206,7 +206,7 @@ const AdminPanel = () => {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className='space-y-2 pl-13'>
                         <div className='flex items-start'>
                           <span className='text-gray-600 font-medium min-w-24 text-sm'>Treatment:</span>

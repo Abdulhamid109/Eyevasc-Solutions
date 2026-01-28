@@ -137,7 +137,7 @@ const Page = () => {
             <div className='space-y-4'>
               <h1 className='text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight'>
                 Trusted care, Right place
-              <p className='text-[17px] font-thin'>Advanced Specialized Care at <span className=' text-blue-800 mt-2 font-bold'>Eyevasc Solution</span> </p>
+              <p className='text-[17px] font-thin'>Advanced Specialized Care at <span className=' text-blue-800 mt-2 font-bold'>EyeVasc Solution</span> </p>
               </h1>
 
               <div className='space-y-3 text-gray-700'>
@@ -265,19 +265,35 @@ const Page = () => {
                 </div>
 
                 <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    City *
-                  </label>
-                  <input
-                    type='text'
-                    name='city'
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                    placeholder='Enter your city'
-                  />
-                </div>
+                <label className='block text-sm font-medium text-gray-700 mb-2'>
+                  City *
+                </label>
+                {/* <input
+                  type='text'
+                  name='city'
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
+                  placeholder='Enter your city'
+                /> */}
+                <select
+                  name='city'
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
+                >
+                  <option value=''>Select City</option>
+                  <option value='mumbai'>Mumbai</option>
+                  <option value='delhi'>Delhi</option>
+                  <option value='gurgaon'>Gurgoan</option>
+                  <option value='pune'>Pune</option>
+                  <option value='Bihar'>Bihar</option>
+                  <option value='Uttarpradesh'>Uttar-Pradesh</option>
+                  <option value='Banglore'>Banglore</option>
+                </select>
+              </div>
 
                 <button
                   type='submit'
@@ -372,7 +388,7 @@ const Page = () => {
                 <label className='block text-sm font-medium text-gray-700 mb-2'>
                   City *
                 </label>
-                <input
+                {/* <input
                   type='text'
                   name='city'
                   value={city}
@@ -380,7 +396,23 @@ const Page = () => {
                   required
                   className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
                   placeholder='Enter your city'
-                />
+                /> */}
+                <select
+                  name='city'
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
+                >
+                  <option value=''>Select City</option>
+                  <option value='mumbai'>Mumbai</option>
+                  <option value='delhi'>Delhi</option>
+                  <option value='gurgaon'>Gurgoan</option>
+                  <option value='pune'>Pune</option>
+                  <option value='Bihar'>Bihar</option>
+                  <option value='Uttarpradesh'>Uttar-Pradesh</option>
+                  <option value='Banglore'>Banglore</option>
+                </select>
               </div>
 
               <button
@@ -459,6 +491,49 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+{/* under developement */}
+      <div id='insurance' className='flex flex-col justify-center items-center w-full py-12 px-4 bg-gray-50'>
+  <div className="max-w-4xl w-full">
+    <div className='text-center mb-12'>
+      <h2 className='font-bold text-3xl text-gray-800 mb-2'>Our Trusted Insurance Partners</h2>
+      <p className='text-lg text-gray-600'>Because you and your loved ones deserve the best care and protection.</p>
+    </div>
+
+    <ul className='list-disc grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 pl-6 text-lg text-gray-700'>
+      <li>Acko General Insurance</li>
+      <li>Aditya Birla Health Insurance</li>
+      <li>Bajaj Allianz</li>
+      <li>Bharti AXA</li>
+      <li>Care Health (Religare) Insurance</li>
+      <li>Cholamandalam MS</li>
+      <li>Edelweiss</li>
+      <li>Future Generali India Insurance</li>
+      <li>Go Digit General Insurance</li>
+      <li>HDFC ERGO / ERGO Health</li>
+      <li>ICICI LOMBARD</li>
+      <li>Kotak Mahindra</li>
+      <li>IFFCO TOKIO</li>
+      <li>Liberty General Insurance</li>
+      <li>Magma HDI GIC Ltd.</li>
+      <li>Manipal Cigna</li>
+      <li>Max Bupa Health Insurance Co.</li>
+      <li>Navi General Insurance Co. Ltd.</li>
+      <li>National Insurance Co. Ltd.</li>
+      <li>Reliance GIC Ltd</li>
+      <li>Royal Sundaram GIC Ltd.</li>
+      <li>SBI General</li>
+      <li>Star Health</li>
+      <li>Tata AIG</li>
+      <li>The New India Assurance Co. Ltd</li>
+      <li>The Oriental Insurance Co. Ltd.</li>
+      <li>United India Insurance Co. Ltd.</li>
+      <li>Universal Sompo GIC Ltd.</li>
+    </ul>
+  </div>
+</div>
+
+
 
       <div className='bg-blue-50 py-12 md:py-16 mt-12'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
