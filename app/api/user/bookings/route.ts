@@ -8,9 +8,9 @@ connect();
 
 export async function POST(request:NextRequest){
     try {
-        const {name,city,phone,treatment} = await request.json();
-        console.log(name,city,phone,treatment)
-        if(!name || !city || !phone || !treatment){
+        const {name,cityset,phone,treatment} = await request.json();
+        console.log(name,cityset,phone,treatment)
+        if(!name || !cityset || !phone || !treatment){
             console.log("Please fill the forms");
             return NextResponse.json({
                 error:"Form incomplete"
@@ -35,7 +35,7 @@ export async function POST(request:NextRequest){
             name,
             phoneno:phone,
             treatment,
-            city,
+            city:cityset,
             date:now.toLocaleDateString("en-IN"),
             Time:now.toLocaleTimeString("en-IN")
         });
