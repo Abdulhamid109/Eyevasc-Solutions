@@ -21,535 +21,233 @@ import Footer from '@/components/Footer';
 
 const Page = () => {
 
-  const [UserName, setUserName] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [treatment, setTreatment] = useState<string>('');
-  const [city, setCity] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>('');
-  const [otherCity, setOtherCity] = useState<string | null>("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Name :" + UserName);
-    console.log("phone no : " + phone);
-    console.log("Treatment : " + treatment);
-    console.log("City : " + city);
-    console.log('Form submitted:',);
-    console.log("Othercity"+otherCity)
-    let cityset = "";
-    cityset = city;
-    if(city.match("other")){
-      cityset = otherCity!;
-      console.log("City-set:"+cityset);
-    }
-
-    if (error !== "") {
-      console.log("Still some error is there " + error)
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await axios.post("/api/user/bookings", {
-        "name": UserName,
-        phone,
-        treatment,
-        cityset
-      });
-
-      if (response.status === 200) {
-        setUserName('');
-        setCity('');
-        setError('');
-        setTreatment('');
-        setPhone('');
-        setOtherCity('')
-        toast.success(response.data.message);
-      }
-    } catch (error) {
-      console.log("Failed to perform the functionality" + error);
-      if (error instanceof AxiosError) {
-        console.log("Error occured " + JSON.stringify(error));
-        toast.error(error.response?.data.error);
-      }
-      throw error;
-    } finally {
-      setLoading(false);
-    }
-
-
-
-  };
-
+  
 
   return (
-    <div className='min-h-screen bg-gradient-to-br bg-[url(/bgimage.png)] bg-cover bg-repeat-none h-[200vh] from-blue-50 via-white to-blue-50'>
+    <div className='min-h-screen bg-gradient-to-br bg-[url(/bgimage.png)] bg-cover bg-repeat-none h-[250vh] from-blue-50 via-white to-blue-50'>
       <Navbar />
 
       {/* Hero Section */}
-      <div id='home' className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16'>
-        {/* Hero Content - Shows first on mobile */}
-        <div className='lg:hidden space-y-6 mb-8'>
-          <div className='space-y-2'>
-            <h1 className='text-3xl md:text-4xl font-bold text-gray-900 leading-tight'>
-              Trusted care, Right here
-              <p className='text-sm'>Advanced Specialized Care at <span className=' text-blue-800 mt-2'>Eyevasc Solution</span> </p>
-
+      <div id='home' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Hero Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              Expert Eye & Vascular Care, <span className="text-blue-600">When You Need It</span>
             </h1>
+            <p className="text-lg text-gray-600 mt-3">
+              At EyeVasc Solution, we combine advanced technology with compassionate care to ensure the best outcomes for your health.
+            </p>
 
-            <div className='space-y-3 text-gray-700'>
-              <div className='flex items-start space-x-3'>
-                <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                </svg>
-                <span className='text-base md:text-lg'>24/7 medical care</span>
-              </div>
-              <div className='flex items-start space-x-3'>
-                <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                </svg>
-                <span className='text-base md:text-lg'>Get Free consultation across India</span>
-              </div>
-              <div className='flex items-start space-x-3'>
-                <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                </svg>
-                <span className='text-base md:text-lg'>In-person and online consultations with experienced doctors</span>
-              </div>
-            </div>
-          </div>
-
-          <div>Your <b>health,</b> Our Priority!</div>
-
-          {/* Stats */}
-          <div className='grid grid-cols-3 gap-4 border p-3 rounded-md shadow-2xl shadow-black'>
-            <div className='text-center'>
-              <div className='text-2xl md:text-3xl font-bold text-blue-600'>50+</div>
-              <div className='text-xs md:text-sm text-gray-600 mt-1'>Doctors</div>
-            </div>
-            <div className='text-center'>
-              <div className='text-2xl md:text-3xl font-bold text-blue-600'>15+</div>
-              <div className='text-xs md:text-sm text-gray-600 mt-1'>Diseases</div>
-            </div>
-            <div className='text-center'>
-              <div className='text-2xl md:text-3xl font-bold text-blue-600'>10+</div>
-              <div className='text-xs md:text-sm text-gray-600 mt-1'>Cities</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Desktop Layout - Two columns */}
-        <div className='hidden lg:grid lg:grid-cols-3 gap-8 lg:gap-1 items-start justify-between'>
-          {/* Left Content - Desktop only */}
-          <div className='space-y-6'>
-            <div className='space-y-4'>
-              <h1 className='text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight'>
-                Trusted care, Right place
-                <p className='text-[17px] font-thin'>Advanced Specialized Care at <span className=' text-blue-800 mt-2 font-bold'>EyeVasc Solution</span> </p>
-              </h1>
-
-              <div className='space-y-3 text-gray-700'>
-                <div className='flex items-start space-x-3'>
-                  <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
+            {/* Features */}
+            <div className="space-y-5 mt-6">
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className='text-base md:text-lg'>24/7 medical care</span>
                 </div>
-                <div className='flex items-start space-x-3'>
-                  <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                  </svg>
-                  <span className='text-base md:text-lg'>Get Free consultation across India</span>
-                </div>
-                <div className='flex items-start space-x-3'>
-                  <svg className='w-6 h-6 text-green-500 flex-shrink-0 mt-1' fill='currentColor' viewBox='0 0 20 20'>
-                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                  </svg>
-                  <span className='text-base md:text-lg'>In-person and online consultations with experienced doctors</span>
+                <div>
+                  <h3 className="text-base font-medium text-gray-800">24/7 Emergency Care</h3>
+                  <p className="text-sm text-gray-600 mt-1">Our specialists are available round the clock for your urgent needs.</p>
                 </div>
               </div>
-              <div>Your <b>health,</b> Our Priority!</div>
-
-
-              {/* Stats - Desktop */}
-              <div className='grid grid-cols-3 gap-4 p-3 border shadow-2xl shadow-black items-center rounded-md'>
-                <div className='text-center'>
-                  <div className='text-2xl md:text-3xl font-bold text-blue-600'>50+</div>
-                  <div className='text-xs md:text-sm text-gray-600 mt-1'>Doctors</div>
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
                 </div>
-                <div className='text-center'>
-                  <div className='text-2xl md:text-3xl font-bold text-blue-600'>15+</div>
-                  <div className='text-xs md:text-sm text-gray-600 mt-1'>Diseases</div>
+                <div>
+                  <h3 className="text-base font-medium text-gray-800">Free Expert Consultation</h3>
+                  <p className="text-sm text-gray-600 mt-1">Get a no-obligation consultation with our top doctors, anywhere in India.</p>
                 </div>
-                <div className='text-center'>
-                  <div className='text-2xl md:text-3xl font-bold text-blue-600'>10+</div>
-                  <div className='text-xs md:text-sm text-gray-600 mt-1'>Cities</div>
+              </div>
+              <div className="flex items-start space-x-3">
+                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-medium text-gray-800">In-Person & Online Appointments</h3>
+                  <p className="text-sm text-gray-600 mt-1">Consult with our experienced doctors from home or at our clinics.</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className='h-screen  flex justify-center items-center w-[35vw]'>
-            <Image
-              src={"/man.png"}
-              alt=""
-              width={900}
-              height={100}
-            // className='w-[100px]'
-            />
-          </div>
-          {/* Form - Desktop Right Side */}
-          <div>
-            <div className='bg-white rounded-2xl shadow-2xl p-6 md:p-8 border border-gray-100 '>
-              <h2 className='text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center'>
-                Book Free Appointment
-              </h2>
-
-              <form id='book' onSubmit={handleSubmit} className='space-y-5 text-black'>
-                <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    Full Name *
-                  </label>
-                  <input
-                    type='text'
-                    name='name'
-                    value={UserName!}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                    placeholder='Enter your name'
-                  />
-                </div>
-
-                <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    Phone Number *
-                  </label>
-                  <input
-                    type='text'
-                    value={phone!}
-                    onChange={(e) => {
-                      if (e.target.value.length < 10) {
-                        setError("Invalid Phone no")
-                      }
-                      if (e.target.value.length === 10 && (e.target.value.startsWith("9") || e.target.value.startsWith("8") || e.target.value.startsWith("7"))) {
-                        setError('')
-
-                      } else {
-                        setError("Invalid Phone no")
-                      }
-
-                      setPhone(e.target.value)
-                    }}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                    placeholder='+91 XXXXX XXXXX'
-                  />
-                  <p className='text-sm text-red-500'>{error}</p>
-                </div>
-
-                <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    Treatment Looking For *
-                  </label>
-                  <select
-                    name='treatment'
-                    value={treatment}
-                    onChange={(e) => setTreatment(e.target.value)}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
-                  >
-                    <option value=''>Select Treatment</option>
-                    <option value='lasik'>LASIK Treatment</option>
-                    <option value='cataract'>Cataract Treatment</option>
-                    <option value='icl'>ICL Procedure</option>
-                    <option value='sinus'>Sinus Treatment</option>
-                    <option value='septoplasty'>Septoplasty</option>
-                    <option value='tonsillectomy'>Tonsillectomy</option>
-                    <option value='ear'>Ear Drum Perforation</option>
-                    <option value='rhinoplasty'>Rhinoplasty</option>
-                    <option value='gynecomastia'>Gynecomastia Treatment</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    City *
-                  </label>
-
-                  <select
-                    name='city'
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
-                  >
-                    <option value=''>Select City</option>
-                    <option value='mumbai'>Mumbai</option>
-                    <option value='delhi'>Delhi</option>
-                    <option value='gurgaon'>Gurgaon</option>
-                    <option value='pune'>Pune</option>
-                    <option value='bihar'>Bihar</option>
-                    <option value='uttarpradesh'>Uttar Pradesh</option>
-                    <option value='bangalore'>Bangalore</option>
-                    <option value='other'>Other</option>
-                  </select>
-
-                  {city === "other" && (
-                    <input
-                      type="text"
-                      placeholder="Enter your city"
-                      value={otherCity!}
-                      onChange={(e) => setOtherCity(e.target.value)}
-                      className='mt-3 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                      required
-                    />
-                  )}
-                </div>
-
-
-                <button
-                  type='submit'
-                  className='w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
-                >
-                  {loading ? "Booking..." : "Book Appointment"}
-                </button>
-
-                <p className='text-xs text-gray-500 text-center mt-4'>
-                  By submitting this form, you agree to our terms and privacy policy
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        {/* Form - Mobile Below Hero Content */}
-        <div className='lg:hidden'>
-          <div className='bg-white rounded-2xl shadow-2xl p-6 border border-gray-100'>
-            <h2 className='text-2xl font-bold text-gray-900 mb-6 text-center'>
-              Book Free Appointment
-            </h2>
-
-            <form onSubmit={handleSubmit} className='space-y-5 text-black'>
-              <div>
-                <label className='block text-sm font-medium text-gray-700 mb-2'>
-                  Full Name *
-                </label>
-                <input
-                  type='text'
-                  name='name'
-                  value={UserName!}
-                  onChange={(e) => setUserName(e.target.value)}
-                  required
-                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                  placeholder='Enter your name'
-                />
-              </div>
-
-              <div>
-                <label className='block text-sm font-medium text-gray-700 mb-2'>
-                  Phone Number *
-                </label>
-                <input
-                  type='text'
-                  value={phone!}
-                  onChange={(e) => {
-                    if (e.target.value.length < 10) {
-                      setError("Invalid Phone no")
-                    }
-                    if (e.target.value.length === 10 && (e.target.value.startsWith("9") || e.target.value.startsWith("8") || e.target.value.startsWith("7"))) {
-                      setError('')
-
-                    } else {
-                      setError("Invalid Phone no")
-                    }
-
-                    setPhone(e.target.value)
-                  }}
-                  required
-                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                  placeholder='+91 XXXXX XXXXX'
-                />
-                <p className='text-sm text-red-500'>{error}</p>
-              </div>
-
-              <div>
-                <label className='block text-sm font-medium text-gray-700 mb-2'>
-                  Treatment Looking For *
-                </label>
-                <select
-                  name='treatment'
-                  value={treatment}
-                  onChange={(e) => setTreatment(e.target.value)}
-                  required
-                  className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
-                >
-                  <option value=''>Select Treatment</option>
-                  <option value='lasik'>LASIK Treatment</option>
-                  <option value='cataract'>Cataract Treatment</option>
-                  <option value='icl'>ICL Procedure</option>
-                  <option value='sinus'>Sinus Treatment</option>
-                  <option value='septoplasty'>Septoplasty</option>
-                  <option value='tonsillectomy'>Tonsillectomy</option>
-                  <option value='ear'>Ear Drum Perforation</option>
-                  <option value='rhinoplasty'>Rhinoplasty</option>
-                  <option value='gynecomastia'>Gynecomastia Treatment</option>
-                </select>
-              </div>
-
-              <div>
-                  <label className='block text-sm font-medium text-gray-700 mb-2'>
-                    City *
-                  </label>
-
-                  <select
-                    name='city'
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                    className='w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white'
-                  >
-                    <option value=''>Select City</option>
-                    <option value='mumbai'>Mumbai</option>
-                    <option value='delhi'>Delhi</option>
-                    <option value='gurgaon'>Gurgaon</option>
-                    <option value='pune'>Pune</option>
-                    <option value='bihar'>Bihar</option>
-                    <option value='uttarpradesh'>Uttar Pradesh</option>
-                    <option value='bangalore'>Bangalore</option>
-                    <option value='other'>Other</option>
-                  </select>
-
-                  {city === "other" && (
-                    <input
-                      type="text"
-                      placeholder="Enter your city"
-                      value={otherCity!}
-                      onChange={(e) => setOtherCity(e.target.value)}
-                      className='mt-3 w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all'
-                      required
-                    />
-                  )}
-                </div>
-
-              <button
-                type='submit'
-                className='w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
-              >
-                {loading ? "Booking..." : "Book Appointment"}
-              </button>
-
-              <p className='text-xs text-gray-500 text-center mt-4'>
-                By submitting this form, you agree to our terms and privacy policy
+            <div className="pt-4">
+              <p className="text-lg font-medium text-gray-800">
+                Your <span className="text-blue-600">Health</span>, Our <span className="text-blue-600">Priority</span>.
               </p>
-            </form>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative">
+              <img
+                src="/dr.jpg"
+                alt="EyeVasc Solution doctor consultation"
+                className="rounded-lg shadow-xl w-full max-w-md h-auto object-cover"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-md border border-gray-100">
+                <div className="text-yellow-500 font-bold text-xl">★★★★★</div>
+                <p className="text-xs text-gray-600 mt-0.5">Trusted by 10,000+ patients</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="mt-16 flex justify-center">
+          <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-blue-600">50+</div>
+              <div className="text-sm text-gray-600 mt-1.5">Expert Doctors</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">15+</div>
+              <div className="text-sm text-gray-600 mt-1.5">Specialized Treatments</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600">10+</div>
+              <div className="text-sm text-gray-600 mt-1.5">Cities Across India</div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center space-y-4">
+          <h2 className="text-2xl font-bold text-gray-900">Ready to Take Control of Your Health?</h2>
+          <p className="text-base text-gray-600 max-w-xl mx-auto">
+            Book your free consultation today and experience the EyeVasc Solution difference.
+          </p>
+          <div className="flex justify-center mt-6">
+            <Link href={"/booknow"} className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-medium text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              Book Free Appointment
+            </Link>
           </div>
         </div>
       </div>
+
 
       {/* our treatment */}
-      <div id='treatment' className='bg-blue-50 py-12 md:py-16 mt-12'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10'>
-            Our treatment
-          </h3>
-          <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6'>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>👀</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/lasik"}>Lasik Treatment</Link></h4>
+      <section id='treatments' className="py-16 bg-gray-50">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Our Specialized Treatments
+      </h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        Comprehensive, advanced care tailored to your needs by our expert specialists.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      {[
+        { name: "Lasik Treatment", emoji: "👁️", href: "/lasik" },
+        { name: "Cataract Surgery", emoji: "🌟", href: "/cataract" },
+        { name: "Sinus Treatment", emoji: "👃", href: "/Sinus" },
+        { name: "Tonsillectomy", emoji: "🏥", href: "/Tonsillectomy" },
+        { name: "Septoplasty", emoji: "🩺", href: "/Septoplasty" },
+        { name: "Ear Perforation", emoji: "🎧", href: "/Ear" },
+        { name: "Rhinoplasty", emoji: "👃", href: "/Rhinoplasty" },
+        { name: "Gynecomastia", emoji: "💪", href: "/Gynecomastia" },
+      ].map((treatment, i) => (
+        <Link
+          key={i}
+          href={treatment.href}
+          className="group block bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+        >
+          <div className="p-6 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+              <span className="text-3xl">{treatment.emoji}</span>
             </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>👁</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/cataract"}>Cataract</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>👃🏻</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Sinus"}>Sinus Treatment</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>🏥</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Tonsillectomy"}>Tonsillectomy</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>💉</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Septoplasty"}>Septoplasty</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>💵</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Ear"}>Ear perforation</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>👨‍🏫</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Rhinoplasty"}>Rhinoplasty</Link></h4>
-            </div>
-            <div className='bg-blue-200 p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-              <div className='text-3xl md:text-4xl mb-3'>👨</div>
-              <h4 className='font-semibold text-sm md:text-base text-gray-900'><Link href={"/Gynecomastia"}>Gynecomastia</Link></h4>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600">
+              {treatment.name}
+            </h3>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+      
+      <section id='insurance' className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Trusted Insurance Partners
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We partner with leading insurance providers to ensure you receive the best care and coverage.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 ">
+            {[
+              "Acko General Insurance",
+        "Aditya Birla Health Insurance",
+        "Bajaj Allianz General Insurance",
+        "Bharti AXA General Insurance",
+        "Care Health Insurance (Religare)",
+        "Cholamandalam MS General Insurance",
+        "Edelweiss General Insurance",
+        "Future Generali India Insurance",
+        "Go Digit General Insurance",
+        "HDFC ERGO General Insurance",
+        "ICICI Lombard General Insurance",
+        "Kotak Mahindra General Insurance",
+        "IFFCO TOKIO General Insurance",
+        "Liberty General Insurance",
+        "Magma HDI General Insurance",
+        "Manipal Cigna Health Insurance",
+        "Max Bupa Health Insurance",
+        "Navi General Insurance",
+        "National Insurance Company",
+        "Reliance General Insurance",
+        "Royal Sundaram General Insurance",
+        "SBI General Insurance",
+        "Star Health and Allied Insurance",
+        "Tata AIG General Insurance",
+        "The New India Assurance Company",
+        "The Oriental Insurance Company",
+        "United India Insurance Company",
+        "Universal Sompo General Insurance"
+            ].map((partner, i) => (
+              <div
+                key={i}
+                className="p-4 overflow-hidden hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200 bg-white rounded-lg shadow-sm text-center hover:shadow-md transition-all"
+              >
+                <p className="font-medium text-gray-800">{partner}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
 
-
-      <div id='aboutus' className='bg-blue-200 py-12 md:py-16 mt-12'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10'>
-            Our Mission
-          </h3>
-          <div className=' md:gap-6 text-black text-xl text-center font-sans'>
-            To become the largest independent platform catering to all types of elective surgeries.
+      <section id='about' className="py-16 bg-blue-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              To empower patients by providing India&apos;s most trusted and comprehensive platform for all elective surgeries, ensuring access to top-tier medical expertise and personalized care.      </p>
           </div>
-          <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8 mt-5'>
-            Our Vision
-          </h3>
-          <div className=' md:gap-6 text-black text-xl font-sans text-center'>
-            To make every person&apos;s lifestyle healthy,longer, and better.
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+              To transform lives by making advanced, affordable, and high-quality healthcare accessible to everyone. We strive to help every individual live a healthier, longer, and happier life through expert medical solutions and compassionate support.      </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* under developement */}
-      <div id='insurance' className='flex flex-col justify-center items-center w-full py-12 px-4 bg-gray-50'>
-        <div className="max-w-4xl w-full">
-          <div className='text-center mb-12'>
-            <h2 className='font-bold text-3xl text-gray-800 mb-2'>Our Trusted Insurance Partners</h2>
-            <p className='text-lg text-gray-600'>Because you and your loved ones deserve the best care and protection.</p>
-          </div>
 
-          <ul className='list-disc grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 pl-6 text-lg text-gray-700'>
-            <li>Acko General Insurance</li>
-            <li>Aditya Birla Health Insurance</li>
-            <li>Bajaj Allianz</li>
-            <li>Bharti AXA</li>
-            <li>Care Health (Religare) Insurance</li>
-            <li>Cholamandalam MS</li>
-            <li>Edelweiss</li>
-            <li>Future Generali India Insurance</li>
-            <li>Go Digit General Insurance</li>
-            <li>HDFC ERGO / ERGO Health</li>
-            <li>ICICI LOMBARD</li>
-            <li>Kotak Mahindra</li>
-            <li>IFFCO TOKIO</li>
-            <li>Liberty General Insurance</li>
-            <li>Magma HDI GIC Ltd.</li>
-            <li>Manipal Cigna</li>
-            <li>Max Bupa Health Insurance Co.</li>
-            <li>Navi General Insurance Co. Ltd.</li>
-            <li>National Insurance Co. Ltd.</li>
-            <li>Reliance GIC Ltd</li>
-            <li>Royal Sundaram GIC Ltd.</li>
-            <li>SBI General</li>
-            <li>Star Health</li>
-            <li>Tata AIG</li>
-            <li>The New India Assurance Co. Ltd</li>
-            <li>The Oriental Insurance Co. Ltd.</li>
-            <li>United India Insurance Co. Ltd.</li>
-            <li>Universal Sompo GIC Ltd.</li>
-          </ul>
-        </div>
-      </div>
+
 
 
 
@@ -558,13 +256,11 @@ const Page = () => {
           <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10'>
             Our Values
           </h3>
-          <div className='text-center text-black font-sans'>
-            At Eyevasc Solutions , we uphold the transparency,integrity and accountability
-            in everything we do, ensuring trust and fairness for our patients. Our diverse and inclusive approach
-            make quality healthcare accessible to all
+          <div className='text-center text-black font-sans p-2'>
+            At Eyevasc Solutions, we are committed to transparency, integrity, and accountability in every aspect of our care. We believe in building trust through fairness and inclusivity, ensuring that everyone has access to high-quality healthcare. Your well-being is our priority, and we strive to deliver compassionate, world-class medical solutions tailored to your needs
           </div>
 
-          <div className='w-full max-w-4xl mx-auto px-4'>
+          <div className='w-full max-w-4xl mx-auto px-4 mb-5'>
             <Carousel
               opts={{
                 align: "start",
@@ -657,100 +353,77 @@ const Page = () => {
 
 
           {/* Features Section */}
-          <div className='bg-blue-50 py-12 md:py-16 mt-12'>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-              <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10'>
-                Why Choose Us?
-              </h3>
-              <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6'>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>⚡</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>Quick Discharge</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>🔬</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>Advanced Equipment</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>👨‍⚕️</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>Expert Specialists</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>💰</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>Affordable Treatment</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>💉</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>Painless Procedures</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>💵</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>No Cost EMI&apos;s</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>👨‍🏫</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>All insurance Covered</h4>
-                </div>
-                <div className='bg-white p-4 md:p-6 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow'>
-                  <div className='text-3xl md:text-4xl mb-3'>👨</div>
-                  <h4 className='font-semibold text-sm md:text-base text-gray-900'>State-of-Art</h4>
-                </div>
+          <section className="py-16 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Why Choose Us?
+      </h2>
+      <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        Experience the difference with our patient-centered approach and advanced medical care.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 ">
+      {[
+        { name: "Quick Discharge", emoji: "⚡", desc: "Minimize hospital stay with our efficient processes." },
+        { name: "Advanced Equipment", emoji: "🔬", desc: "State-of-the-art technology for precise diagnosis and treatment." },
+        { name: "Expert Specialists", emoji: "👨‍⚕️", desc: "Highly qualified doctors with years of specialized experience." },
+        { name: "Affordable Treatment", emoji: "💰", desc: "Quality care at competitive prices, ensuring value for every patient." },
+        { name: "Painless Procedures", emoji: "😊", desc: "Modern techniques to ensure comfort and minimal discomfort." },
+        { name: "No Cost EMI’s", emoji: "💳", desc: "Flexible payment options to make healthcare accessible." },
+        { name: "All Insurance Covered", emoji: "🛡️", desc: "Seamless insurance processing for hassle-free treatment." },
+        { name: "State-of-Art", emoji: "🏆", desc: "Internationally recognized facilities and best practices." },
+      ].map((feature, i) => (
+        <div
+          key={i}
+          className="group p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+        >
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+            <span className="text-3xl">{feature.emoji}</span>
+          </div>
+          <h3 className="text-lg font-semibold text-gray-900 text-center mb-2 group-hover:text-blue-600">
+            {feature.name}
+          </h3>
+          <p className="text-sm text-gray-600 text-center">
+            {feature.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+          <section id='contact' className="py-16 bg-blue-50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                Get in Touch
+              </h2>
+              <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                Have questions? We&apos;re here to help. Reach out to us anytime and our team will get back to you.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {[
+                  { title: "Call Us", detail: "+91 8286745659", sub: "Available 24/7", icon: "📞" },
+                  { title: "Email Us", detail: "info@eyevascsolution.com", sub: "Response within 24 hours", icon: "✉️" },
+                  { title: "Visit Us", detail: "Multiple Locations", sub: "Mumbai, Delhi, Bangalore, Pune", icon: "📍" },
+                ].map((contact, i) => (
+                  <div
+                    key={i}
+                    className="p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+                  >
+                    <div className="text-4xl mb-4">{contact.icon}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{contact.title}</h3>
+                    <p className="text-blue-600 font-medium">{contact.detail}</p>
+                    <p className="text-sm text-gray-500">{contact.sub}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          </section>
 
-          <div className='bg-blue-50 py-12 md:py-16'>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-              <div className='text-center mb-12'>
-                <h2 className='text-3xl md:text-4xl font-bold text-gray-900 mb-4'>
-                  Get in Touch
-                </h2>
-                <p className='text-lg text-gray-600 max-w-2xl mx-auto'>
-                  Have questions? We&apos;re here to help. Reach out to us anytime and our team will get back to you.
-                </p>
-              </div>
-
-              <div id='Contact' className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-
-                {/* Call Us */}
-                <div className='bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-shadow'>
-                  <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4'>
-                    <svg className='w-8 h-8 text-blue-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z' />
-                    </svg>
-                  </div>
-                  <h3 className='text-xl font-semibold text-gray-900 mb-2'>Call Us</h3>
-                  <p className='text-blue-600 font-medium text-lg mb-1'>+91 9999756758</p>
-                  <p className='text-sm text-gray-500'>Available 24/7</p>
-                </div>
-
-                {/* Email Us */}
-                <div className='bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-shadow'>
-                  <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4'>
-                    <svg className='w-8 h-8 text-blue-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' />
-                    </svg>
-                  </div>
-                  <h3 className='text-xl font-semibold text-gray-900 mb-2'>Email Us</h3>
-                  <p className='text-blue-600 font-medium text-lg mb-1'>info@eyevascsolution.com</p>
-                  <p className='text-sm text-gray-500'>Response within 24 hours</p>
-                </div>
-
-                {/* Visit Us */}
-                <div className='bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-shadow'>
-                  <div className='w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4'>
-                    <svg className='w-8 h-8 text-blue-600' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z' />
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
-                    </svg>
-                  </div>
-                  <h3 className='text-xl font-semibold text-gray-900 mb-2'>Visit Us</h3>
-                  <p className='text-gray-700 font-medium mb-1'>Multiple Locations</p>
-                  <p className='text-sm text-gray-500'>Mumbai, Delhi, Bangalore, Pune</p>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
         </div>

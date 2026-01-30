@@ -39,10 +39,10 @@ const Footer = () => {
             <h4 className='text-lg font-semibold mb-4'>Quick Links</h4>
             <ul className='space-y-2 text-gray-400 text-sm'>
               <li><a href='/#home' className='hover:text-blue-400 transition-colors'>Home</a></li>
-              <li><a href='/#aboutus' className='hover:text-blue-400 transition-colors'>About Us</a></li>
-              <li><a href='/#treatment' className='hover:text-blue-400 transition-colors'>Treatments</a></li>
-              <li><a href='/#Contact' className='hover:text-blue-400 transition-colors'>Contact Us</a></li>
-              <li><a href='/#book' className='hover:text-blue-400 transition-colors'>Book Appointment</a></li>
+              <li><a href='/#about' className='hover:text-blue-400 transition-colors'>About Us</a></li>
+              <li><a href='/#treatments' className='hover:text-blue-400 transition-colors'>Treatments</a></li>
+              <li><a href='/#contact' className='hover:text-blue-400 transition-colors'>Contact Us</a></li>
+              <li><a href='/booknow' className='hover:text-blue-400 transition-colors'>Book Appointment</a></li>
               <li><a href='/FAQ' className='hover:text-blue-400 transition-colors'>FAQ</a></li>
             </ul>
           </div>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <svg className='w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z' />
                 </svg>
-                <span>+91 9999756758</span>
+                <span>+91 8286745659</span>
               </li>
               <li className='flex items-start space-x-2'>
                 <svg className='w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
