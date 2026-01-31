@@ -1,9 +1,6 @@
 "use client"
 import Navbar from '@/components/Navbar';
-import axios, { AxiosError } from 'axios';
-// import Link from 'next/link';
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
+
 import { Card } from "@/components/ui/card"
 import {
   Carousel,
@@ -13,7 +10,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay"
-import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 
@@ -34,10 +30,10 @@ const Page = () => {
           {/* Left Content */}
           <div className="space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-              Expert Eye & Vascular Care, <span className="text-blue-600">When You Need It</span>
+              Expert Eye & Health Care, <span className="text-blue-600">When You Need It</span>
             </h1>
             <p className="text-lg text-gray-600 mt-3">
-              At EyeVasc Solution, we combine advanced technology with compassionate care to ensure the best outcomes for your health.
+              At Eyehealthcure , we combine advanced technology with compassionate care to ensure the best outcomes for your health.
             </p>
 
             {/* Features */}
@@ -89,7 +85,7 @@ const Page = () => {
             <div className="relative">
               <img
                 src="/dr.jpg"
-                alt="EyeVasc Solution doctor consultation"
+                alt="Eyehealthcure  doctor consultation"
                 className="rounded-lg shadow-xl w-full max-w-md h-auto object-cover"
               />
               <div className="absolute -bottom-4 -right-4 bg-white p-3 rounded-lg shadow-md border border-gray-100">
@@ -122,7 +118,7 @@ const Page = () => {
         <div className="mt-16 text-center space-y-4">
           <h2 className="text-2xl font-bold text-gray-900">Ready to Take Control of Your Health?</h2>
           <p className="text-base text-gray-600 max-w-xl mx-auto">
-            Book your free consultation today and experience the EyeVasc Solution difference.
+            Book your free consultation today and experience the Eyehealthcure  difference.
           </p>
           <div className="flex justify-center mt-6">
             <Link href={"/booknow"} className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-medium text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
@@ -257,7 +253,7 @@ const Page = () => {
             Our Values
           </h3>
           <div className='text-center text-black font-sans p-2'>
-            At Eyevasc Solutions, we are committed to transparency, integrity, and accountability in every aspect of our care. We believe in building trust through fairness and inclusivity, ensuring that everyone has access to high-quality healthcare. Your well-being is our priority, and we strive to deliver compassionate, world-class medical solutions tailored to your needs
+            At Eyehealthcure , we are committed to transparency, integrity, and accountability in every aspect of our care. We believe in building trust through fairness and inclusivity, ensuring that everyone has access to high-quality healthcare. Your well-being is our priority, and we strive to deliver compassionate, world-class medical solutions tailored to your needs
           </div>
 
           <div className='w-full max-w-4xl mx-auto px-4 mb-5'>
@@ -407,7 +403,7 @@ const Page = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
                   { title: "Call Us", detail: "+91 8286745659", sub: "Available 24/7", icon: "📞" },
-                  { title: "Email Us", detail: "info@eyevascsolution.com", sub: "Response within 24 hours", icon: "✉️" },
+                  { title: "Email Us", detail: "info@eyehealthcuresolution.com", sub: "Response within 24 hours", icon: "✉️" },
                   { title: "Visit Us", detail: "Multiple Locations", sub: "Mumbai, Delhi, Bangalore, Pune", icon: "📍" },
                 ].map((contact, i) => (
                   <div

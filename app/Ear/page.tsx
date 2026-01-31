@@ -21,7 +21,7 @@ export default function EarPerforationTreatment() {
             Eardrum perforation, also known as a ruptured tympanic membrane, is a condition where a tear or hole develops in the thin tissue separating the ear canal from the middle ear. This condition can lead to hearing loss, ear pain, discharge, and recurrent ear infections if left untreated.
           </p>
           <p className="mt-4 leading-relaxed">
-            At <strong>Eyevasc Solutions</strong>, we provide advanced eardrum perforation treatment using both non-surgical and surgical ENT techniques to restore hearing and protect long-term ear health.
+            At <strong>Eyehealthcure</strong>, we provide advanced eardrum perforation treatment using both non-surgical and surgical ENT techniques to restore hearing and protect long-term ear health.
           </p>
         </header>
 
@@ -82,10 +82,10 @@ export default function EarPerforationTreatment() {
             </AccordionContent>
           </AccordionItem>
 
-          {/* Advanced ENT Techniques at Eyevasc Solutions */}
+          {/* Advanced ENT Techniques at Eyehealthcure */}
           <AccordionItem value="advanced-techniques">
             <AccordionTrigger className="border p-4 rounded-lg hover:bg-blue-50">
-              <h2 className="text-xl font-semibold">Advanced ENT Techniques at Eyevasc Solutions</h2>
+              <h2 className="text-xl font-semibold">Advanced ENT Techniques at Eyehealthcure</h2>
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <ul className="list-disc pl-6 space-y-2">

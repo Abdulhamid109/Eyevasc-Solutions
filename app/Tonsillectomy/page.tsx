@@ -25,7 +25,7 @@ export default function TonsillectomyTreatmentPage() {
 
           <section className="mb-10">
             <p className="text-base leading-relaxed text-gray-700">
-              At Eyevasc Solutions, tonsillectomy is performed using safe and advanced ENT surgical techniques to ensure minimal discomfort, faster recovery, and long-term relief from recurring tonsil problems.
+              At Eyehealthcure , tonsillectomy is performed using safe and advanced ENT surgical techniques to ensure minimal discomfort, faster recovery, and long-term relief from recurring tonsil problems.
             </p>
           </section>
 

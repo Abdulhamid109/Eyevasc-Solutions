@@ -19,7 +19,7 @@ export default function Rhinoplasty() {
           </h1>
           <p className="text-lg leading-relaxed">
             Looking for the best rhinoplasty treatment in India? At{" "}
-            <strong>Eyevasc Solutions</strong>, we offer advanced rhinoplasty
+            <strong>Eyehealthcure</strong>, we offer advanced rhinoplasty
             (nose reshaping surgery) designed to enhance facial harmony while
             preserving a natural appearance. Rhinoplasty may be performed for
             cosmetic improvement or to correct breathing difficulties caused by
@@ -46,7 +46,7 @@ export default function Rhinoplasty() {
                 or address breathing problems caused by nasal structural abnormalities.
               </p>
               <p className="mt-4">
-                At Eyevasc Solutions, modern rhinoplasty techniques ensure:
+                At Eyehealthcure, modern rhinoplasty techniques ensure:
               </p>
               <ul className="list-disc pl-6 mt-3 space-y-2">
                 <li>High safety standards</li>
@@ -150,7 +150,7 @@ export default function Rhinoplasty() {
                 <li>No active skin infections or uncontrolled medical conditions</li>
               </ul>
               <p className="mt-4">
-                A detailed evaluation at Eyevasc Solutions helps determine the most
+                A detailed evaluation at Eyehealthcure helps determine the most
                 suitable surgical approach.
               </p>
             </AccordionContent>

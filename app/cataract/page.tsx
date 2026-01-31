@@ -19,7 +19,7 @@ export default function CataractTreatmentPage() {
               Best Cataract Treatment in India – Restore Clear Vision
             </h1>
             <p className="text-base leading-relaxed text-gray-600">
-              Looking for the best cataract treatment in India? At Eyevasc Solutions, we provide advanced cataract surgery that is safe, fast, and highly effective in restoring clear vision affected by cataracts. Using the latest minimally invasive techniques, our cataract treatment offers permanent visual clarity with minimal pain, no hospital stay, and quick recovery.
+              Looking for the best cataract treatment in India? At Eyehealthcure, we provide advanced cataract surgery that is safe, fast, and highly effective in restoring clear vision affected by cataracts. Using the latest minimally invasive techniques, our cataract treatment offers permanent visual clarity with minimal pain, no hospital stay, and quick recovery.
             </p>
           </header>
 
@@ -40,7 +40,7 @@ export default function CataractTreatmentPage() {
                   Cataract treatment is a minor yet highly effective surgical procedure used to remove the cloudy natural lens of the eye and replace it with a clear artificial lens. Cataracts commonly develop with age and cause blurred or cloudy vision, glare, and difficulty in daily activities.
                 </p>
                 <p className="text-base leading-relaxed mb-4">
-                  At Eyevasc Solutions, we use advanced cataract surgery techniques that ensure:
+                  At Eyehealthcure, we use advanced cataract surgery techniques that ensure:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>Painless and stitchless treatment</li>
@@ -57,7 +57,7 @@ export default function CataractTreatmentPage() {
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
                 <p className="text-base leading-relaxed mb-4">
-                  Eyevasc Solutions uses advanced phacoemulsification cataract surgery, the most trusted modern technique for cataract removal.
+                  Eyehealthcure uses advanced phacoemulsification cataract surgery, the most trusted modern technique for cataract removal.
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>The cloudy lens is gently broken using ultrasound technology</li>
@@ -89,7 +89,7 @@ export default function CataractTreatmentPage() {
                   <li>Complete healing typically occurs within one week</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  At Eyevasc Solutions, our medical team provides clear post-surgery care instructions to ensure safe healing and long-term visual clarity.
+                  At Eyehealthcure, our medical team provides clear post-surgery care instructions to ensure safe healing and long-term visual clarity.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -101,7 +101,7 @@ export default function CataractTreatmentPage() {
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
                 <p className="text-base leading-relaxed mb-4">
-                  Cataract surgery at Eyevasc Solutions has a success rate of over 95%.
+                  Cataract surgery at Eyehealthcure has a success rate of over 95%.
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>Significant improvement in vision clarity</li>
@@ -132,7 +132,7 @@ export default function CataractTreatmentPage() {
                   <li>Seek long-term vision improvement through advanced surgical care</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  A detailed eye examination at Eyevasc Solutions helps determine the most suitable treatment approach.
+                  A detailed eye examination at Eyehealthcure helps determine the most suitable treatment approach.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -170,7 +170,7 @@ export default function CataractTreatmentPage() {
                   <li>Occasional minor vision disturbances, usually correctable with follow-up care</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  At Eyevasc Solutions, patient safety is our top priority, supported by expert surgeons and comprehensive post-operative care.
+                  At Eyehealthcure, patient safety is our top priority, supported by expert surgeons and comprehensive post-operative care.
                 </p>
               </AccordionContent>
             </AccordionItem>

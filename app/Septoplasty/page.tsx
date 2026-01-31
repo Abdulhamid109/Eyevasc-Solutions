@@ -25,7 +25,7 @@ export default function SeptoplastyTreatmentPage() {
 
           <section className="mb-10">
             <p className="text-base leading-relaxed text-gray-700">
-              At Eyevasc Solutions, septoplasty is performed using advanced ENT surgical techniques to restore proper nasal airflow and improve long-term breathing comfort.
+              At Eyehealthcure , septoplasty is performed using advanced ENT surgical techniques to restore proper nasal airflow and improve long-term breathing comfort.
             </p>
           </section>
 
@@ -114,7 +114,7 @@ export default function SeptoplastyTreatmentPage() {
                   <li>Frequent nosebleeds or persistent nasal discomfort</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  A detailed ENT evaluation at Eyevasc Solutions ensures accurate diagnosis and suitability for surgery.
+                  A detailed ENT evaluation at Eyehealthcure  ensures accurate diagnosis and suitability for surgery.
                 </p>
               </AccordionContent>
             </AccordionItem>

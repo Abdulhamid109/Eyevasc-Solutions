@@ -21,7 +21,7 @@ export default function Gynecomastia() {
             Gynecomastia is a condition in which male breast tissue becomes enlarged due to hormonal imbalance, obesity, genetics, or certain medications. It may cause physical discomfort as well as emotional distress and self-consciousness.
           </p>
           <p className="mt-4 leading-relaxed">
-            At <strong>Eyevasc Solutions</strong>, we offer advanced gynecomastia treatment in India to safely reduce excess breast tissue and restore a firm, masculine chest contour with natural and long-lasting results. Each procedure is personalized based on body type, severity, and patient expectations.
+            At <strong>Eyehealthcure</strong>, we offer advanced gynecomastia treatment in India to safely reduce excess breast tissue and restore a firm, masculine chest contour with natural and long-lasting results. Each procedure is personalized based on body type, severity, and patient expectations.
           </p>
         </header>
 
@@ -113,7 +113,7 @@ export default function Gynecomastia() {
                 <li>Realistic expectations regarding surgical outcomes</li>
               </ul>
               <p className="mt-4">
-                A comprehensive evaluation at Eyevasc Solutions determines the most appropriate treatment plan.
+                A comprehensive evaluation at Eyehealthcure determines the most appropriate treatment plan.
               </p>
             </AccordionContent>
           </AccordionItem>

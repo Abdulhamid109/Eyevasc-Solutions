@@ -19,7 +19,7 @@ export default function LasikTreatmentPage() {
               LASIK Treatment in India – Clear Vision for a Confident Life
             </h1>
             <p className="text-base leading-relaxed text-gray-600">
-              Looking for advanced and reliable LASIK treatment in India? At Eyevasc Solutions, we offer world-class LASIK eye surgery using advanced laser technology to correct vision problems such as nearsightedness (myopia), farsightedness (hypermetropia), and astigmatism. LASIK is a safe, quick, and minimally invasive eye procedure that provides long-term vision clarity with minimal discomfort and fast recovery.
+              Looking for advanced and reliable LASIK treatment in India? At Eyehealthcure, we offer world-class LASIK eye surgery using advanced laser technology to correct vision problems such as nearsightedness (myopia), farsightedness (hypermetropia), and astigmatism. LASIK is a safe, quick, and minimally invasive eye procedure that provides long-term vision clarity with minimal discomfort and fast recovery.
             </p>
           </header>
 
@@ -34,7 +34,7 @@ export default function LasikTreatmentPage() {
                   LASIK (Laser-Assisted In Situ Keratomileusis) is one of the most advanced laser vision correction procedures available today. It works by reshaping the cornea so that light entering the eye is properly focused on the retina.
                 </p>
                 <p className="text-base leading-relaxed mb-4">
-                  At Eyevasc Solutions, we use state-of-the-art LASIK laser technology to ensure:
+                  At Eyehealthcure, we use state-of-the-art LASIK laser technology to ensure:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>Painless treatment</li>
@@ -83,7 +83,7 @@ export default function LasikTreatmentPage() {
                   <li>Mild discomfort or dryness may occur temporarily</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  Our team at Eyevasc Solutions provides detailed post-operative care instructions for the best results.
+                  Our team at Eyehealthcure provides detailed post-operative care instructions for the best results.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -123,7 +123,7 @@ export default function LasikTreatmentPage() {
                   <li>Do not have active eye infections or serious eye diseases</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  A complete eye evaluation at Eyevasc Solutions helps determine your suitability for LASIK treatment.
+                  A complete eye evaluation at Eyehealthcure helps determine your suitability for LASIK treatment.
                 </p>
               </AccordionContent>
             </AccordionItem>

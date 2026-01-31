@@ -14,10 +14,10 @@ const TermsOfServicePage = () => {
       <Navbar />
       <div className="flex-grow max-w-5xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-center mb-6">Terms of Service</h1>
-        <p className="text-center text-lg mb-8">Effective Date: 29 January 2026</p>
+        <p className="text-center text-lg mb-8">Effective Date: 31 January 2026</p>
 
         <p className="mb-6 text-lg">
-          Welcome to EyeVasc Solution / Global Healthkure ("we", "our", "us"). These Terms & Conditions ("Terms") govern your access to and use of our website, mobile platforms, digital services, and healthcare facilitation services.
+          Welcome to Eyehealthcure  / Global Healthkure (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;). These Terms & Conditions (&quot;Terms&quot;) govern your access to and use of our website, mobile platforms, digital services, and healthcare facilitation services.
         </p>
         <p className="mb-8 text-lg">
           By accessing or using our services, you agree to be bound by these Terms. If you do not agree, please do not use our services.
@@ -30,7 +30,7 @@ const TermsOfServicePage = () => {
               1. Nature of Services
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
-              <p>EyeVasc Solution / Global Healthkure acts as a healthcare facilitation and coordination platform. We:</p>
+              <p>Eyehealthcure  / Global Healthkure acts as a healthcare facilitation and coordination platform. We:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>Assist patients in finding doctors, hospitals, clinics, and diagnostic services.</li>
                 <li>Enable appointment bookings, consultations (online/offline), and follow-up coordination.</li>
@@ -156,7 +156,7 @@ const TermsOfServicePage = () => {
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <p>All content on the platform—including text, graphics, logos, images, and design—is:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
-                <li>Owned by or licensed to EyeVasc Solution / Global Healthkure</li>
+                <li>Owned by or licensed to Eyehealthcure  / Global Healthkure</li>
                 <li>Protected under Indian copyright and trademark laws</li>
               </ul>
               <p className="mt-4">You may not copy, reproduce, modify, or distribute content without written permission.</p>
@@ -206,7 +206,7 @@ const TermsOfServicePage = () => {
               11. Indemnification
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
-              <p>You agree to indemnify and hold harmless EyeVasc Solution / Global Healthkure from:</p>
+              <p>You agree to indemnify and hold harmless Eyehealthcure  / Global Healthkure from:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>Claims arising due to misuse of services</li>
                 <li>Violation of these Terms</li>
@@ -275,7 +275,7 @@ const TermsOfServicePage = () => {
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <p>For queries, concerns, or legal notices:</p>
-              <p className="mt-2"><strong>EyeVasc Solution / Global Healthkure</strong></p>
+              <p className="mt-2"><strong>Eyehealthcure  / Global Healthkure</strong></p>
               <p>📧 Email: support@yourdomain.com</p>
               <p>📞 Phone: +91-XXXXXXXXXX</p>
             </AccordionContent>

@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eyevasc Solutions",
-  description: "Eyevasc Organization",
+  title: "Eyehealthcure s",
+  description: "Eyehealthcure Organization",
 };
 
 export default function RootLayout({

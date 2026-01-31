@@ -15,10 +15,10 @@ const PrivacyPolicyPage = () => {
       <div className="flex-grow max-w-5xl mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold text-center mb-8">Privacy Policy</h1>
         <p className="mb-6 text-lg">
-          EyeVasc Solution (“we”, “us”, “our”) is committed to protecting the privacy, confidentiality, and security of personal and sensitive personal data of its users, patients, and visitors. This Privacy Policy is issued in accordance with applicable Indian laws, including but not limited to the Information Technology Act, 2000, and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (“SPDI Rules”).
+          Eyehealthcure (“we”, “us”, “our”) is committed to protecting the privacy, confidentiality, and security of personal and sensitive personal data of its users, patients, and visitors. This Privacy Policy is issued in accordance with applicable Indian laws, including but not limited to the Information Technology Act, 2000, and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 (“SPDI Rules”).
         </p>
         <p className="mb-6 text-lg">
-          By accessing our website, booking appointments, or availing healthcare services through EyeVasc Solution, you consent to the collection, use, processing, and disclosure of your information as described in this Privacy Policy.
+          By accessing our website, booking appointments, or availing healthcare services through Eyehealthcure, you consent to the collection, use, processing, and disclosure of your information as described in this Privacy Policy.
         </p>
 
         <Accordion type="single" collapsible className="w-full space-y-4">
@@ -31,7 +31,7 @@ const PrivacyPolicyPage = () => {
               <ul className="list-disc pl-6 space-y-2">
                 <li><strong>Personal Information:</strong> Information that identifies an individual, such as name, phone number, email address, and location.</li>
                 <li><strong>Sensitive Personal Data or Information (SPDI):</strong> Medical records, health history, diagnostic reports, insurance details, and financial information as defined under Indian law.</li>
-                <li><strong>User / Patient:</strong> Any individual accessing the website or availing services from EyeVasc Solution.</li>
+                <li><strong>User / Patient:</strong> Any individual accessing the website or availing services from Eyehealthcure.</li>
               </ul>
             </AccordionContent>
           </AccordionItem>
@@ -85,7 +85,7 @@ const PrivacyPolicyPage = () => {
                 <li>Compliance with statutory, regulatory, and medico-legal obligations</li>
                 <li>Prevention of fraud, misuse, or unauthorized access</li>
               </ul>
-              <p className="mt-4">EyeVasc Solution does not sell, trade, or commercially exploit personal or sensitive data.</p>
+              <p className="mt-4">Eyehealthcure does not sell, trade, or commercially exploit personal or sensitive data.</p>
             </AccordionContent>
           </AccordionItem>
 
@@ -113,7 +113,7 @@ const PrivacyPolicyPage = () => {
               6. Data Security Practices
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
-              <p>EyeVasc Solution implements reasonable security practices as mandated under Indian law, including:</p>
+              <p>Eyehealthcure implements reasonable security practices as mandated under Indian law, including:</p>
               <ul className="list-disc pl-6 space-y-2 mt-3">
                 <li>Secure servers and encrypted digital records</li>
                 <li>Restricted access to sensitive data</li>
@@ -158,7 +158,7 @@ const PrivacyPolicyPage = () => {
               9. Cookies & Tracking Technologies
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
-              <p>EyeVasc Solution uses cookies to enhance website performance, user experience, and security. Users may disable cookies through browser settings; however, certain website features may not function optimally.</p>
+              <p>Eyehealthcure uses cookies to enhance website performance, user experience, and security. Users may disable cookies through browser settings; however, certain website features may not function optimally.</p>
             </AccordionContent>
           </AccordionItem>
 
@@ -169,8 +169,8 @@ const PrivacyPolicyPage = () => {
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <p>In compliance with the Information Technology Act, 2000, the contact details of the Grievance Officer are provided below:</p>
-              <p className="mt-3"><strong>Grievance Officer – EyeVasc Solution</strong></p>
-              <p>📧 Email: support@eyevascsolution.com</p>
+              <p className="mt-3"><strong>Grievance Officer – Eyehealthcure</strong></p>
+              <p>📧 Email: support@Eyehealthcuresolution.com</p>
               <p>📞 Phone: +91-XXXXXXXXXX</p>
               <p className="mt-4">All grievances shall be addressed within the timelines prescribed by applicable law.</p>
             </AccordionContent>
@@ -182,7 +182,7 @@ const PrivacyPolicyPage = () => {
               11. Amendments to This Policy
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
-              <p>EyeVasc Solution reserves the right to amend this Privacy Policy at any time to reflect changes in law, technology, or services. Updated versions will be published on the website with revised effective dates.</p>
+              <p>Eyehealthcure reserves the right to amend this Privacy Policy at any time to reflect changes in law, technology, or services. Updated versions will be published on the website with revised effective dates.</p>
             </AccordionContent>
           </AccordionItem>
 

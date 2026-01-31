@@ -5,7 +5,7 @@ import axios, { AxiosError } from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 
-const page = () => {
+const Page = () => {
     const [UserName, setUserName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [treatment, setTreatment] = useState<string>('');
@@ -207,4 +207,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

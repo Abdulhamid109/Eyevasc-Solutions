@@ -21,14 +21,14 @@ const Navbar = () => {
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/eyvasc-logo.png"
-              alt="EyeVasc Solution Logo"
+              src="/logo.jpeg"
+              alt="Eyehealthcure Logo"
               width={80}
               height={40}
               className="w-[60px] md:w-[80px] object-contain"
             />
             <span className="font-bold text-xl md:text-2xl text-blue-600">
-              EyeVasc Solution
+              Eyehealthcure
             </span>
           </Link>
 

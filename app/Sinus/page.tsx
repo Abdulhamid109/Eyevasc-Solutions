@@ -19,7 +19,7 @@ export default function SinusTreatmentPage() {
               ENT Care – Expert Ear, Nose & Throat Treatment in India
             </h1>
             <p className="text-base leading-relaxed text-gray-600">
-              At Eyevasc Solutions, our ENT Care services focus on the diagnosis, treatment, and management of conditions related to the ear, nose, throat, and associated head & neck structures. Our experienced ENT specialists (otolaryngologists) provide both medical and surgical care to improve hearing, breathing, speech, balance, and overall quality of life.
+              At Eyehealthcure , our ENT Care services focus on the diagnosis, treatment, and management of conditions related to the ear, nose, throat, and associated head & neck structures. Our experienced ENT specialists (otolaryngologists) provide both medical and surgical care to improve hearing, breathing, speech, balance, and overall quality of life.
             </p>
           </header>
 
@@ -37,7 +37,7 @@ export default function SinusTreatmentPage() {
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
                 <p className="text-base leading-relaxed mb-4">
-                  Chronic sinus issues can affect breathing, sleep, and daily comfort. At Eyevasc Solutions, we offer advanced and effective sinus treatment in India to relieve symptoms and restore healthy sinus function.
+                  Chronic sinus issues can affect breathing, sleep, and daily comfort. At Eyehealthcure , we offer advanced and effective sinus treatment in India to relieve symptoms and restore healthy sinus function.
                 </p>
                 <p className="text-base leading-relaxed">
                   Our ENT experts provide personalized sinus care using modern diagnostic tools and minimally invasive treatments for long-term relief.
@@ -87,7 +87,7 @@ export default function SinusTreatmentPage() {
                   <li>Follow-up consultations ensure proper healing and long-term results</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  Our ENT team at Eyevasc Solutions provides complete post-treatment care guidance.
+                  Our ENT team at Eyehealthcure  provides complete post-treatment care guidance.
                 </p>
               </AccordionContent>
             </AccordionItem>
@@ -99,7 +99,7 @@ export default function SinusTreatmentPage() {
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
                 <p className="text-base leading-relaxed mb-4">
-                  Advanced sinus treatments at Eyevasc Solutions offer high success rates of over 90–95%, especially for chronic sinusitis.
+                  Advanced sinus treatments at Eyehealthcure  offer high success rates of over 90–95%, especially for chronic sinusitis.
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>Significant reduction in sinus infections and nasal blockage</li>
@@ -127,15 +127,15 @@ export default function SinusTreatmentPage() {
                   <li>Ear pain, hearing loss, dizziness, or throat discomfort</li>
                 </ul>
                 <p className="text-base leading-relaxed mt-4">
-                  A detailed ENT evaluation at Eyevasc Solutions helps determine the best treatment approach.
+                  A detailed ENT evaluation at Eyehealthcure  helps determine the best treatment approach.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
-            {/* Benefits of ENT & Sinus Care at Eyevasc Solutions */}
+            {/* Benefits of ENT & Sinus Care at Eyehealthcure  */}
             <AccordionItem value="benefits">
               <AccordionTrigger className="border p-4 rounded-lg hover:bg-blue-50">
-                <h2 className="text-xl font-semibold">Benefits of ENT & Sinus Care at Eyevasc Solutions</h2>
+                <h2 className="text-xl font-semibold">Benefits of ENT & Sinus Care at Eyehealthcure </h2>
               </AccordionTrigger>
               <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">

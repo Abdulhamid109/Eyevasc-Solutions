@@ -22,11 +22,11 @@ const FAQPage = () => {
         >
           <AccordionItem value="Q1">
             <AccordionTrigger className='text-xl font-medium hover:no-underline'>
-              What medical services does Eyevasc Solutions offer?
+              What medical services does Eyehealthcure offer?
             </AccordionTrigger>
             <AccordionContent>
               <div className="space-y-4">
-                <p>Eyevasc Solutions provides advanced medical treatments in the following specialties:</p>
+                <p>Eyehealthcure provides advanced medical treatments in the following specialties:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li><strong>Ophthalmology:</strong> LASIK, cataract treatment, and ICL procedures.</li>
                   <li><strong>ENT Care:</strong> Sinus treatment, septoplasty, tonsillectomy, and ear drum perforation solutions.</li>
@@ -39,7 +39,7 @@ const FAQPage = () => {
 
           <AccordionItem value="Q2">
             <AccordionTrigger className='text-xl font-medium hover:no-underline'>
-              How does Eyevasc Solutions ensure affordable treatment costs?
+              How does Eyehealthcure ensure affordable treatment costs?
             </AccordionTrigger>
             <AccordionContent>
               <p>We use an asset-light model, partnering with both private and government hospitals to keep costs reasonable. Additionally, we offer flexible financial support options to make your treatment accessible and stress-free.</p>
@@ -48,7 +48,7 @@ const FAQPage = () => {
 
           <AccordionItem value="Q3">
             <AccordionTrigger className='text-xl font-medium hover:no-underline'>
-              How does Eyevasc Solutions assist with insurance claims?
+              How does Eyehealthcure assist with insurance claims?
             </AccordionTrigger>
             <AccordionContent>
               <p>Our platform simplifies the insurance claim process with end-to-end assistance. We handle all necessary paperwork efficiently, so you can focus on your recovery without worrying about administrative hassles.</p>
@@ -57,16 +57,16 @@ const FAQPage = () => {
 
           <AccordionItem value="Q4">
             <AccordionTrigger className='text-xl font-medium hover:no-underline'>
-              In which cities does Eyevasc Solutions operate?
+              In which cities does Eyehealthcure operate?
             </AccordionTrigger>
             <AccordionContent>
-              <p>Eyevasc Solutions collaborates with over 50+ NABH-approved hospitals in major cities, including Delhi-NCR, Mumbai, Pune, Bangalore, and more. We are continuously expanding our network to serve patients across India.</p>
+              <p>Eyehealthcure collaborates with over 50+ NABH-approved hospitals in major cities, including Delhi-NCR, Mumbai, Pune, Bangalore, and more. We are continuously expanding our network to serve patients across India.</p>
             </AccordionContent>
           </AccordionItem>
 
           <AccordionItem value="Q5">
             <AccordionTrigger className='text-xl font-medium hover:no-underline'>
-              Are the doctors and hospitals partnered with Eyevasc Solutions reliable?
+              Are the doctors and hospitals partnered with Eyehealthcure reliable?
             </AccordionTrigger>
             <AccordionContent>
               <p>Yes, we partner with highly experienced doctors and NABH-approved hospitals equipped with state-of-the-art technologies. Our partnerships ensure the highest standards of care and reliability for all our patients.</p>
