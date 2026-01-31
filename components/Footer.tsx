@@ -9,7 +9,7 @@ const Footer = () => {
 
           {/* Company Info */}
           <div>
-            <h3 className='text-xl font-bold text-blue-400 mb-4'>Eyehealthcure</h3>
+            <h3 className='text-xl font-bold text-[#f27400] mb-4'>Eye<span className='text-[#0e83db]'>healthcure</span></h3>
             <p className='text-gray-400 text-sm mb-4'>
               Connect with India&apos;s leading eye care and ENT specialists for advanced LASIK, Cataract, and Sinus treatments. Experience trusted, patient-centered care for all your vision and sinus health needs.        </p>
             <div className='flex space-x-4'>

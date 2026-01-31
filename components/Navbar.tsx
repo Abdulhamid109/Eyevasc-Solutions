@@ -27,8 +27,8 @@ const Navbar = () => {
               height={40}
               className="w-[60px] md:w-[80px] object-contain"
             />
-            <span className="font-bold text-xl md:text-2xl text-blue-600">
-              Eyehealthcure
+            <span className="font-bold text-xl md:text-2xl text-[#f27400]">
+              Eye<span className='text-[#0e83db]'>healthcure</span>
             </span>
           </Link>
 
