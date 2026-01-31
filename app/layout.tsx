@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eyehealthcure s",
+  title: "Eyehealthcure",
   description: "Eyehealthcure Organization",
 };
 
