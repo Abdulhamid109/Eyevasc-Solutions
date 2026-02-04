@@ -402,7 +402,7 @@ const Page = () => {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
-                  { title: "Call Us", detail: "+91 8286745659", sub: "Available 24/7", icon: "📞" },
+                  { title: "Call Us", detail: "+91 9137909447", sub: "Available 24/7", icon: "📞" },
                   { title: "Email Us", detail: "info@eyehealthcuresolution.com", sub: "Response within 24 hours", icon: "✉️" },
                   { title: "Visit Us", detail: "Multiple Locations", sub: "Mumbai, Delhi, Bangalore, Pune", icon: "📍" },
                 ].map((contact, i) => (
