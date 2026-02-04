@@ -37,7 +37,7 @@ export async function POST(request:NextRequest){
             treatment,
             city:cityset,
             date:now.toLocaleDateString("en-IN"),
-            Time:now.toLocaleTimeString("en-IN")
+            Time:now.toLocaleTimeString("en-IN",{ timeZone: "Asia/Calcutta" })
         });
 
         const savedUser = await newUser.save();
