@@ -403,7 +403,7 @@ const Page = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {[
                   { title: "Call Us", detail: "+91 9137909447", sub: "Available 24/7", icon: "📞" },
-                  { title: "Email Us", detail: "info@eyehealthcuresolution.com", sub: "Response within 24 hours", icon: "✉️" },
+                  { title: "Email Us", detail: "eyehealthcure@gmail.com", sub: "Response within 24 hours", icon: "✉️" },
                   { title: "Visit Us", detail: "Multiple Locations", sub: "Mumbai, Delhi, Bangalore, Pune", icon: "📍" },
                 ].map((contact, i) => (
                   <div
@@ -412,7 +412,7 @@ const Page = () => {
                   >
                     <div className="text-4xl mb-4">{contact.icon}</div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">{contact.title}</h3>
-                    <p className="text-blue-600 font-medium">{contact.detail}</p>
+                    <p className="text-blue-600 font-medium p-2">{contact.detail}</p>
                     <p className="text-sm text-gray-500">{contact.sub}</p>
                   </div>
                 ))}

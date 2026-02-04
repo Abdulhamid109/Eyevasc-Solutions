@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://eyehealthcure.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+
+  <url>
+    <loc>https://eyehealthcure.com/booknow</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+
+  <url>
+    <loc>https://eyehealthcure.com/cataract</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/Ear</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/Gynecomastia</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/lasik</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/Rhinoplasty</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/Septoplasty</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+<url>
+    <loc>https://eyehealthcure.com/Sinus</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/Tonsillectomy</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+        <loc>https://eyehealthcure.com/FAQ</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://eyehealthcure.com/TOS</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+</urlset>

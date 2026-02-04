@@ -21,7 +21,7 @@ const Navbar = () => {
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center space-x-3">
             <Image
-              src="/logo.jpeg"
+              src="https://ik.imagekit.io/abdulhamid109/companyPics/logo.jpeg"
               alt="Eyehealthcure Logo"
               width={80}
               height={40}

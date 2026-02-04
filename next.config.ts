@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackUseSystemTlsCerts: true,
   },
+  images:{
+    domains:[
+      "ik.imagekit.io"
+    ]
+  }
 };
 
 export default nextConfig;
