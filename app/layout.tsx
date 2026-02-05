@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -77,6 +78,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://eyehealthcure.com",
   },
+  
   verification: {
     google: "DUT7_THw83wvn0v4eJjRyJ332y6wwhOocJZWtanwMlo",
   },
@@ -181,6 +183,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Toaster position="top-right" />
         {children}
+        <Analytics/>
       </body>
     </html>
   );
