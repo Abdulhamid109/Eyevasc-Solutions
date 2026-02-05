@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description:
     "Eyehealthcure provides expert eye and health care solutions across India. Specialized treatments including LASIK, Cataract Surgery, ENT procedures, and more. 24/7 emergency care, free consultations, and all insurance accepted.",
   keywords: [
+    "eye healthcare",
     "eye health solutions",
     "best eye care in India",
     "LASIK surgery India",
