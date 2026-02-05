@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    
     title: "Eyehealthcure | Expert Eye & Health Care Solutions in India",
     description:
       "Expert eye and health care with advanced technology. LASIK, Cataract Surgery, ENT treatments. 24/7 care, free consultations across India.",
@@ -115,7 +115,7 @@ export default function RootLayout({
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
-    "@id": "https://eyehealthcure.com/#organization",
+    "@id": "https://eyehealthcure.com/",
     "name": "Eyehealthcure",
     "legalName": "Eyehealthcure",
     "description": "Eyehealthcure provides expert eye and health care solutions across India. Specialized treatments including LASIK, Cataract Surgery, ENT procedures, and more with 24/7 emergency care.",
