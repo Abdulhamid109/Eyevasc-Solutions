@@ -50,6 +50,8 @@ const Page = () => {
         cityset
       });
 
+      
+
       if (response.status === 200) {
         setUserName('');
         setCity('');

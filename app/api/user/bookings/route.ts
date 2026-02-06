@@ -1,6 +1,10 @@
+import EmailFormat from "@/components/emailFormat";
 import { connect } from "@/config/dbConfig";
+import resend from "@/lib/resend";
 import user from "@/models/userModal";
 import { NextRequest, NextResponse } from "next/server";
+import { render } from "@react-email/render";
+
 
 
 
@@ -41,6 +45,23 @@ export async function POST(request:NextRequest){
         });
 
         const savedUser = await newUser.save();
+        // also send email from here
+        
+
+        const {data,error} = await resend.emails.send({
+            from:"Eyehealthcure <info@eyehealthcure.com>",
+            to: "info@eyehealthcure.com",
+            subject:"Patient Information",
+            react:EmailFormat({name:name,treatment:treatment,date:savedUser.date,phoneno:savedUser.phoneno,time:savedUser.Time})
+        });
+        if(error){
+            console.log("Something went wrong while sending the email"+JSON.stringify(error));
+            return NextResponse.json(
+                {error:"Something went wrong!!"+error},
+                {status:404}
+            )
+        }
+        console.log("Data from Email => "+data)
         return NextResponse.json(
             {success:true,message:"Successfully booked",user:savedUser},
             {status:200}

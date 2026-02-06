@@ -407,10 +407,10 @@ const Page = () => {
                   },
                   { 
                     title: "Email Us", 
-                    detail: "eyehealthcure@gmail.com", 
+                    detail: "info@eyehealthcure.com", 
                     sub: "Response within 24 hours", 
                     icon: "✉️",
-                    href: "mailto:eyehealthcure@gmail.com"
+                    href: "mailto:info@eyehealthcure.com"
                   },
                   { 
                     title: "Visit Us", 
