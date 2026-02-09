@@ -11,7 +11,6 @@ const AddBlog = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Create New Blog Post</h1>
-            <p className="text-gray-600">Share your thoughts with the world</p>
           </div>
 
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
@@ -54,7 +53,6 @@ const AddBlog = () => {
                   maxLength={5000}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none resize-none"
                 />
-                <p className="mt-2 text-xs text-gray-500 text-right">Maximum 5000 characters</p>
               </div>
 
               <div className="flex gap-4 pt-4">
