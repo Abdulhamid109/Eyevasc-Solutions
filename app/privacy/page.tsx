@@ -170,8 +170,8 @@ const PrivacyPolicyPage = () => {
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <p>In compliance with the Information Technology Act, 2000, the contact details of the Grievance Officer are provided below:</p>
               <p className="mt-3"><strong>Grievance Officer – Eyehealthcure</strong></p>
-              <p>📧 Email: support@Eyehealthcuresolution.com</p>
-              <p>📞 Phone: +91-XXXXXXXXXX</p>
+              <p>📧 Email: info@eyehealthcure.com</p>
+              <p>📞 Phone: +91-9137909447</p>
               <p className="mt-4">All grievances shall be addressed within the timelines prescribed by applicable law.</p>
             </AccordionContent>
           </AccordionItem>

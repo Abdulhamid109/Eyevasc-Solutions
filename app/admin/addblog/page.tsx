@@ -1,30 +1,48 @@
 "use client"
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
-import { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 
 const AddBlog = () => {
   const [title,setTitle] = useState<string>("");
   const [image,setImage] = useState<File|null>(null);
+  const [fileName,setFileName] = useState<string>("");
   const [description,setDescription] = useState<string>("");
+  const [loading,setLoading] = useState<boolean>(false);
 
   const onhandleImage = (event:React.ChangeEvent<HTMLInputElement>)=>{
-    if(event.target.files && event.target.files[0]){
-      setImage(event.target.files[0])
+    if(event.target.files?.[0]){
+      setImage(event.target.files?.[0]);
+      setFileName(event.target.files?.[0].name)
     }
   }
 
-  const addBlogData =async()=>{
+  const addBlogData =async(e:React.FormEvent)=>{
+    e.preventDefault();
+    setLoading(true);
     try {
       console.log("Title"+title);
       console.log("Image-Blob"+image);
       console.log("Description"+description);
+            console.log("fn"+fileName);
+
       const formdata = new FormData();
       formdata.append("title",title);
       formdata.append("image",image!);
+      formdata.append("filename",fileName);
       formdata.append("description",description);
+
+      const response = await axios.post("/api/admin/addblog",formdata,
+        {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        }
+      );
+
+      if(response.status===200){
+        console.log("Successfully added the blog");
+        toast.success(response.data.message);
+      }
 
     } catch (error) {
       console.log("Failed to perform the functionality =>"+JSON.stringify(error));
@@ -32,10 +50,13 @@ const AddBlog = () => {
         console.log("axios error => "+error.response?.data.error)
         toast.error(error.response?.data.error);
       }
+    }finally{
+      setLoading(false);
     }
   }
   return (
     <div className="min-h-screen flex flex-col">
+      
       <div className='bg-white shadow-md'>
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='flex justify-between items-center h-16 md:h-20'>
@@ -104,14 +125,9 @@ const AddBlog = () => {
                   type="submit"
                   className="flex-1 bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 transition duration-200 shadow-md"
                 >
-                  Publish Post
+                  {loading?<>loading....</>:<>Publish Post</>}
                 </button>
-                <button
-                  type="button"
-                  className="flex-1 bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg hover:bg-gray-300 focus:ring-4 focus:ring-gray-200 transition duration-200"
-                >
-                  Save Draft
-                </button>
+
               </div>
             </form>
           </div>

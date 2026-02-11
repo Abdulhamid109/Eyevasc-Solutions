@@ -275,9 +275,9 @@ const TermsOfServicePage = () => {
             </AccordionTrigger>
             <AccordionContent className="p-4 bg-blue-50 rounded-b-lg">
               <p>For queries, concerns, or legal notices:</p>
-              <p className="mt-2"><strong>Eyehealthcure  / Global Healthkure</strong></p>
-              <p>📧 Email: support@yourdomain.com</p>
-              <p>📞 Phone: +91-XXXXXXXXXX</p>
+              <p className="mt-2"><strong>Eyehealthcure </strong></p>
+              <p>📧 Email: info@eyehealthcure.com</p>
+              <p>📞 Phone: +91-9137909447</p>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
