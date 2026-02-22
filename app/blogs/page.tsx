@@ -19,15 +19,15 @@ const Page = () => {
     const getBlogs = async () => {
         try {
             const response = await axios.get("/api/admin/blogs");
-            console.log("Blogs => " + JSON.stringify(response.data.blog))
+            // console.log("Blogs => " + JSON.stringify(response.data.blog))
             if (response.status === 200) {
                 setdata(response.data.blog);
             }
         } catch (error) {
-            console.log("failed to perform the functionality =>" + error);
+            // console.log("failed to perform the functionality =>" + error);
             if (error instanceof AxiosError) {
                 toast.error("something went wrong!!");
-                console.log("err => " + error.response?.data.error);
+                // console.log("err => " + error.response?.data.error);
             }
         }
     }
