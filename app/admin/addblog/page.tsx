@@ -1,7 +1,8 @@
 "use client"
 import Footer from '@/components/Footer'
 import axios, { AxiosError } from 'axios'
-import React, { useState } from 'react'
+import Link from 'next/link'
+import React, { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 
 const AddBlog = () => {
@@ -10,6 +11,8 @@ const AddBlog = () => {
   const [fileName,setFileName] = useState<string>("");
   const [description,setDescription] = useState<string>("");
   const [loading,setLoading] = useState<boolean>(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+
 
   const onhandleImage = (event:React.ChangeEvent<HTMLInputElement>)=>{
     if(event.target.files?.[0]){
@@ -25,8 +28,7 @@ const AddBlog = () => {
       console.log("Title"+title);
       console.log("Image-Blob"+image);
       console.log("Description"+description);
-            console.log("fn"+fileName);
-
+      console.log("fn"+fileName);
       const formdata = new FormData();
       formdata.append("title",title);
       formdata.append("image",image!);
@@ -42,6 +44,10 @@ const AddBlog = () => {
       if(response.status===200){
         console.log("Successfully added the blog");
         toast.success(response.data.message);
+        setTitle("");
+        setImage(null);
+        fileRef.current!.value = "";
+        setDescription("")
       }
 
     } catch (error) {
@@ -61,7 +67,7 @@ const AddBlog = () => {
         <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
           <div className='flex justify-between items-center h-16 md:h-20'>
             <div>
-              <h1 className='text-xl md:text-2xl font-bold text-blue-600'>Eyehealthcure</h1>
+              <h1 className='text-xl md:text-2xl font-bold text-blue-600'><Link href={"/admin/homepage"}>Eyehealthcure</Link></h1>
               <p className='text-xs md:text-sm text-gray-500'>Admin Panel</p>
             </div>
             
@@ -83,10 +89,12 @@ const AddBlog = () => {
                 </label>
                 <input
                   id="title"
+                  value={title}
                   onChange={(e)=>setTitle(e.target.value)}
                   type="text"
                   placeholder="Enter an engaging title..."
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none"
+                  required
                 />
               </div>
 
@@ -97,10 +105,12 @@ const AddBlog = () => {
                 <div className="relative">
                   <input
                     id="image"
+                    ref={fileRef}
                     onChange={onhandleImage}
                     type="file"
                     accept="image/jpg,image/jpeg,image/png"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer transition duration-200"
+                    required
                   />
                 </div>
                 <p className="mt-2 text-xs text-gray-500">Accepted formats: JPG, PNG (Max 5MB)</p>
@@ -113,10 +123,12 @@ const AddBlog = () => {
                 <textarea
                   id="description"
                   rows={8}
+                  value={description}
                   onChange={(e)=>setDescription(e.target.value)}
                   placeholder="Write your blog content here..."
                   maxLength={5000}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none resize-none"
+                  required
                 />
               </div>
 

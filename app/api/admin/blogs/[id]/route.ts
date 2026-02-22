@@ -8,10 +8,8 @@ connect();
 
 export async function GET(request:NextRequest,{params}:{params:{id:string}}) {
     try {
-        const bid = await params.id;
-        console.log("Single Blog id"+bid);
-
-        const singleBlog = await Blog.findById(bid);
+        const {id} = await params;
+        const singleBlog = await Blog.findById(id);
         return NextResponse.json(
             {success:true,blog:singleBlog},
             {status:200}

@@ -44,6 +44,7 @@ const Footer = () => {
               <li><Link href={'/#contact'} className='hover:text-blue-400 transition-colors'>Contact Us</Link></li>
               <li><Link href={'/booknow'} className='hover:text-blue-400 transition-colors'>Book Appointment</Link></li>
               <li><Link href={'/FAQ'} className='hover:text-blue-400 transition-colors'>FAQ</Link></li>
+              <li><Link href={'/blogs'} className='hover:text-blue-400 transition-colors'>Blogs</Link></li>
             </ul>
           </div>
           <div>

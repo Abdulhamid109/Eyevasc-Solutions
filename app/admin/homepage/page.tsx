@@ -1,5 +1,6 @@
 "use client"
 import axios, { AxiosError } from 'axios';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -111,9 +112,13 @@ const AdminPanel = () => {
               <h1 className='text-xl md:text-2xl font-bold text-blue-600'>Eyehealthcure</h1>
               <p className='text-xs md:text-sm text-gray-500'>Admin Panel</p>
             </div>
-            <button onClick={logoutButton} className='px-4 py-2 md:px-6 md:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base font-medium'>
+            
+            <div className='flex justify-center items-center gap-2'>
+              <Link href={"/admin/addblog"} className='font-thin text-sm hover:underline hover:text-blue-500'>Add Blogs</Link>
+              <button onClick={logoutButton} className='px-4 py-2 md:px-6 md:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base font-medium'>
               Logout
             </button>
+            </div>
           </div>
         </div>
       </div>
