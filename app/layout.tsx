@@ -65,7 +65,7 @@ export const metadata: Metadata = {
         alt: "Eyehealthcure - Expert Eye & Health Care Solutions",
       },
       {
-        url: "https://ik.imagekit.io/abdulhamid109/companyPics/logo.jpeg",
+        url: "https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/logo.jpeg",
         width: 800,
         height: 600,
         alt: "Eyehealthcure Logo",
@@ -123,7 +123,7 @@ export default function RootLayout({
     "url": "https://eyehealthcure.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://ik.imagekit.io/abdulhamid109/companyPics/logo.jpeg",
+      "url": "https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/logo.jpeg",
       "width": 800,
       "height": 600
     },
