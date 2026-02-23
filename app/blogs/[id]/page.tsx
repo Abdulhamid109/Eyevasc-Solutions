@@ -67,7 +67,7 @@ const Page = () => {
                         />
                     </div>
 
-                    <p className="text-lg text-gray-700 mb-6 line-clamp-3">
+                    <p className="text-lg text-gray-700 mb-6">
                         {data?.blogDescription}
                          </p>
 
