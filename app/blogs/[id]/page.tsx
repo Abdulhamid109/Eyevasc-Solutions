@@ -67,9 +67,10 @@ const Page = () => {
                         />
                     </div>
 
-                    <p className="text-lg text-gray-700 mb-6">
-                        {data?.blogDescription}
-                         </p>
+                    <div
+                    dangerouslySetInnerHTML={{__html:data?.blogDescription ?? ""}}
+                     className="text-lg text-gray-700 mb-6 prose prose-sm max-w-none"
+                    />
 
                     {/* <div className="prose max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: blogData.content }} /> */}
                 </article>

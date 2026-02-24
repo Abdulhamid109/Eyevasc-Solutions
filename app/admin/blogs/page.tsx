@@ -1,10 +1,20 @@
 "use client"
+import AdminNavbar from '@/components/AdminNavbar'
 import Footer from '@/components/Footer'
-import Navbar from '@/components/Navbar'
+import { Button } from '@/components/ui/button'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 
 interface Data {
     _id: string;
@@ -29,8 +39,21 @@ const Page = () => {
         }
     }
 
-
-
+    const deleteBlogs = async (id: string) => {
+        try {
+            const response = await axios.delete(`/api/admin/deleteblog?blogid=${id}`);
+            if (response.status === 200) {
+                toast.success("Successfully deleted!");
+                setdata(prev =>
+                    prev.filter(d => d._id !== id)
+                )
+            }
+        } catch (error) {
+            if (error instanceof AxiosError) {
+                toast.error("Something went wrong while deleting!")
+            }
+        }
+    }
 
     useEffect(() => {
         const displayBlogs = async () => {
@@ -40,7 +63,7 @@ const Page = () => {
     }, [])
     return (
         <div>
-            <Navbar />
+            <AdminNavbar />
 
             {data.length === 0 ?
                 <p className='h-screen flex justify-center items-center font-bold'>Blogs soon to be appeard</p> :
@@ -74,12 +97,19 @@ const Page = () => {
                                             />
                                         </div>
 
-                                        <Link
-                                            href={`/blogs/${d._id}`}
-                                            className="text-xs text-blue-600 hover:underline mt-4 self-end"
-                                        >
-                                            Read more
-                                        </Link>
+                                        <div className='flex justify-between items-center'>
+                                            <Button className='bg-blue-500'>Edit</Button>
+                                            <Dialog>
+                                                <DialogTrigger><Button className='bg-red-500'>Delete</Button></DialogTrigger>
+                                                <DialogContent>
+                                                    <DialogTitle><p className='text-center'>Are you sure you want to delete?</p></DialogTitle>
+                                                    <section className='flex justify-between items-center'>
+                                                        <Button className='bg-gray-500'><DialogClose>Cancel</DialogClose></Button>
+                                                        <Button onClick={() => deleteBlogs(d._id)} className='bg-red-500'><DialogClose>Delete</DialogClose></Button>
+                                                    </section>
+                                                </DialogContent>
+                                            </Dialog>
+                                        </div>
                                     </div>
                                 </article>
 

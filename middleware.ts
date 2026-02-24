@@ -28,6 +28,9 @@ export const config = {
         "/",
         "/admin/login",
         "/admin/homepage",
+        "/admin/addblog",
+        "/admin/blogs",
+        "/admin/signup"
         
     ]
 };

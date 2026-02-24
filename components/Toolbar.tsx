@@ -1,62 +1,97 @@
-//need to change the ui and need to use toggle from shadcn
-
 "use client"
 import { Editor } from "@tiptap/react";
-import { Bold, Strikethrough, Italic, List, ListOrdered, Heading1 } from "lucide-react";
+import { Bold, Strikethrough, Italic, List, ListOrdered, Heading1, Heading2, Undo, Redo, Code } from "lucide-react";
+import { Toggle } from "./ui/toggle";
 
-
-type props={
-    editor:Editor | null
+type props = {
+    editor: Editor | null
 }
-export default function Toolbar({ editor }:props) {
-    if (!editor) {
-        return null;
-    }
+
+export default function Toolbar({ editor }: props) {
+    if (!editor) return null;
 
     return (
-        <div className="border border-input bg-transparent rounded-md flex gap-1 p-1">
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-                className={editor.isActive('heading', { level: 1 }) ? 'bg-gray-200' : ''}
+        <div className="border border-input bg-transparent rounded-md flex flex-wrap gap-1 p-1">
+            {
+            [1,2,3,4,5,6].map((e)=>(
+                
+                <Toggle
+                key={e}
+                size="sm"
+                pressed={editor.isActive("heading", { level: e })}
+                onPressedChange={() => editor.chain().focus().toggleHeading({ level: e as 1|2|3|4|5|6}).run()}
             >
-                <Heading1 className="w-4 h-4" />
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleBold().run()}
-                className={editor.isActive('bold') ? 'bg-gray-200' : ''}
+                H{e}
+            </Toggle>
+
+            ))
+            }
+
+           
+
+            <Toggle
+                size="sm"
+                pressed={editor.isActive("bold")}
+                onPressedChange={() => editor.chain().focus().toggleBold().run()}
             >
-                <Bold className="w-4 h-4" />
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleItalic().run()}
-                className={editor.isActive('italic') ? 'bg-gray-200' : ''}
+                <Bold className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={editor.isActive("italic")}
+                onPressedChange={() => editor.chain().focus().toggleItalic().run()}
             >
-                <Italic className="w-4 h-4" />
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleStrike().run()}
-                className={editor.isActive('strike') ? 'bg-gray-200' : ''}
+                <Italic className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={editor.isActive("strike")}
+                onPressedChange={() => editor.chain().focus().toggleStrike().run()}
             >
-                <Strikethrough className="w-4 h-4" />
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleBulletList().run()}
-                className={editor.isActive('bulletList') ? 'bg-gray-200' : ''}
+                <Strikethrough className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={editor.isActive("bulletList")}
+                onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
             >
-                <List className="w-4 h-4" />
-            </button>
-            <button
-                type="button"
-                onClick={() => editor.chain().focus().toggleOrderedList().run()}
-                className={editor.isActive('orderedList') ? 'bg-gray-200' : ''}
+                <List className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={editor.isActive("orderedList")}
+                onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
             >
-                <ListOrdered className="w-4 h-4" />
-            </button>
+                <ListOrdered className="h-4 w-4" />
+            </Toggle>
+
+            {/* <Toggle
+                size="sm"
+                pressed={editor.isActive("code")}
+                onPressedChange={() => editor.chain().focus().toggleCode().run()}
+            >
+                <Code className="h-4 w-4" />
+            </Toggle> */}
+
+            <Toggle
+                size="sm"
+                pressed={false}
+                onPressedChange={() => editor.chain().focus().undo().run()}
+            >
+                <Undo className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={false}
+                onPressedChange={() => editor.chain().focus().redo().run()}
+            >
+                <Redo className="h-4 w-4" />
+            </Toggle>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 "use client"
+import AdminNavbar from '@/components/AdminNavbar';
 import axios, { AxiosError } from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -40,24 +41,6 @@ const AdminPanel = () => {
       setdata([]);
     } finally {
       setLoading(false);
-    }
-  }
-  const router = useRouter();
-
-  const logoutButton = async () => {
-    try {
-      const response = await axios.get("/api/admin/logout");
-      if (response.status === 200) {
-        console.log("Loggedd out!!");
-
-        toast.success(response.data.message);
-        router.push("/");
-      }
-    } catch (error) {
-      console.log("Failed to logout " + error);
-      if (error instanceof AxiosError) {
-        toast.error("Failed to logout!!")
-      }
     }
   }
 
@@ -105,23 +88,7 @@ const AdminPanel = () => {
   return (
     <div className='min-h-screen bg-gray-50 text-black'>
       {/* Header */}
-      <div className='bg-white shadow-md'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center h-16 md:h-20'>
-            <div>
-              <h1 className='text-xl md:text-2xl font-bold text-blue-600'>Eyehealthcure</h1>
-              <p className='text-xs md:text-sm text-gray-500'>Admin Panel</p>
-            </div>
-            
-            <div className='flex justify-center items-center gap-2'>
-              <Link href={"/admin/addblog"} className='font-thin text-sm hover:underline hover:text-blue-500'>Add Blogs</Link>
-              <button onClick={logoutButton} className='px-4 py-2 md:px-6 md:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base font-medium'>
-              Logout
-            </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AdminNavbar/>
 
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8'>
         {/* Header Section */}
