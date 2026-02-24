@@ -1,4 +1,5 @@
 "use client"
+import RichEditor from '@/components/Editor'
 import Footer from '@/components/Footer'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
@@ -120,7 +121,7 @@ const AddBlog = () => {
                 <label htmlFor="description" className="block text-sm font-semibold text-gray-700 mb-2">
                   Description
                 </label>
-                <textarea
+                {/* <textarea
                   id="description"
                   rows={8}
                   value={description}
@@ -129,6 +130,11 @@ const AddBlog = () => {
                   maxLength={5000}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none resize-none"
                   required
+                /> */}
+                <RichEditor
+                description={description}
+                onChange={(richText)=>setDescription(richText)}
+                
                 />
               </div>
 
