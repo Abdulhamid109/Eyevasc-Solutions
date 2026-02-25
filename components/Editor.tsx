@@ -1,6 +1,6 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
-import React from 'react';
+import React, { useEffect } from 'react';
 import Toolbar from './Toolbar';
 
 export default function RichEditor({
@@ -26,7 +26,13 @@ export default function RichEditor({
     }
 },
         immediatelyRender:false
-    })
+    },[])
+    
+    useEffect(() => {
+        if (editor && editor.getHTML() !== description) {
+            editor.commands.setContent(description);
+        }
+    }, [description, editor]);
     return (
         <div>
             {editor && <Toolbar editor={editor} />}

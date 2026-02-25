@@ -16,7 +16,7 @@ export async function GET(request:NextRequest){
             )
         }
 
-        const allblogs = await Blog.find();
+        const allblogs = await Blog.find().sort({createdAt:-1});
         return NextResponse.json(
             {success:true,blog:allblogs},
             {status:200}

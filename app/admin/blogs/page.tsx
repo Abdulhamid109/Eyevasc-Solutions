@@ -98,9 +98,9 @@ const Page = () => {
                                         </div>
 
                                         <div className='flex justify-between items-center'>
-                                            <Button className='bg-blue-500'>Edit</Button>
+                                            <Link href={`/admin/editblog/${d._id}`} className='bg-blue-500 p-2 text-white rounded-md tracking-wide hover:bg-blue-600'>Edit</Link>
                                             <Dialog>
-                                                <DialogTrigger><Button className='bg-red-500'>Delete</Button></DialogTrigger>
+                                                <DialogTrigger><Button className='bg-red-500 hover:bg-red-600'>Delete</Button></DialogTrigger>
                                                 <DialogContent>
                                                     <DialogTitle><p className='text-center'>Are you sure you want to delete?</p></DialogTitle>
                                                     <section className='flex justify-between items-center'>

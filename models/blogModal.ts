@@ -11,7 +11,7 @@ const BlogModal = new mongoose.Schema({
         type:String,
     },
     blogDescription:{
-        type:String //need to make it object after using tip-tap editor
+        type:String 
     },
     //formated time&date
     time:{

@@ -1,4 +1,5 @@
 "use client"
+import AdminNavbar from '@/components/AdminNavbar'
 import RichEditor from '@/components/Editor'
 import Footer from '@/components/Footer'
 import axios, { AxiosError } from 'axios'
@@ -61,20 +62,11 @@ const AddBlog = () => {
       setLoading(false);
     }
   }
+
   return (
     <div className="min-h-screen flex flex-col">
       
-      <div className='bg-white shadow-md'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-          <div className='flex justify-between items-center h-16 md:h-20'>
-            <div>
-              <h1 className='text-xl md:text-2xl font-bold text-blue-600'><Link href={"/admin/homepage"}>Eyehealthcure</Link></h1>
-              <p className='text-xs md:text-sm text-gray-500'>Admin Panel</p>
-            </div>
-            
-          </div>
-        </div>
-      </div>
+      <AdminNavbar/>
       
       <main className="flex-1 bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">

@@ -16,8 +16,9 @@ export async function PUT(request:NextRequest,context:{params:Promise<{id:String
                 {status:404}
             )
         }
-        //for now description is considered as string ---- later it'll considered as Object(JSON)
         const {blogTitle,blogDescription} = await request.json();
+        console.log("T"+blogTitle);
+        console.log("D"+blogDescription);
 
         const date = Date.now();
 
