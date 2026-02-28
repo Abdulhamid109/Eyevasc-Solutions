@@ -132,75 +132,36 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* this code is written for persisting the white space */
+.prose p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.prose p + p {
+  margin-top: 1rem !important;
+}
+
+.prose ul,
 .ProseMirror ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
 }
 
+.prose ol,
 .ProseMirror ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
 }
 
+.prose li,
 .ProseMirror li {
-  margin: 0.25rem 0;
+  margin: 0.25rem 0 !important;
 }
 
-.ProseMirror h1,
-.prose h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 1rem 0;
-}
-
-.ProseMirror h2,
-.prose h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 0.75rem 0;
-}
-
-.ProseMirror h3,
-.prose h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0.65rem 0;
-}
-
-.ProseMirror h4,
-.prose h4 {
-  font-size: 1.1rem;
-  font-weight: 500;
-  margin: 0.55rem 0;
-}
-
-.ProseMirror h5,
-.prose h5 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0.5rem 0;
-}
-
-.ProseMirror h6,
-.prose h6 {
-  font-size: 0.875rem;
-  font-weight: 400;
-  margin: 0.4rem 0;
-}
-
-.ProseMirror ul,
-.prose ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror ol,
-.prose ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror li,
-.prose li {
-  margin: 0.25rem 0;
-}
+.prose h1, .ProseMirror h1 { font-size: 2rem !important; font-weight: 700 !important; margin: 1rem 0 !important; }
+.prose h2, .ProseMirror h2 { font-size: 1.5rem !important; font-weight: 600 !important; margin: 0.75rem 0 !important; }
+.prose h3, .ProseMirror h3 { font-size: 1.25rem !important; font-weight: 600 !important; margin: 0.65rem 0 !important; }
+.prose h4, .ProseMirror h4 { font-size: 1.1rem !important; font-weight: 500 !important; margin: 0.55rem 0 !important; }
+.prose h5, .ProseMirror h5 { font-size: 1rem !important; font-weight: 500 !important; margin: 0.5rem 0 !important; }
+.prose h6, .ProseMirror h6 { font-size: 0.875rem !important; font-weight: 400 !important; margin: 0.4rem 0 !important; }
