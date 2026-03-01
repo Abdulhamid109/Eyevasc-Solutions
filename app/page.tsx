@@ -11,6 +11,7 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import AllHospitals from '@/components/hospitals';
 
 const Page = () => {
   return (
@@ -172,6 +173,10 @@ const Page = () => {
           </div>
         </div>
       </section>
+
+      <AllHospitals/>
+
+      
 
       {/* Insurance Partners Section */}
       <section id='insurance' className="py-16 bg-white">

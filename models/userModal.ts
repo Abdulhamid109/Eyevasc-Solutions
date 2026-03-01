@@ -17,6 +17,12 @@ const userModal = new mongoose.Schema({
          type:String,
         required:true
     },
+    hospitalName:{
+        type:String,
+    },
+    hospitalAddress:{
+        type:String,
+    },
     date:{
         type:String,
     },

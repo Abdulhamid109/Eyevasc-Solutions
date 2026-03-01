@@ -37,7 +37,8 @@ const AdminNavbar = () => {
             </div>
             
             <div className='flex justify-center items-center gap-4'>
-                <Link href={"/admin/blogs"} className=' hover:underline hover:text-blue-500 text-sm'>Blogs</Link>
+              <Link href={"/admin/blogs"} className=' hover:underline hover:text-blue-500 text-sm'>Blogs</Link>
+              <Link href={"/admin/addhospital"} className=' hover:underline hover:text-blue-500 text-sm'>add hospital</Link>
               <Link href={"/admin/addblog"} className=' hover:underline hover:text-blue-500 text-sm'>Add Blogs</Link>
               <button onClick={logoutButton} className='px-4 py-2 md:px-6 md:py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm md:text-base font-medium'>
               Logout

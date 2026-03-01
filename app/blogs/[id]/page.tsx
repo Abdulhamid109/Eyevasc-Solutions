@@ -11,34 +11,34 @@ interface Data {
     blogTitle: string;
     blogPictureLink: string;
     blogDescription: string;
-    time:string;
-    date:string;
+    time: string;
+    date: string;
 }
 
 const Page = () => {
     const { id } = useParams();
-    const [data,setdata] = useState<Data|null>(null);
+    const [data, setdata] = useState<Data | null>(null);
 
-    const fetchSingleBlogDetail =async()=>{
+    const fetchSingleBlogDetail = async () => {
         try {
             const response = await axios.get(`/api/admin/blogs/${id}`);
-            if(response.status===200){
+            if (response.status === 200) {
                 setdata(response.data.blog);
             }
         } catch (error) {
-            console.log("error=>"+error);
-            if(error instanceof AxiosError){
+            console.log("error=>" + error);
+            if (error instanceof AxiosError) {
                 toast.error("something went wrong!");
             }
         }
     }
 
-    useEffect(()=>{
-        const displayBlog = async()=>{
+    useEffect(() => {
+        const displayBlog = async () => {
             await fetchSingleBlogDetail();
         }
         displayBlog();
-    },[])
+    }, [])
 
 
     return (
@@ -63,13 +63,12 @@ const Page = () => {
                             src={data?.blogPictureLink}
                             alt={data?.blogTitle}
                             className="w-full h-full object-cover"
-
                         />
                     </div>
 
                     <div
-                    dangerouslySetInnerHTML={{__html:data?.blogDescription ?? ""}}
-                     className="text-lg text-gray-700 mb-6 prose prose-sm max-w-none"
+                        dangerouslySetInnerHTML={{ __html: data?.blogDescription ?? "" }}
+                        className="text-lg text-gray-700 mb-6 prose prose-sm max-w-none"
                     />
 
                     {/* <div className="prose max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: blogData.content }} /> */}
