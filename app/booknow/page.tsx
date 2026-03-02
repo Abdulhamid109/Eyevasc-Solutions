@@ -168,10 +168,10 @@ const Page = () => {
                 <option value="">Select City</option>
                 <option value="mumbai">Mumbai</option>
                 <option value="delhi">Delhi</option>
-                <option value="gurgaon">Gurgaon</option>
+                <option value="gurgaon">Navi Mumbai</option>
                 <option value="pune">Pune</option>
-                <option value="bihar">Bihar</option>
-                <option value="uttarpradesh">Uttar Pradesh</option>
+                <option value="bihar">Ahmedabad</option>
+                <option value="uttarpradesh">Uttar Pradesh(Lucknow)</option>
                 <option value="bangalore">Bangalore</option>
                 <option value="other">Other</option>
               </select>
