@@ -12,17 +12,15 @@ import Autoplay from "embla-carousel-autoplay"
 import Link from 'next/link';
 import Footer from '@/components/Footer';
 import AllHospitals from '@/components/hospitals';
+import Image from 'next/image';
 
 const Page = () => {
   return (
-    <div className='min-h-screen bg-gradient-to-br bg-[url(/bgimage.png)] bg-cover bg-repeat-none h-[250vh] from-blue-50 via-white to-blue-50'>
+    <div className='min-h-screen bg-gradient-to-br bg-[url(https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/bgimage.png)] bg-cover bg-repeat-none h-[250vh] from-blue-50 via-white to-blue-50'>
       <Navbar />
 
-      {/* Hero Section */}
       <div id='home' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
           <div className="space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               Expert Eye & Health Care, <span className="text-blue-600">When You Need It</span>
@@ -31,7 +29,6 @@ const Page = () => {
               At Eyehealthcure, we combine advanced technology with compassionate care to ensure the best outcomes for your health.
             </p>
 
-            {/* Features */}
             <div className="space-y-5 mt-6">
               <div className="flex items-start space-x-3">
                 <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
@@ -75,11 +72,10 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Right Image */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
-              <img
-                src="/dr.jpg"
+              <Image
+                src="https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/dr.jpg"
                 alt="Eyehealthcure doctor providing expert medical consultation"
                 className="rounded-lg shadow-xl w-full max-w-md h-auto object-cover"
                 loading="eager"
