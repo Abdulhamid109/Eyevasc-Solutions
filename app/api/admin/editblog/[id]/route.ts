@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 connect();
 
 
-export async function PUT(request:NextRequest,context:{params:Promise<{id:String}>}){
+export async function PUT(request:NextRequest,context:{params:Promise<{id:string}>}){
     try {
         const {id} = await context.params; 
         if(!id){
@@ -17,8 +17,6 @@ export async function PUT(request:NextRequest,context:{params:Promise<{id:String
             )
         }
         const {blogTitle,blogDescription} = await request.json();
-        console.log("T"+blogTitle);
-        console.log("D"+blogDescription);
 
         const date = Date.now();
 
