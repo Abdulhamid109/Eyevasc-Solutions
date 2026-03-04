@@ -90,7 +90,6 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
         <div className="mt-16 flex justify-center">
           <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             <div>
@@ -108,7 +107,6 @@ const Page = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="mt-16 text-center space-y-4">
           <h2 className="text-2xl font-bold text-gray-900">Ready to Take Control of Your Health?</h2>
           <p className="text-base text-gray-600 max-w-xl mx-auto">
@@ -126,7 +124,6 @@ const Page = () => {
         </div>
       </div>
 
-      {/* Our Treatments Section */}
       <section id='treatments' className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -174,7 +171,6 @@ const Page = () => {
 
       
 
-      {/* Insurance Partners Section */}
       <section id='insurance' className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -227,7 +223,6 @@ const Page = () => {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
       <section id='about' className="py-16 bg-blue-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
           <div>
