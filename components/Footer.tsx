@@ -1,15 +1,32 @@
+"use client"
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import { FaWhatsapp } from "react-icons/fa";
 
 
 const Footer = () => {
+
+  const router = useRouter();
+
+  const handleScroll = (e: React.MouseEvent, href: string) => {
+      e.preventDefault()
+      if (href.startsWith("/#")) {
+        const targetId = href.substring(2)
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+          })
+          router.push(href)
+        }
+      }
+    }
   return (
     <footer className='bg-gray-900 text-white py-8 md:py-12'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mb-8'>
 
-          {/* Company Info */}
           <div>
             <h3 className='text-xl font-bold text-[#f27400] mb-4'>Eye<span className='text-[#0e83db]'>healthcure</span></h3>
             <p className='text-gray-400 text-sm mb-4'>
@@ -36,11 +53,11 @@ const Footer = () => {
           <div>
             <h4 className='text-lg font-semibold mb-4'>Quick Links</h4>
             <ul className='space-y-2 text-gray-400 text-sm'>
-              <li><Link href={'/#home'} className='hover:text-blue-400 transition-colors'>Home</Link></li>
-              <li><Link href={'/#about'} className='hover:text-blue-400 transition-colors'>About Us</Link></li>
-              <li><Link href={'/#treatments'} className='hover:text-blue-400 transition-colors'>Treatments</Link></li>
-              <li><Link href={'/#contact'} className='hover:text-blue-400 transition-colors'>Contact Us</Link></li>
-              <li><Link href={'/booknow'} className='hover:text-blue-400 transition-colors'>Book Appointment</Link></li>
+              <li><Link href={'/#home'} onClick={(e) => handleScroll(e, '/#home')} className='hover:text-blue-400 transition-colors'>Home</Link></li>
+              <li><Link href={'/#about'} onClick={(e) => handleScroll(e, '/#about')} className='hover:text-blue-400 transition-colors'>About Us</Link></li>
+              <li><Link href={'/#treatments'} onClick={(e) => handleScroll(e, '/#treatments')} className='hover:text-blue-400 transition-colors'>Treatments</Link></li>
+              <li><Link href={'/#contact'} onClick={(e) => handleScroll(e, '/#contact')} className='hover:text-blue-400 transition-colors'>Contact Us</Link></li>
+              <li><Link href={'/booknow'}  className='hover:text-blue-400 transition-colors'>Book Appointment</Link></li>
               <li><Link href={'/FAQ'} className='hover:text-blue-400 transition-colors'>FAQ</Link></li>
               <li><Link href={'/blogs'} className='hover:text-blue-400 transition-colors'>Blogs</Link></li>
             </ul>
