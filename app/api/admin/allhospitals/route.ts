@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 
 connect();
 
-//location based fetching...
 export async function GET(){
     try {
         const allhospitals = await Hospital.find();

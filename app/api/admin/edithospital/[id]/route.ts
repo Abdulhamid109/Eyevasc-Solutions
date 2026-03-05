@@ -26,6 +26,7 @@ export async function PUT(request: NextRequest,
         }
 
         const {hospitalName,hospitalAddress,hospitalPic,location,link} = await request.json();
+        console.log("Link"+link)
 
         const now = new Date();
 

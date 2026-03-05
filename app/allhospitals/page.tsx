@@ -3,100 +3,121 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
-import  { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-interface DataFormat{
-    _id:string;
-    hospitalName:string;
-    hospitalAddress:string;
-    hospitalPic:string;
-    location:string;
-    link:string;
+interface DataFormat {
+    _id: string;
+    hospitalName: string;
+    hospitalAddress: string;
+    hospitalPic: string;
+    location: string;
+    link: string;
 }
-const Page = () => {
-    const [data,setData] = useState<DataFormat[]>([]);
-    const [loading,setLoading] = useState<boolean>(false);
 
-    const AllHospitals=async()=>{
-        setLoading(true);
+const SkeletonCard = () => (
+    <div className="flex flex-col rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100 animate-pulse">
+        <div className="w-full h-48 bg-gray-200" />
+        <div className="p-4 flex flex-col gap-3">
+            <div className="h-4 bg-gray-200 rounded w-3/4" />
+            <div className="h-3 bg-gray-200 rounded w-full" />
+            <div className="h-3 bg-gray-200 rounded w-2/3" />
+            <div className="h-9 bg-gray-200 rounded-lg w-full mt-2" />
+        </div>
+    </div>
+)
+
+const Page = () => {
+    const [data, setData] = useState<DataFormat[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const AllHospitals = async () => {
+        setLoading(true)
         try {
-            const response = await axios.get("/api/admin/allhospitals");
-            if(response.status===200){
-                setData(response.data.hospitals);
+            const response = await axios.get("/api/admin/allhospitals")
+            if (response.status === 200) {
+                setData(response.data.hospitals)
             }
         } catch (error) {
-            console.log("err=>"+JSON.stringify(error));
-            if(error instanceof AxiosError){
+            console.log("err=>" + JSON.stringify(error))
+            if (error instanceof AxiosError) {
                 console.log(JSON.stringify(error))
             }
-        }finally{
-            setLoading(false);
+        } finally {
+            setLoading(false)
         }
     }
 
-    useEffect(()=>{
-        AllHospitals();
-    },[])
-  return (
-    <div>
+    useEffect(() => {
+        AllHospitals()
+    }, [])
+
+    return (
+        <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {
-                loading?
-                <div className='h-screen w-screen text-2xl animate-pulse text-red-500'>loading hospitals.....</div>
-                :
-                data.length === 0 ?
-                <p className='h-screen flex justify-center items-center font-bold'>No Hospitals listed yet</p> :
-                <main className="min-h-screen w-full p-4 bg-gray-50">
-                    <section className="flex flex-wrap justify-start items-center gap-7">
-                        {
-                            data.map((d: DataFormat) => (
-                                <article
-                                    key={d._id}
-                                    className="flex flex-col rounded-xl border border-gray-200 shadow-md bg-white 
-             w-full sm:w-[48%] md:w-[31%] lg:w-[23%] 
-             overflow-hidden transition-transform duration-300 hover:scale-105"
-                                >
-                                    <div className="w-full h-48 sm:h-52 md:h-56 overflow-hidden">
-                                        <img
-                                            src={d.hospitalPic}
-                                            alt="PIC"
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+            <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-                                    <div className="p-4 flex flex-col justify-between flex-grow">
-                                        <div>
-                                            <h1 className="text-base md:text-lg font-semibold text-gray-800">
-                                                {d.hospitalName}
-                                            </h1>
+                <div className="mb-8">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800">
+                        All Hospitals
+                    </h1>
+                    <p className="text-gray-500 text-sm mt-1">
+                        {loading ? 'Loading...' : `${data.length} hospitals found`}
+                    </p>
+                </div>
 
-                                            <div
-                                                className="text-sm font-thin text-gray-600 mb-6  max-w-none"
-                                            >{d.hospitalAddress}</div>
-                                        </div>
+                {loading ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                        {[...Array(8)].map((_, i) => <SkeletonCard key={i} />)}
+                    </div>
+                ) : data.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-32 text-center gap-3">
+                        <span className="text-5xl">🏥</span>
+                        <h2 className="text-xl font-semibold text-gray-700">No Hospitals Listed Yet</h2>
+                        <p className="text-gray-400 text-sm">Check back soon.</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                        {data.map((d, index) => (
+                            <article
+                                key={d._id}
+                                className="flex flex-col rounded-xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+                            >
+                                <div className="w-full h-48 overflow-hidden bg-gray-100 flex-shrink-0">
+                                    <img
+                                        src={d.hospitalPic}
+                                        alt={d.hospitalName}
+                                        loading={index < 4 ? 'eager' : 'lazy'}
+                                        fetchPriority={index === 0 ? 'high' : 'auto'}
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    />
+                                </div>
 
-                                        <Link
-                                            href={d.link??"/"}
-                                            className="text-xs text-blue-600 hover:underline mt-4 self-end"
-                                        >
-                                            visit
-                                        </Link>
-                                    </div>
-                                </article>
+                                <div className="flex flex-col flex-1 p-4 gap-2">
+                                    <h2 className="text-base font-semibold text-gray-800 line-clamp-1">
+                                        {d.hospitalName}
+                                    </h2>
+                                    <p className="text-sm text-gray-500 line-clamp-2 flex-1">
+                                        {d.hospitalAddress}
+                                    </p>
+                                    <Link
+                                        href={d.link ?? "/"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="mt-2 w-full text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 rounded-lg py-2"
+                                    >
+                                        Visit Hospital
+                                    </Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                )}
+            </main>
 
-                            ))
-                        }
-
-                    </section>
-
-                </main>
-            
-            
-            }
             <Footer />
         </div>
-  )
+    )
 }
 
 export default Page
