@@ -127,22 +127,27 @@ const AllHospitals = () => {
                                 </div>
                             ))}
 
-                            <div className="flex flex-col justify-center items-center p-3 gap-3 bg-blue-50 rounded-md shadow-lg
-                                            w-64 shrink-0
-                                            min-h-[240px] md:h-auto md:self-stretch
-                                            border-2 border-dashed border-blue-300">
-                                <p className="text-gray-400 text-sm text-center">
-                                    Explore our complete network
-                                </p>
-                                <Link
-                                    href="/allhospitals"
-                                    className="flex items-center justify-center p-2 px-4 text-white text-sm font-medium
-                                               bg-blue-500 rounded-md hover:bg-blue-600
-                                               transition-all duration-200 hover:scale-105"
-                                >
-                                    Find All Hospitals
-                                </Link>
-                            </div>
+                            <div className="relative flex flex-col bg-[url(https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/findall.png)] bg-cover bg-no-repeat justify-center items-center p-3 gap-3 bg-blue-50 rounded-md shadow-lg
+                w-64 shrink-0
+                min-h-[240px] md:h-auto md:self-stretch
+                border-2 border-dashed border-blue-300 overflow-hidden">
+
+    <div className="absolute inset-0 bg-black/50 "></div>
+
+    <p className="relative text-white text-md text-center">
+        Explore our complete network
+    </p>
+
+    <Link
+        href="/allhospitals"
+        className="relative flex items-center justify-center p-2 px-4 text-white text-sm font-medium
+                   bg-blue-500 rounded-md hover:bg-blue-600
+                   transition-all duration-200 hover:scale-105"
+    >
+        Find All Hospitals
+    </Link>
+
+</div>
                         </div>
                     </div>
                 )}
