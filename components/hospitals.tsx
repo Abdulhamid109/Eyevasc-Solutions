@@ -14,7 +14,7 @@ interface Data {
 const AllHospitals = () => {
     const [data, setData] = useState<Data[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const cities = ['Mumbai', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahmedabad'];
+    const cities = ['Mumbai','Delhi', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahemdabad'];
     const [activeCity, setActiveCity] = useState<string>('Mumbai');
 
     const displayHospitals = async (location: string) => {
@@ -22,7 +22,7 @@ const AllHospitals = () => {
         setLoading(true);
 
         try {
-            const response = await axios.get(`/api/admin/hospitals?city=${location.toLowerCase()}`);
+            const response = await axios.get(`/api/admin/hospitals?city=${location.toLowerCase().replace(" ","")}`);
             if (response.status === 200) {
                 setData(response.data.hospitals);
             }
@@ -114,10 +114,8 @@ const AllHospitals = () => {
                                         {hospital.hospitalAddress}
                                     </p>
 
-                                    {/* Spacer pushes button to bottom */}
                                     <div className="flex-1" />
 
-                                    {/* Book Button — centered */}
                                     <Link
                                         href="/booknow"
                                         className="flex items-center justify-center p-2 w-full text-white text-sm font-medium

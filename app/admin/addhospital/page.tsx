@@ -151,10 +151,11 @@ const AddHospitalPage = () => {
               >
                 <option value="">Select Hospital location</option>
                 <option value="mumbai">Mumbai</option>
+                <option value="delhi">delhi</option>
                 <option value="pune">Pune</option>
-                <option value="bihar">Navi Mumbai</option>
+                <option value="navimumbai">Navi Mumbai</option>
                 <option value="uttarpradesh">Uttar Pradesh</option>
-                <option value="bangalore">Ahemdabad</option>
+                <option value="ahemdabad">Ahemdabad</option>
               </select>
 
             </div>

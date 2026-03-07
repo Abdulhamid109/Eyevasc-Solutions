@@ -216,9 +216,10 @@ const Page = () => {
                   >
                     <option value="">Select Hospital Location</option>
                     <option value="mumbai">Mumbai</option>
+                    <option value="delhi">delhi</option>
                     <option value="uttarpradesh">Uttar Pradesh</option>
-                    <option value="bangalore">Ahemdabad</option>
-                    <option value="bangalore">Pune</option>
+                    <option value="ahemdabad">Ahemdabad</option>
+                    <option value="pune">Pune</option>
                     <option value="navimumbai">Navi Mumbai</option>
                   </select>
                 </div>

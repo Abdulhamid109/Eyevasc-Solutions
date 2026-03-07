@@ -97,16 +97,15 @@ const Page = () => {
                                     <h2 className="text-base font-semibold text-gray-800 line-clamp-1">
                                         {d.hospitalName}
                                     </h2>
-                                    <p className="text-sm text-gray-500 line-clamp-2 flex-1">
+                                    <p className="text-sm text-gray-500 line-clamp-4 flex-1">
                                         {d.hospitalAddress}
                                     </p>
                                     <Link
-                                        href={d.link ?? "/"}
-                                        target="_blank"
+                                        href={"/booknow"}
                                         rel="noopener noreferrer"
                                         className="mt-2 w-full text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 rounded-lg py-2"
                                     >
-                                        Visit Hospital
+                                        Book Appointment
                                     </Link>
                                 </div>
                             </article>
