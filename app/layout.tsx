@@ -394,6 +394,41 @@ export default function RootLayout({
             gtag('config', 'G-5CWRD199MF');
           `}
         </Script>
+
+        {/* StatCounter configuration */}
+        <Script id="statcounter-config" strategy="afterInteractive">
+          {`
+            var sc_project=13209261;
+            var sc_invisible=1;
+            var sc_security="a426f761";
+          `}
+        </Script>
+
+        {/* StatCounter loader */}
+        <Script
+          src="https://www.statcounter.com/counter/counter.js"
+          strategy="afterInteractive"
+        />
+
+        {/* Fallback for no JS */}
+        <noscript>
+          <div className="statcounter">
+            <a
+              title="Web Analytics Made Easy - Statcounter"
+              href="https://statcounter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                className="statcounter"
+                src="https://c.statcounter.com/13209261/0/a426f761/1/"
+                alt="Web Analytics Made Easy - Statcounter"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </a>
+          </div>
+        </noscript>
+
       </body>
     </html>
   );
