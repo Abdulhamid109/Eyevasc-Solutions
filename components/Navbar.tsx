@@ -18,7 +18,7 @@ const Navbar = () => {
   ]
 
   const handleScroll = (e: React.MouseEvent, href: string) => {
-    e.preventDefault()
+    // e.preventDefault()
     if (href.startsWith("/#")) {
       const targetId = href.substring(2)
       const targetElement = document.getElementById(targetId)
@@ -51,10 +51,13 @@ const Navbar = () => {
 
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, i) => (
+              
               <Link
                 key={i}
                 href={link.href}
-                onClick={(e) => handleScroll(e, link.href)}
+                onClick={(e) => {handleScroll(e, link.href)
+                  }
+                }
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
               >
                 {link.name}

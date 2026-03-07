@@ -10,7 +10,7 @@ const Footer = () => {
   const router = useRouter();
 
   const handleScroll = (e: React.MouseEvent, href: string) => {
-      e.preventDefault()
+      // e.preventDefault()
       if (href.startsWith("/#")) {
         const targetId = href.substring(2)
         const targetElement = document.getElementById(targetId)

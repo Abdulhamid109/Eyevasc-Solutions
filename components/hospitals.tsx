@@ -14,7 +14,7 @@ interface Data {
 const AllHospitals = () => {
     const [data, setData] = useState<Data[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const cities = ['Mumbai', 'Delhi', 'Navi Mumbai', 'Pune', 'Bangalore', 'Lucknow', 'Ahmedabad'];
+    const cities = ['Mumbai', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahmedabad'];
     const [activeCity, setActiveCity] = useState<string>('Mumbai');
 
     const displayHospitals = async (location: string) => {
