@@ -84,7 +84,7 @@ const Page = () => {
         hospitalName: prevData?.hospitalName,
         hospitalAddress: prevData?.hospitalAddress,
         hospitalPic: ImageLink ?ImageLink:prevData?.hospitalPic,
-        location: prevData?.location,
+        location: prevData?.location.toLowerCase(),
       });
 
       if (response.status === 200) {
@@ -216,11 +216,9 @@ const Page = () => {
                   >
                     <option value="">Select Hospital Location</option>
                     <option value="mumbai">Mumbai</option>
-                    <option value="delhi">Delhi</option>
-                    <option value="noida">Noida</option>
-                    <option value="pune">Pune</option>
                     <option value="uttarpradesh">Uttar Pradesh</option>
-                    <option value="bangalore">Bangalore</option>
+                    <option value="bangalore">Ahemdabad</option>
+                    <option value="bangalore">Pune</option>
                     <option value="navimumbai">Navi Mumbai</option>
                   </select>
                 </div>
