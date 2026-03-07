@@ -13,10 +13,12 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import AllHospitals from '@/components/hospitals';
 import Image from 'next/image';
+import FestiveConfetti from '@/components/FestivalConfetti';
 
 const Page = () => {
   return (
     <div className='min-h-screen bg-gradient-to-br bg-[url(https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/bgimage.png)] bg-cover bg-repeat-none h-[250vh] from-blue-50 via-white to-blue-50'>
+      <FestiveConfetti />
       <Navbar />
 
       <div id='home' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -31,7 +33,7 @@ const Page = () => {
 
             <div className="space-y-5 mt-6">
               <div className="flex items-start space-x-3">
-                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                <div className="shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
                   <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>

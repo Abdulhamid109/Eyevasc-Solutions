@@ -72,7 +72,7 @@ const AllHospitals = () => {
                             {[...Array(4)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className="flex flex-col gap-2 p-3 bg-blue-50 rounded-md shadow-lg w-64 flex-shrink-0 animate-pulse"
+                                    className="flex flex-col gap-2 p-3 bg-blue-50 rounded-md shadow-lg w-64 shrink-0 animate-pulse"
                                 >
                                     <div className="w-full h-36 bg-gray-200 rounded-md" />
                                     <div className="h-5 bg-gray-200 rounded w-3/4" />
@@ -90,7 +90,7 @@ const AllHospitals = () => {
                                 <div
                                     key={hospital._id}
                                     className="flex flex-col p-3 gap-2 bg-blue-50 rounded-md shadow-lg
-                                               w-64 flex-shrink-0"
+                                               w-64 shrink-0"
                                 >
                                     <div className="rounded-md w-full overflow-hidden">
                                         <Image
@@ -128,7 +128,7 @@ const AllHospitals = () => {
                             ))}
 
                             <div className="flex flex-col justify-center items-center p-3 gap-3 bg-blue-50 rounded-md shadow-lg
-                                            w-64 flex-shrink-0
+                                            w-64 shrink-0
                                             min-h-[240px] md:h-auto md:self-stretch
                                             border-2 border-dashed border-blue-300">
                                 <p className="text-gray-400 text-sm text-center">
