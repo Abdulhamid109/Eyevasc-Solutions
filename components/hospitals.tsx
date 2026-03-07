@@ -14,7 +14,7 @@ interface Data {
 const AllHospitals = () => {
     const [data, setData] = useState<Data[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
-    const cities = ['Mumbai','Delhi', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahemdabad'];
+    const cities = ['Mumbai', 'Delhi', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahemdabad'];
     const [activeCity, setActiveCity] = useState<string>('Mumbai');
 
     const displayHospitals = async (location: string) => {
@@ -22,7 +22,7 @@ const AllHospitals = () => {
         setLoading(true);
 
         try {
-            const response = await axios.get(`/api/admin/hospitals?city=${location.toLowerCase().replace(" ","")}`);
+            const response = await axios.get(`/api/admin/hospitals?city=${location.toLowerCase().replace(" ", "")}`);
             if (response.status === 200) {
                 setData(response.data.hospitals);
             }
@@ -132,22 +132,22 @@ const AllHospitals = () => {
                 min-h-[240px] md:h-auto md:self-stretch
                 border-2 border-dashed border-blue-300 overflow-hidden">
 
-    <div className="absolute inset-0 bg-black/50 "></div>
+                                <div className="absolute inset-0 bg-black/50 "></div>
 
-    <p className="relative text-white text-md text-center">
-        Explore our complete network
-    </p>
+                                <p className="relative text-white text-md text-center">
+                                    Explore our complete network
+                                </p>
 
-    <Link
-        href="/allhospitals"
-        className="relative flex items-center justify-center p-2 px-4 text-white text-sm font-medium
+                                <Link
+                                    href="/allhospitals"
+                                    className="relative flex items-center justify-center p-2 px-4 text-white text-sm font-medium
                    bg-blue-500 rounded-md hover:bg-blue-600
                    transition-all duration-200 hover:scale-105"
-    >
-        Find All Hospitals
-    </Link>
+                                >
+                                    Find All Hospitals
+                                </Link>
 
-</div>
+                            </div>
                         </div>
                     </div>
                 )}

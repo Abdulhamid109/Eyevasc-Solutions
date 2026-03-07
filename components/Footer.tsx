@@ -51,7 +51,7 @@ const Footer = () => {
               <a className='w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors' 
                  target='_blank' 
                  rel='noopener noreferrer' 
-                 href="https://api.whatsapp.com/send?phone=919205667459&text=Hi%20Eyehealthcure,%20I%20want%20to%20connect%20with%20Eyehealthcure%20healthcare%20expert">
+                 href="https://api.whatsapp.com/send?phone=+919205667459&text=Hi%20Eyehealthcure,%20I%20want%20to%20connect%20with%20Eyehealthcure%20healthcare%20expert">
                 <FaWhatsapp className='w-5 h-5' />
               </a>
             </div>
