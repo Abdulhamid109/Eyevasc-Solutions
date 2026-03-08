@@ -3,105 +3,220 @@
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
 
+/* ---------- Types ---------- */
+
+type Festival = {
+  name: string;
+  greeting: string;
+  offer: string;
+  start: string;
+  end: string;
+};
+
+/* ---------- 2026 FESTIVAL CALENDAR ---------- */
+
+const festivals2026: Festival[] = [
+
+  {
+    name: "demo",
+    greeting: "Happy Republic Day 🇮🇳",
+    offer: "Free Eye Checkup for Senior Citizens",
+    start: "2026-01-08",
+    end: "2026-03-08"
+  },
+
+  {
+    name: "Republic Day",
+    greeting: "Happy Republic Day 🇮🇳",
+    offer: "Free Eye Checkup for Senior Citizens",
+    start: "2026-01-26",
+    end: "2026-01-26"
+  },
+
+  {
+    name: "Ramadan",
+    greeting: "Ramadan Mubarak 🌙",
+    offer: "Special Ramadan Eye Care Package",
+    start: "2026-02-18",
+    end: "2026-03-19"
+  },
+
+  {
+    name: "Holi",
+    greeting: "Happy Holi 🎨",
+    offer: "Free Eye Consultation + Holi Discount",
+    start: "2026-03-02",
+    end: "2026-03-05"
+  },
+
+  {
+    name: "Ram Navami",
+    greeting: "Happy Ram Navami 🙏",
+    offer: "Festival Vision Care Offer",
+    start: "2026-03-26",
+    end: "2026-03-27"
+  },
+
+  {
+    name: "Independence Day",
+    greeting: "Happy Independence Day 🇮🇳",
+    offer: "Free Eye Checkup Camp",
+    start: "2026-08-15",
+    end: "2026-08-15"
+  },
+
+  {
+    name: "Raksha Bandhan",
+    greeting: "Happy Raksha Bandhan ❤️",
+    offer: "Family Eye Checkup Discount",
+    start: "2026-08-29",
+    end: "2026-08-30"
+  },
+
+  {
+    name: "Janmashtami",
+    greeting: "Happy Janmashtami 🦚",
+    offer: "Krishna Festival Eye Care Offer",
+    start: "2026-09-05",
+    end: "2026-09-06"
+  },
+
+  {
+    name: "Navratri",
+    greeting: "Happy Navratri 🪔",
+    offer: "Navratri Special Vision Checkup",
+    start: "2026-10-10",
+    end: "2026-10-18"
+  },
+
+  {
+    name: "Dussehra",
+    greeting: "Happy Dussehra 🏹",
+    offer: "Festival Discount on Eye Treatments",
+    start: "2026-10-20",
+    end: "2026-10-21"
+  },
+
+  {
+    name: "Diwali",
+    greeting: "Happy Diwali 🪔",
+    offer: "Mega Diwali Eye Care Offer",
+    start: "2026-11-05",
+    end: "2026-11-10"
+  },
+
+  {
+    name: "Christmas",
+    greeting: "Merry Christmas 🎄",
+    offer: "Winter Eye Care Package",
+    start: "2026-12-24",
+    end: "2026-12-26"
+  }
+
+];
+
+/* ---------- Component ---------- */
+
 export default function FestiveConfetti() {
-  const [festival, setFestival] = useState<any>(null);
-  const [isVisible, setIsVisible] = useState(false);
+
+  const [festival, setFestival] = useState<Festival | null>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
 
-    const fetchFestivals = async () => {
+    const today = new Date().toISOString().split("T")[0];
 
-      const year = new Date().getFullYear();
+    const fest = festivals2026.find(f => {
 
-      const res = await fetch(
-        `https://date.nager.at/api/v3/PublicHolidays/${year}/IN`
-      );
+      return today >= f.start && today <= f.end;
 
-      const data = await res.json();
+    });
 
-      const today = new Date();
+    if (!fest) return;
 
-      const fest = data.find((f: any) => {
+    setFestival(fest);
 
-        const festDate = new Date(f.date);
+    setTimeout(() => setVisible(true), 400);
 
-        const diff =
-          Math.abs(festDate.getTime() - today.getTime()) /
-          (1000 * 60 * 60 * 24);
+    /* ---------- Confetti ---------- */
 
-        return diff <= 1; // show popup 1 day before or after
+    const duration = 3500;
+    const end = Date.now() + duration;
+
+    const frame = () => {
+
+      confetti({
+        particleCount: 4,
+        angle: 60,
+        spread: 60,
+        origin: { x: 0 }
       });
 
-      if (!fest) return;
-
-      setFestival({
-        name: fest.localName,
-        greeting: `Happy ${fest.localName}!`,
-        offer: "Free Eye Consultation + Special Festival Discount"
+      confetti({
+        particleCount: 4,
+        angle: 120,
+        spread: 60,
+        origin: { x: 1 }
       });
 
-      setTimeout(() => setIsVisible(true), 500);
+      if (Date.now() < end) requestAnimationFrame(frame);
 
-      // Confetti
-      const duration = 3000;
-      const end = Date.now() + duration;
-
-      const frame = () => {
-        confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0, y: 0.8 } });
-        confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1, y: 0.8 } });
-
-        if (Date.now() < end) requestAnimationFrame(frame);
-      };
-
-      frame();
     };
 
-    fetchFestivals();
+    frame();
 
   }, []);
 
   if (!festival) return null;
 
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      
-      <div className={`relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden max-w-sm w-full transform transition-all duration-700 ${isVisible ? 'scale-100 translate-y-0' : 'scale-90 translate-y-10'}`}>
-        
-        <div className="h-2 w-full bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400" />
+
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}>
+
+      <div className={`bg-white dark:bg-gray-900 rounded-3xl shadow-2xl max-w-sm w-full transform transition-all duration-700 ${visible ? "scale-100" : "scale-90"} overflow-hidden`}>
+
+        <div className="h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400" />
 
         <div className="p-8 text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-pink-50 rounded-full mb-4 text-3xl">
-            ✨
-          </div>
 
-          <h2 className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-orange-500">
+          <div className="text-4xl mb-4">✨</div>
+
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-orange-500">
             {festival.greeting}
           </h2>
 
-          <p className="text-gray-600 dark:text-gray-400 mt-3 font-medium">
+          <p className="text-gray-600 dark:text-gray-400 mt-3">
             Celebrate with healthy vision 👁️
           </p>
 
-          <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800 rounded-xl">
-            <p className="text-orange-700 dark:text-orange-300 text-sm font-bold leading-relaxed">
+          <div className="mt-6 p-4 bg-orange-50 dark:bg-orange-900/20 rounded-xl">
+
+            <p className="text-orange-700 dark:text-orange-300 font-semibold text-sm">
               {festival.offer}
             </p>
+
           </div>
 
           <div className="mt-8 flex flex-col gap-3">
-            <button className="w-full bg-gray-900 dark:bg-white dark:text-gray-900 text-white font-bold py-4 rounded-xl hover:opacity-90 transition-transform active:scale-95 shadow-lg">
+
+            <button className="bg-black text-white py-4 rounded-xl font-bold hover:opacity-90">
               Book Appointment
             </button>
 
             <button
-              onClick={() => setIsVisible(false)}
-              className="text-gray-400 text-xs font-semibold hover:text-gray-600 transition-colors uppercase tracking-widest"
+              onClick={() => setVisible(false)}
+              className="text-xs text-gray-400 uppercase tracking-wider"
             >
               Maybe Later
             </button>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   );
 }
