@@ -2,120 +2,8 @@
 
 import { useEffect, useState } from "react";
 import confetti from "canvas-confetti";
-
-/* ---------- Types ---------- */
-
-type Festival = {
-  name: string;
-  greeting: string;
-  offer: string;
-  start: string;
-  end: string;
-};
-
-/* ---------- 2026 FESTIVAL CALENDAR ---------- */
-
-const festivals2026: Festival[] = [
-
-  {
-    name: "demo",
-    greeting: "Happy Republic Day 🇮🇳",
-    offer: "Free Eye Checkup for Senior Citizens",
-    start: "2026-01-08",
-    end: "2026-03-08"
-  },
-
-  {
-    name: "Republic Day",
-    greeting: "Happy Republic Day 🇮🇳",
-    offer: "Free Eye Checkup for Senior Citizens",
-    start: "2026-01-26",
-    end: "2026-01-26"
-  },
-
-  {
-    name: "Ramadan",
-    greeting: "Ramadan Mubarak 🌙",
-    offer: "Special Ramadan Eye Care Package",
-    start: "2026-02-18",
-    end: "2026-03-19"
-  },
-
-  {
-    name: "Holi",
-    greeting: "Happy Holi 🎨",
-    offer: "Free Eye Consultation + Holi Discount",
-    start: "2026-03-02",
-    end: "2026-03-05"
-  },
-
-  {
-    name: "Ram Navami",
-    greeting: "Happy Ram Navami 🙏",
-    offer: "Festival Vision Care Offer",
-    start: "2026-03-26",
-    end: "2026-03-27"
-  },
-
-  {
-    name: "Independence Day",
-    greeting: "Happy Independence Day 🇮🇳",
-    offer: "Free Eye Checkup Camp",
-    start: "2026-08-15",
-    end: "2026-08-15"
-  },
-
-  {
-    name: "Raksha Bandhan",
-    greeting: "Happy Raksha Bandhan ❤️",
-    offer: "Family Eye Checkup Discount",
-    start: "2026-08-29",
-    end: "2026-08-30"
-  },
-
-  {
-    name: "Janmashtami",
-    greeting: "Happy Janmashtami 🦚",
-    offer: "Krishna Festival Eye Care Offer",
-    start: "2026-09-05",
-    end: "2026-09-06"
-  },
-
-  {
-    name: "Navratri",
-    greeting: "Happy Navratri 🪔",
-    offer: "Navratri Special Vision Checkup",
-    start: "2026-10-10",
-    end: "2026-10-18"
-  },
-
-  {
-    name: "Dussehra",
-    greeting: "Happy Dussehra 🏹",
-    offer: "Festival Discount on Eye Treatments",
-    start: "2026-10-20",
-    end: "2026-10-21"
-  },
-
-  {
-    name: "Diwali",
-    greeting: "Happy Diwali 🪔",
-    offer: "Mega Diwali Eye Care Offer",
-    start: "2026-11-05",
-    end: "2026-11-10"
-  },
-
-  {
-    name: "Christmas",
-    greeting: "Merry Christmas 🎄",
-    offer: "Winter Eye Care Package",
-    start: "2026-12-24",
-    end: "2026-12-26"
-  }
-
-];
-
-/* ---------- Component ---------- */
+import Link from "next/link";
+import { festivals2026, Festival } from "@/data/festiveData";
 
 export default function FestiveConfetti() {
 
@@ -126,17 +14,22 @@ export default function FestiveConfetti() {
 
     const today = new Date().toISOString().split("T")[0];
 
-    const fest = festivals2026.find(f => {
-
+    const fest = festivals2026.find((f) => {
       return today >= f.start && today <= f.end;
-
     });
 
     if (!fest) return;
 
-    setFestival(fest);
+    const storageKey= `festival-${fest.name}`;
+    if (localStorage.getItem(storageKey)) return;
+    localStorage.setItem(storageKey, "shown");
 
-    setTimeout(() => setVisible(true), 400);
+    const festivalEffect =()=>{
+      setFestival(fest);
+    }
+    festivalEffect();
+
+    const timer = setTimeout(() => setVisible(true), 400);
 
     /* ---------- Confetti ---------- */
 
@@ -164,6 +57,8 @@ export default function FestiveConfetti() {
     };
 
     frame();
+
+    return () => clearTimeout(timer);
 
   }, []);
 
@@ -199,13 +94,19 @@ export default function FestiveConfetti() {
 
           <div className="mt-8 flex flex-col gap-3">
 
-            <button className="bg-black text-white py-4 rounded-xl font-bold hover:opacity-90">
+            <Link
+              href="/booknow"
+              className="bg-black text-white py-4 rounded-xl font-bold hover:opacity-90 transition"
+            >
               Book Appointment
-            </button>
+            </Link>
 
             <button
-              onClick={() => setVisible(false)}
-              className="text-xs text-gray-400 uppercase tracking-wider"
+              onClick={() => {
+                setVisible(false);
+                setTimeout(() => setFestival(null), 400);
+              }}
+              className="text-xs text-gray-400 uppercase tracking-wider hover:text-gray-600 transition"
             >
               Maybe Later
             </button>
