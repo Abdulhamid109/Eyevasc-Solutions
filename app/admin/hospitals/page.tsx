@@ -1,10 +1,12 @@
 "use client"
 import AdminNavbar from '@/components/AdminNavbar'
 import Footer from '@/components/Footer'
+import { Dialog, DialogClose, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import axios, { AxiosError } from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import  { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
 
 interface DataFormat{
     _id:string;
@@ -37,7 +39,24 @@ const Page = () => {
 
     useEffect(()=>{
         AllHospitals();
-    },[])
+    },[]);
+
+
+    const deleteHospital =async(id:string)=>{
+        try {
+            const response = await axios.delete(`/api/admin/deletehospital?hid=${id}`);
+            if(response.status===200){
+                toast.success("Successfully deleted!");
+                setData(prev =>
+                    prev.filter(d => d._id !== id)
+                )
+            }
+        } catch (error) {
+            if(error instanceof AxiosError){
+                toast.error(error.response?.data.error || "Failed to delete the hospital")
+            }
+        }
+    }
   return (
     <div>
             <AdminNavbar />
@@ -79,12 +98,27 @@ const Page = () => {
                                             >{d.hospitalAddress}</div>
                                         </div>
 
-                                        <Link
+                                        <div className='flex justify-around items-center '>
+                                            {/* delete confirmation popup is needed! */}
+                                            <Dialog>
+                                                <DialogTrigger><button className='p-2 bg-red-500 rounded-md text-white'>Delete</button></DialogTrigger>
+                                                <DialogContent>
+                                                    <div className='text-center '>Are you sure you want to delete?</div>
+
+                                                    <div className='flex justify-around items-center gap-2 text-white'>
+                                                        <button className='p-2 bg-red-500 rounded-md' onClick={()=>deleteHospital(d._id)}><DialogClose>Delete</DialogClose></button>
+                                                        <button className='p-2 bg-gray-500 rounded-md'><DialogClose>Cancel</DialogClose></button>
+                                                    </div>
+
+                                                </DialogContent>
+                                            </Dialog>
+                                            <Link
                                             href={`/admin/edithospital/${d._id}`}
-                                            className="text-xl bg-blue-500 p-2 text-white hover:underline mt-4 self-end"
+                                            className="bg-blue-500 p-2 rounded-md text-white hover:underline self-end"
                                         >
                                             Edit
                                         </Link>
+                                        </div>
                                     </div>
                                 </article>
 

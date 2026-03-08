@@ -11,9 +11,7 @@ export default function FestiveConfetti() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-
     const today = new Date().toISOString().split("T")[0];
-
     const fest = festivals2026.find((f) => {
       return today >= f.start && today <= f.end;
     });
