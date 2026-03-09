@@ -1,6 +1,8 @@
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
+import { TextStyle } from '@tiptap/extension-text-style'
+import { LineHeight } from '@/extentions/LineHeight'
 import React, { useEffect } from 'react';
 import Toolbar from './Toolbar';
 
@@ -17,6 +19,8 @@ export default function RichEditor({
             Placeholder.configure({
                 placeholder: 'Start writing here...',
             }),
+            TextStyle,
+            LineHeight
         ],
         content: description,
         onUpdate: ({ editor }) => {
@@ -25,7 +29,7 @@ export default function RichEditor({
         editorProps: {
             attributes: {
                 class:
-                    'w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none min-h-[200px] prose prose-sm max-w-none prose-ul:list-disc prose-ol:list-decimal prose-ul:pl-6 prose-ol:pl-6',
+                    'w-full  px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200 outline-none min-h-[200px] prose prose-sm max-w-none prose-ul:list-disc prose-ol:list-decimal prose-ul:pl-6 prose-ol:pl-6',
             }
         },
         immediatelyRender: false

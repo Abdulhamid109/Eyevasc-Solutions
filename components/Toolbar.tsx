@@ -13,21 +13,21 @@ export default function Toolbar({ editor }: props) {
     return (
         <div className="border border-input bg-transparent rounded-md flex flex-wrap gap-1 p-1">
             {
-            [1,2,3,4,5,6].map((e)=>(
-                
-                <Toggle
-                key={e}
-                size="sm"
-                pressed={editor.isActive("heading", { level: e })}
-                onPressedChange={() => editor.chain().focus().toggleHeading({ level: e as 1|2|3|4|5|6}).run()}
-            >
-                H{e}
-            </Toggle>
+                [1, 2, 3, 4, 5, 6].map((e) => (
 
-            ))
+                    <Toggle
+                        key={e}
+                        size="sm"
+                        pressed={editor.isActive("heading", { level: e })}
+                        onPressedChange={() => editor.chain().focus().toggleHeading({ level: e as 1 | 2 | 3 | 4 | 5 | 6 }).run()}
+                    >
+                        H{e}
+                    </Toggle>
+
+                ))
             }
 
-           
+
 
             <Toggle
                 size="sm"
@@ -91,6 +91,16 @@ export default function Toolbar({ editor }: props) {
                 onPressedChange={() => editor.chain().focus().redo().run()}
             >
                 <Redo className="h-4 w-4" />
+            </Toggle>
+
+            <Toggle
+                size="sm"
+                pressed={false}
+                onPressedChange={() =>
+    editor.chain().focus().setLineHeight('1.1').run()
+                }
+            >
+                Line height 1.1
             </Toggle>
         </div>
     );
