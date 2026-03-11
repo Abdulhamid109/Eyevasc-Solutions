@@ -20,7 +20,7 @@ export default function RichEditor({
                 placeholder: 'Start writing here...',
             }),
             TextStyle,
-            LineHeight
+            LineHeight,
         ],
         content: description,
         onUpdate: ({ editor }) => {
