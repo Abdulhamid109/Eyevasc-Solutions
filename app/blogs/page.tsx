@@ -5,91 +5,91 @@ import axios, { AxiosError } from 'axios'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
+import { Spinner } from "@/components/ui/spinner"
 
 interface Data {
     _id: string;
     blogTitle: string;
     blogPictureLink: string;
     blogDescription: string;
-
 }
+
 const Page = () => {
-    const [data, setdata] = useState<Data[]>([]);
+    const [data, setData] = useState<Data[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     const getBlogs = async () => {
+        setLoading(true);
         try {
             const response = await axios.get("/api/admin/blogs");
             if (response.status === 200) {
-                setdata(response.data.blog);
+                setData(response.data.blog);
             }
         } catch (error) {
             if (error instanceof AxiosError) {
-                toast.error("something went wrong!!");
+                toast.error("Something went wrong!");
             }
+        } finally {
+            setLoading(false);
         }
     }
 
-
-
-
     useEffect(() => {
-        const displayBlogs = async () => {
-            await getBlogs();
-        }
-        displayBlogs();
+        getBlogs();
     }, [])
+
     return (
-        <div>
+        <div className="min-h-screen flex flex-col bg-gray-50">
             <Navbar />
 
-            {data.length === 0 ?
-                <p className='h-screen flex justify-center items-center font-bold'>Blogs soon to be appeard</p> :
-                <main className="min-h-screen w-full p-4 bg-gray-50">
-                    <section className="flex flex-wrap justify-start items-center gap-7">
-                        {
-                            data.map((d: Data) => (
-                                <article
-                                    key={d._id}
-                                    className="flex flex-col rounded-xl border border-gray-200 shadow-md bg-white 
-             w-full sm:w-[48%] md:w-[31%] lg:w-[23%] 
-             overflow-hidden transition-transform duration-300 hover:scale-105"
-                                >
-                                    <div className="w-full h-48 sm:h-52 md:h-56 overflow-hidden">
-                                        <img
-                                            src={d.blogPictureLink}
-                                            alt="Blog"
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+            <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-                                    <div className="p-4 flex flex-col justify-between flex-grow">
-                                        <div>
-                                            <h1 className="text-base md:text-lg font-semibold text-gray-800">
-                                                {d.blogTitle}
-                                            </h1>
+                {loading ? (
+                    <div className="flex justify-center items-center h-[60vh]">
+                        <Spinner scale={105} />
+                    </div>
+                ) : data.length === 0 ? (
+                    <div className="flex justify-center items-center h-[60vh]">
+                        <p className="font-bold text-gray-500">Blogs soon to be appeared</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                        {data.map((d: Data, index: number) => (
+                            <article
+                                key={d._id}
+                                className="flex flex-col rounded-xl border border-gray-100 shadow-sm bg-white overflow-hidden hover:shadow-md hover:-translate-y-1 transition-all duration-200"
+                            >
+                                <div className="w-full h-48 overflow-hidden bg-gray-100 flex-shrink-0">
+                                    <img
+                                        src={d.blogPictureLink}
+                                        alt={d.blogTitle}
+                                        loading={index < 4 ? 'eager' : 'lazy'}
+                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                    />
+                                </div>
 
-                                            <div
-                                                dangerouslySetInnerHTML={{ __html: d.blogDescription ?? "" }}
-                                                className="text-lg text-gray-700 mb-6  max-w-none line-clamp-1"
-                                            />
-                                        </div>
+                                <div className="p-4 flex flex-col flex-1 gap-2">
+                                    <h2 className="text-base font-semibold text-gray-800 line-clamp-2">
+                                        {d.blogTitle}
+                                    </h2>
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: d.blogDescription ?? "" }}
+                                        className="text-sm text-gray-500 line-clamp-2 flex-1"
+                                    />
+                                    <Link
+                                        href={`/blogs/${d._id}`}
+                                        className="mt-2 w-full text-center text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200 rounded-lg py-2"
+                                    >
+                                        Read More
+                                    </Link>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                )}
 
-                                        <Link
-                                            href={`/blogs/${d._id}`}
-                                            className="text-xs text-blue-600 hover:underline mt-4 self-end"
-                                        >
-                                            Read more
-                                        </Link>
-                                    </div>
-                                </article>
+            </main>
 
-                            ))
-                        }
-
-                    </section>
-
-                </main>
-            }
             <Footer />
         </div>
     )
