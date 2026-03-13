@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { useState, useEffect } from "react"
 import { FiMenu, FiX } from "react-icons/fi"
+import { MdEvent } from "react-icons/md"
 import { usePathname, useRouter } from "next/navigation"
 import Holidays from "date-holidays"
 
@@ -18,15 +19,7 @@ const Navbar = () => {
   const pathname = usePathname()
   const isHomePage = pathname === "/"
 
-  /* -------------------------
-     DEMO MODE
-  -------------------------- */
-
   const demoFestival = true
-
-  /* -------------------------
-     NAV LINKS
-  -------------------------- */
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -51,9 +44,7 @@ const Navbar = () => {
     setIsOpen(false)
   }
 
-  /* -------------------------
-     FESTIVAL DETECTION
-  -------------------------- */
+  /* FESTIVAL DETECTION */
 
   useEffect(() => {
 
@@ -72,9 +63,7 @@ const Navbar = () => {
 
   }, [])
 
-  /* -------------------------
-     OFFERS LIST
-  -------------------------- */
+  /* OFFERS */
 
   const offers = [
     `🎉 ${festivalName} Special – Free Eye Checkup Camp`,
@@ -84,9 +73,7 @@ const Navbar = () => {
     "👁 Cataract Surgery Consultation Available",
   ]
 
-  /* -------------------------
-     OFFER ROTATION
-  -------------------------- */
+  /* OFFER ROTATION */
 
   useEffect(() => {
 
@@ -101,49 +88,41 @@ const Navbar = () => {
   return (
     <>
 
-      {/* ==============================
-         ANNOUNCEMENT BAR
-      ============================== */}
+      {/* ANNOUNCEMENT BAR */}
 
       {isHomePage && festivalName && showBanner && (
 
-        <div className="w-full bg-gradient-to-r from-purple-700 via-blue-600 to-cyan-500 text-white py-2 relative shadow-md">
+        <div className="w-full bg-gradient-to-r from-purple-700 via-blue-600 to-cyan-500 text-white text-sm relative">
 
-          {/* CLOSE BUTTON */}
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 px-4 py-2">
 
-          <button
-            onClick={() => setShowBanner(false)}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-lg opacity-80 hover:opacity-100"
-          >
-            ✕
-          </button>
+            {/* EVENT ICON */}
 
-          <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 px-6">
+            <MdEvent className="text-lg flex-shrink-0" />
 
-            {/* BADGE */}
+            {/* ROTATING OFFER TEXT */}
 
-            <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              UPCOMING EVENT
-            </span>
+            <p className="font-medium animate-slide truncate max-w-[60%] sm:max-w-md">
+              {offers[offerIndex]}
+            </p>
 
-            {/* ROTATING TEXT */}
-
-            <div className="overflow-hidden h-6">
-
-              <p className="text-sm md:text-base font-medium animate-slide">
-                {offers[offerIndex]}
-              </p>
-
-            </div>
-
-            {/* CTA BUTTON */}
+            {/* REGISTER BUTTON */}
 
             <Link
               href="/booknow"
-              className="ml-4 bg-white text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full hover:scale-105 transition"
+              className="text-white font-semibold text-sm underline hover:opacity-80 whitespace-nowrap"
             >
-              Register Now
+              Register →
             </Link>
+
+            {/* CLOSE BUTTON */}
+
+            <button
+              onClick={() => setShowBanner(false)}
+              className="absolute right-3 text-white opacity-80 hover:opacity-100"
+            >
+              ✕
+            </button>
 
           </div>
 
@@ -151,9 +130,7 @@ const Navbar = () => {
 
       )}
 
-      {/* ==============================
-         NAVBAR
-      ============================== */}
+      {/* NAVBAR */}
 
       <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
 
@@ -163,17 +140,17 @@ const Navbar = () => {
 
             {/* LOGO */}
 
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center gap-2">
 
               <Image
                 src="https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/logo.jpeg"
                 alt="Eyehealthcure Logo"
                 width={80}
                 height={40}
-                className="w-[60px] md:w-[80px] object-contain"
+                className="w-[45px] sm:w-[55px] md:w-[70px] object-contain"
               />
 
-              <span className="font-bold text-xl md:text-2xl text-[#f27400]">
+              <span className="font-bold text-lg sm:text-xl md:text-2xl text-[#f27400]">
                 Eye<span className="text-[#0e83db]">healthcure</span>
               </span>
 
@@ -189,7 +166,7 @@ const Navbar = () => {
                   key={i}
                   href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition"
                 >
                   {link.name}
                 </Link>
@@ -213,9 +190,9 @@ const Navbar = () => {
 
           {isOpen && (
 
-            <div className="md:hidden bg-white shadow-lg rounded-b-lg overflow-hidden">
+            <div className="md:hidden bg-white shadow-lg rounded-xl mt-2 overflow-hidden">
 
-              <div className="flex flex-col space-y-3 py-4">
+              <div className="flex flex-col divide-y">
 
                 {navLinks.map((link, i) => (
 
@@ -223,7 +200,7 @@ const Navbar = () => {
                     key={i}
                     href={link.href}
                     onClick={(e) => handleScroll(e, link.href)}
-                    className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 font-medium transition-colors duration-200"
+                    className="px-5 py-3 text-gray-700 hover:text-blue-600 hover:bg-gray-50 font-medium"
                   >
                     {link.name}
                   </Link>
@@ -240,29 +217,15 @@ const Navbar = () => {
 
       </nav>
 
-      {/* ==============================
-         ANIMATION
-      ============================== */}
+      {/* TEXT ANIMATION */}
 
       <style jsx>{`
 
         @keyframes slide {
-          0% {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          15% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          85% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-          100% {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
+          0% { opacity: 0; transform: translateY(6px); }
+          10% { opacity: 1; transform: translateY(0); }
+          90% { opacity: 1; transform: translateY(0); }
+          100% { opacity: 0; transform: translateY(-6px); }
         }
 
         .animate-slide {
