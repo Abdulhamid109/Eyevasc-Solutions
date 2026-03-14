@@ -69,7 +69,7 @@ const Page = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full h-48 flex justify-center items-center flex-shrink-0 mb-6 overflow-hidden rounded-lg">
+                            <div className="w-full h-65 flex justify-center items-center flex-shrink-0 mb-6 overflow-hidden rounded-lg">
                                 <img
                                     src={`${data?.blogPictureLink}?tr=w-1280,h-720,c-at_max`}
                                     alt={data?.blogTitle}

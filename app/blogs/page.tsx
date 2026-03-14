@@ -59,7 +59,7 @@ const Page = () => {
                                 key={d._id}
                                 className="flex flex-col rounded-xl border border-gray-100 shadow-sm bg-white overflow-hidden hover:shadow-md hover:-translate-y-1 transition-all duration-200"
                             >
-                                <div className="w-full h-48 aspect-video overflow-hidden bg-gray-100 flex-shrink-0">
+                                <div className="w-full  aspect-video overflow-hidden bg-gray-100 flex-shrink-0">
                                     <img
                                         src={`${d.blogPictureLink}?tr=w-1280,h-720,c-at_max`}
                                         alt={d.blogTitle}

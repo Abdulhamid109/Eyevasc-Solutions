@@ -49,7 +49,7 @@ const Navbar = () => {
   useEffect(() => {
 
     if (demoFestival) {
-      setFestivalName("Diwali")
+      setFestivalName("Ramadan")
       return
     }
 
