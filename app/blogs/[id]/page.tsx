@@ -69,11 +69,11 @@ const Page = () => {
                                 </div>
                             </div>
 
-                            <div className="w-full h-48 flex justify-center items-center flex-shrink-0 mb-6 overflow-hidden rounded-lg">
+                            <div className="w-full h-64 flex justify-center items-center flex-shrink-0 mb-6 overflow-hidden rounded-lg">
                                 <img
                                     src={`${data?.blogPictureLink}?tr=w-1280,h-720,c-at_max`}
                                     alt={data?.blogTitle}
-                                    className="w-full h-full object-contain transition-transform duration-300"
+                                    className="w-full h-full rounded-md object-contain transition-transform duration-300"
                                 />
                             </div>
 

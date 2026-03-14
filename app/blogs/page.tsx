@@ -64,7 +64,7 @@ const Page = () => {
                                         src={`${d.blogPictureLink}?tr=w-1280,h-720,c-at_max`}
                                         alt={d.blogTitle}
                                         loading={index < 4 ? 'eager' : 'lazy'}
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                                     />
                                 </div>
 
