@@ -49,7 +49,7 @@ const Navbar = () => {
   useEffect(() => {
 
     if (demoFestival) {
-      setFestivalName("Ramadan")
+      // setFestivalName("Ramadan")
       return
     }
 
@@ -58,7 +58,7 @@ const Navbar = () => {
     const holidays = hd.isHoliday(today)
 
     if (holidays && holidays.length > 0) {
-      setFestivalName(holidays[0].name)
+      // setFestivalName(holidays[0].name)
     }
 
   }, [])
