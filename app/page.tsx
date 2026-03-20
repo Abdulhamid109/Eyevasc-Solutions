@@ -398,10 +398,10 @@ const Page = () => {
                 {[
                   { 
                     title: "Call Us", 
-                    detail: "+91 9205667459", 
+                    detail: "+91 9137909447", 
                     sub: "Available 24/7", 
                     icon: "📞",
-                    href: "tel:+919205667459"
+                    href: "tel:+919137909447"
                   },
                   { 
                     title: "Email Us", 
