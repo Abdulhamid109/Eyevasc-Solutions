@@ -3,7 +3,6 @@ import { connect } from "@/config/dbConfig";
 import resend from "@/lib/resend";
 import user from "@/models/userModal";
 import { NextRequest, NextResponse } from "next/server";
-import { render } from "@react-email/render";
 
 
 
