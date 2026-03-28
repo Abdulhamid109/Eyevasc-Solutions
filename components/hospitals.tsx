@@ -1,156 +1,59 @@
-import axios, { AxiosError } from 'axios';
-import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-interface Data {
-    _id: string;
-    hospitalName: string;
-    hospitalAddress: string;
-    hospitalPic: string;
-    location: string;
-}
+const cities = [
+    { name: 'Mumbai', tag: 'Maharashtra' },
+    { name: 'Delhi', tag: 'NCR' },
+    { name: 'Navi Mumbai', tag: 'Maharashtra' },
+    { name: 'Pune', tag: 'Maharashtra' },
+    { name: 'Uttar Pradesh', tag: 'North India' },
+    { name: 'Ahmedabad', tag: 'Gujarat' },
+];
 
 const AllHospitals = () => {
-    const [data, setData] = useState<Data[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-    const cities = ['Mumbai', 'Delhi', 'Navi Mumbai', 'Pune', 'Uttar Pradesh', 'Ahemdabad'];
     const [activeCity, setActiveCity] = useState<string>('Mumbai');
 
-    const displayHospitals = async (location: string) => {
-        setActiveCity(location);
-        setLoading(true);
-
-        try {
-            const response = await axios.get(`/api/admin/hospitals?city=${location.toLowerCase().replace(" ", "")}`);
-            if (response.status === 200) {
-                setData(response.data.hospitals);
-            }
-        } catch (error) {
-            console.log('Failed to perform the functionality=>' + JSON.stringify(error));
-            if (error instanceof AxiosError) {
-                console.log('Error' + JSON.stringify(error));
-            }
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        displayHospitals('Mumbai');
-    }, []);
+    
 
     return (
-        <div className="w-full">
-            <section className="flex flex-col justify-center items-center gap-4 p-4 sm:p-6">
+        <div className="w-full font-[DM_Sans]">
+            <section className="flex flex-col p-6 sm:p-10 gap-1">
 
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold p-2 text-center leading-tight">
-                    Our Top Accredited Hospitals
+                <p className="text-[11px] font-medium tracking-[0.18em] uppercase text-gray-400">
+                    Operating Locations
+                </p>
+                <h1 className="font-serif text-3xl sm:text-4xl font-normal text-gray-900 leading-tight">
+                    Where we operate
                 </h1>
+                
 
-                <div className="w-full overflow-x-auto scrollbar-hide">
-                    <div className="flex gap-2 px-3 pb-2 w-max mx-auto sm:w-full sm:flex-wrap sm:justify-center">
-                        {cities.map((city) => (
-                            <button
-                                key={city}
-                                onClick={() => displayHospitals(city)}
-                                className={`px-3 py-1.5 rounded-2xl border-2 cursor-pointer whitespace-nowrap transition-all duration-200 text-sm sm:text-base
-                                    ${activeCity === city
-                                        ? 'bg-blue-500 text-white border-blue-500'
-                                        : 'bg-gray-200 text-black border-transparent hover:bg-gray-300'
-                                    }`}
-                            >
-                                {city}
-                            </button>
-                        ))}
-                    </div>
+                <div className="grid grid-cols-3 gap-2.5">
+                    {cities.map((city) => (
+                        <button
+                            key={city.name}
+                            className={`relative text-left border rounded-xl p-4 transition-all duration-200 overflow-hidden
+                               
+                                     bg-white  hover:bg-gray-50 hover:-translate-y-px
+                                `}
+                        >
+                            <div className={`w-1.5 h-1.5 rounded-full mb-2 
+                               bg-gray-300`}
+                            />
+                            <span className={`block text-[20px] font-medium mb-0.5 text-gray-800`}>
+                                {city.name}
+                            </span>
+                            <span className={`text-[10px] uppercase tracking-wide
+                                text-gray-400`}>
+                                {city.tag}
+                            </span>
+
+                            <div className={`absolute bottom-0 left-0 right-0 h-0.5  transition-transform duration-200
+                                ${activeCity === city.name ? 'scale-x-100' : 'scale-x-0'}`}
+                            />
+                        </button>
+                    ))}
                 </div>
 
-                {loading ? (
-                    <div className="w-full overflow-x-auto scrollbar-hide">
-                        <div className="flex gap-4 px-3 pb-3 w-max">
-                            {[...Array(4)].map((_, i) => (
-                                <div
-                                    key={i}
-                                    className="flex flex-col gap-2 p-3 bg-blue-50 rounded-md shadow-lg w-64 shrink-0 animate-pulse"
-                                >
-                                    <div className="w-full h-36 bg-gray-200 rounded-md" />
-                                    <div className="h-5 bg-gray-200 rounded w-3/4" />
-                                    <div className="h-4 bg-gray-200 rounded w-full" />
-                                    <div className="h-4 bg-gray-200 rounded w-2/3" />
-                                    <div className="h-9 bg-gray-200 rounded w-full mt-auto" />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : (
-                    <div className="w-full overflow-x-auto scrollbar-hide">
-                        <div className="flex flex-row gap-4 px-3 pb-3 w-max">
-                            {data.map((hospital, index) => (
-                                <div
-                                    key={hospital._id}
-                                    className="flex flex-col p-3 gap-2 bg-blue-50 rounded-md shadow-lg
-                                               w-64 shrink-0"
-                                >
-                                    <div className="rounded-md w-full overflow-hidden">
-                                        <Image
-                                            src={hospital.hospitalPic}
-                                            alt={hospital.hospitalName}
-                                            loading={index < 3 ? 'eager' : 'lazy'}
-                                            decoding={index < 3 ? 'sync' : 'async'}
-                                            fetchPriority={index === 0 ? 'high' : 'auto'}
-                                            width={256}
-                                            height={144}
-                                            className="w-full h-36 object-cover rounded-md"
-                                            style={{ aspectRatio: '16/9' }}
-                                        />
-                                    </div>
-
-                                    {/* Card Body */}
-                                    <h2 className="text-lg sm:text-xl font-bold px-1 truncate w-full">
-                                        {hospital.hospitalName}
-                                    </h2>
-                                    <p className="px-1 text-sm text-gray-500 line-clamp-2">
-                                        {hospital.hospitalAddress}
-                                    </p>
-
-                                    <div className="flex-1" />
-
-                                    <Link
-                                        href="/booknow"
-                                        className="flex items-center justify-center p-2 w-full text-white text-sm font-medium
-                                                   bg-blue-500 rounded-md hover:bg-blue-600
-                                                   transition-all duration-200 hover:scale-105 text-center"
-                                    >
-                                        Book Appointment
-                                    </Link>
-                                </div>
-                            ))}
-
-                            <div className="relative flex flex-col bg-[url(https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/findall.png)] bg-cover bg-no-repeat justify-center items-center p-3 gap-3 bg-blue-50 rounded-md shadow-lg
-                w-64 shrink-0
-                min-h-[240px] md:h-auto md:self-stretch
-                border-2 border-dashed border-blue-300 overflow-hidden">
-
-                                <div className="absolute inset-0 bg-black/50 "></div>
-
-                                <p className="relative text-white text-md text-center">
-                                    Explore our complete network
-                                </p>
-
-                                <Link
-                                    href="/allhospitals"
-                                    className="relative flex items-center justify-center p-2 px-4 text-white text-sm font-medium
-                   bg-blue-500 rounded-md hover:bg-blue-600
-                   transition-all duration-200 hover:scale-105"
-                                >
-                                    Find All Hospitals
-                                </Link>
-
-                            </div>
-                        </div>
-                    </div>
-                )}
+                
 
             </section>
         </div>

@@ -12,9 +12,9 @@ interface CouponData{
 
 }
 
-export async function POST(request:NextRequest){
+export async function GET(request:NextRequest){
     try {
-        const adminId = getTokenData(request);
+        const adminId = await getTokenData(request);
         if(!adminId){
             return NextResponse.json(
                 {error:"Un-authrozied admin"},
@@ -44,6 +44,7 @@ export async function POST(request:NextRequest){
             {status:200}
         )
     } catch (error) {
+        console.log("Error=>"+error);
         return NextResponse.json(
             {error:"Internal server errror"+error},
             {status:500}

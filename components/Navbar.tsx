@@ -27,6 +27,7 @@ const Navbar = () => {
     { name: "Contact Us", href: "/#contact" },
     { name: "Book Now", href: "/booknow" },
     { name: "Blogs", href: "/blogs" },
+    { name: "Redeem Coupon", href: "/RedeemCoupon" },
   ]
 
   const handleScroll = (e: React.MouseEvent, href: string) => {

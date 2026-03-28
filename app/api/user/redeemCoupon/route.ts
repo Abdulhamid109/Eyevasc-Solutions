@@ -9,33 +9,39 @@ connect();
 
 export async function POST(request: NextRequest) {
     try {
-        const { couponString, UserName, UserLoction, UserPhone, InterestedInSurgery } = await request.json();
-        if (!couponString || !UserName || !UserLoction || !UserPhone || !InterestedInSurgery) {
+        const { CouponString, UserName, UserLoction, UserPhone, InterestedInSurgery } = await request.json();
+        console.log(CouponString, UserName, UserLoction, UserPhone, InterestedInSurgery)
+        if (!CouponString || !UserName || !UserLoction || !UserPhone || !InterestedInSurgery) {
             return NextResponse.json(
                 { error: "Fields not founnd" },
                 { status: 404 }
             )
         }
         //invalid coupon check
-        const couponPresency = await coupon.findOne({ couponString });
+        const couponPresency = await coupon.findOne({ CouponString });
         if (!couponPresency) {
+            console.log("not found")
             return NextResponse.json(
                 { error: "Invalid coupon .. not found" },
                 { status: 404 }
             )
         }
         if (couponPresency.isClaimed) {
+            console.log("claimwd")
             return NextResponse.json(
-                { error: "Coupon Already claimed!" }
+                { error: "Coupon Already claimed!" },
+                {status:401}
             )
         }
 
+        const surgerystatus = InterestedInSurgery=="yes"?true:false;
+
         //if not claim go for claming/redeeming purpose
-        const updateUserDetails = await coupon.findOneAndUpdate({ couponString }, {
+        const updateUserDetails = await coupon.findOneAndUpdate({ CouponString }, {
             UserName,
             UserLoction,
             UserPhone,
-            InterestedInSurgery,
+            InterestedInSurgery:surgerystatus,
             isClaimed: true
         });
 
@@ -67,6 +73,7 @@ export async function POST(request: NextRequest) {
             { status: 200 }
         )
     } catch (error) {
+        console.log("err=>"+error)
         return NextResponse.json(
             { error: "Internal Server error" + error },
             { status: 500 }

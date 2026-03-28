@@ -28,6 +28,7 @@ const AdminNavbar = () => {
         { href: "/admin/addhospital", label: "Add Hospital" },
         { href: "/admin/hospitals", label: "All Hospitals" },
         { href: "/admin/addblog", label: "Add Blog" },
+        { href: "/admin/coupon", label: "Coupon" },
     ]
 
     return (

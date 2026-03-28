@@ -9,7 +9,8 @@ const CouponModal = new mongoose.Schema({
         type:String
     },
     isClaimed:{
-        type:Boolean
+        type:Boolean,
+        default:false
     },
     createdAt:{
         type:Date,

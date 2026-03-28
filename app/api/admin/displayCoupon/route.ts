@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
             )
         }
 
-        const AllCoupons = await coupon.find();
+        const AllCoupons = await coupon.find().sort({createdAt:-1});
         console.log("coupons => "+AllCoupons);
         return NextResponse.json(
             {success:true,coupons:AllCoupons},
