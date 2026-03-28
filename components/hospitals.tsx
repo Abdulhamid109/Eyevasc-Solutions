@@ -38,7 +38,7 @@ const AllHospitals = () => {
                             <div className={`w-1.5 h-1.5 rounded-full mb-2 
                                bg-gray-300`}
                             />
-                            <span className={`block text-[20px] font-medium mb-0.5 text-gray-800`}>
+                            <span className={`block md:text-[20px] text-[13px] font-medium mb-0.5 text-gray-800`}>
                                 {city.name}
                             </span>
                             <span className={`text-[10px] uppercase tracking-wide
