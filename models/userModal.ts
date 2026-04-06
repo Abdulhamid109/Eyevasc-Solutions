@@ -3,19 +3,15 @@ import mongoose from "mongoose";
 const userModal = new mongoose.Schema({
     name:{
         type:String,
-        required:true
     },
     phoneno:{
         type:String,
-        required:true,
     },
     treatment:{
          type:String,
-        required:true
     },
     city:{
          type:String,
-        required:true
     },
     hospitalName:{
         type:String,

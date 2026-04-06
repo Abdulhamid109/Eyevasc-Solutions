@@ -1,0 +1,525 @@
+"use client"
+import { Card } from "@/components/ui/card"
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay"
+import Link from 'next/link';
+import Footer from '@/components/Footer';
+import AllHospitals from '@/components/hospitals';
+import FestiveConfetti from '@/components/FestivalConfetti';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import Image from 'next/image';
+import { PhoneCall } from 'lucide-react';
+
+const Page = () => {
+    const [patientName, setPatientName] = useState<string | null>("");
+    const [Phone, setPhone] = useState<string>("");
+
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const BookConsultation = async (e:React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const payload = {
+                "name": patientName,
+                "phoneno": Phone
+            }
+            const response = await fetch("/api/user/uni-book", {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: JSON.stringify(payload)
+            });
+            const result = await response.json();
+            if (!response.ok) {
+                throw new Error(result.error || "something went wrong!")
+            } else {
+                toast.success(result.message || "Successfully booked!");
+                setPatientName("");
+                setPhone("");
+            }
+        } catch (error) {
+            console.log("Failed to perform the the functionality" + error);
+            if (error instanceof Error) {
+                toast.error(error.message);
+            }
+        }finally{
+            setLoading(false);
+        }
+    }
+    return (
+        <div className='min-h-screen bg-gradient-to-br bg-[url(https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/bgimage.png)] bg-cover bg-repeat-none h-[250vh] from-blue-50 via-white to-blue-50'>
+            <FestiveConfetti />
+            <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="flex justify-between items-center h-16 md:h-20">
+
+
+            <Link href="/" className="flex items-center gap-2">
+
+              <Image
+                src="https://ik.imagekit.io/abdulhamid109/eyehealthcure/Company%20images/logo.jpeg"
+                alt="Eyehealthcure Logo"
+                width={80}
+                height={40}
+                className="w-[45px] sm:w-[55px] md:w-[70px] object-contain"
+              />
+
+              <span className="font-bold text-lg sm:text-xl md:text-2xl text-[#f27400]">
+                Eye<span className="text-[#0e83db]">healthcure</span>
+              </span>
+
+            </Link>
+
+            <a href='tel:919137909447' className='bg-orange-200 p-2 rounded-full backdrop-blur-md shadow-md flex justify-center items-center gap-2'> <PhoneCall size={15}/> Call our expert</a>
+
+            
+
+          </div>
+
+         
+        </div>
+
+      </nav>
+
+            <div id='home' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div className="space-y-6">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                            Expert Eye & Health Care, <span className="text-blue-600">When You Need It</span>
+                        </h1>
+                        <p className="text-lg text-gray-600 mt-3">
+                            At Eyehealthcure, we combine advanced technology with compassionate care to ensure the best outcomes for your health.
+                        </p>
+
+                        <div className="space-y-5 mt-6">
+                            <div className="flex items-start space-x-3">
+                                <div className="shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                                    <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-800">24/7 Emergency Care</h3>
+                                    <p className="text-sm text-gray-600 mt-1">Our specialists are available round the clock for your urgent needs.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                                    <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-800">Free Expert Consultation</h3>
+                                    <p className="text-sm text-gray-600 mt-1">Get a no-obligation consultation with our top doctors, anywhere in India.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start space-x-3">
+                                <div className="flex-shrink-0 bg-blue-50 p-2.5 rounded-lg mt-0.5">
+                                    <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-base font-medium text-gray-800">In-Person & Online Appointments</h3>
+                                    <p className="text-sm text-gray-600 mt-1">Consult with our experienced doctors from home or at our clinics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="pt-4">
+                            <p className="text-lg font-medium text-gray-800">
+                                Your <span className="text-blue-600">Health</span>, Our <span className="text-blue-600">Priority</span>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="flex justify-center lg:justify-end">
+                        <div className='min-w-full backdrop-blur-md flex flex-col p-3 rounded-md shadow-md bg-gradient-to-l from-orange-200 to-orange-200'>
+                            <p className='font-semibold p-1'>Book Free Consultation</p>
+                            <input type="text"
+                                value={patientName!}
+                                onChange={(e) => setPatientName(e.target.value)}
+                                placeholder='Patient Name' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
+                            <input type="text"
+                                value={Phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                prefix='+91' placeholder='Mobile Number' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
+                           {
+                            loading?
+                             <button
+                            disabled className='bg-gray-500 min-w-full rounded-md p-2  m-1'>Submitting</button>
+                        
+                            : <button
+                            onClick={BookConsultation}
+                            // type="submit" 
+                            className='bg-orange-500 min-w-full rounded-md hover:bg-orange-600 p-2  m-1'>BOOK NOW</button>
+                        
+                           }
+                           </div>
+                    </div>
+                </div>
+
+                <div className="mt-16 flex justify-center">
+                    <div className="bg-white rounded-lg shadow-md p-6 border border-gray-100 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                        <div>
+                            <div className="text-3xl font-bold text-blue-600">50+</div>
+                            <div className="text-sm text-gray-600 mt-1.5">Expert Doctors</div>
+                        </div>
+                        <div>
+                            <div className="text-3xl font-bold text-blue-600">15+</div>
+                            <div className="text-sm text-gray-600 mt-1.5">Specialized Treatments</div>
+                        </div>
+                        <div>
+                            <div className="text-3xl font-bold text-blue-600">10+</div>
+                            <div className="text-sm text-gray-600 mt-1.5">Cities Across India</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="mt-16 text-center space-y-4">
+                    <h2 className="text-2xl font-bold text-gray-900">Ready to Take Control of Your Health?</h2>
+                    <p className="text-base text-gray-600 max-w-xl mx-auto">
+                        Book your free consultation today and experience the Eyehealthcure difference.
+                    </p>
+                    <div className="flex justify-center mt-6">
+                        <Link
+                            href="/booknow"
+                            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-medium text-base shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                            aria-label="Book free appointment with Eyehealthcure"
+                        >
+                            Book Free Appointment
+                        </Link>
+                    </div>
+                </div>
+            </div>
+
+            <section id='treatments' className="py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Our Specialized Treatments
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                            Comprehensive, advanced care tailored to your needs by our expert specialists.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                        {[
+                            { name: "Lasik Treatment", emoji: "👁️", href: "/lasik", description: "Advanced laser vision correction" },
+                            { name: "Cataract Surgery", emoji: "🌟", href: "/cataract", description: "Modern cataract removal" },
+                            { name: "Sinus Treatment", emoji: "👃", href: "/Sinus", description: "Comprehensive sinus care" },
+                            { name: "Tonsillectomy", emoji: "🏥", href: "/Tonsillectomy", description: "Safe tonsil removal" },
+                            { name: "Septoplasty", emoji: "🩺", href: "/Septoplasty", description: "Nasal septum correction" },
+                            { name: "Ear Perforation", emoji: "🎧", href: "/Ear", description: "Eardrum repair treatment" },
+                            { name: "Rhinoplasty", emoji: "👃", href: "/Rhinoplasty", description: "Nose reshaping surgery" },
+                            { name: "Gynecomastia", emoji: "💪", href: "/Gynecomastia", description: "Male breast reduction" },
+                        ].map((treatment, i) => (
+                            <Link
+                                key={i}
+                                href={treatment.href}
+                                className="group block bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+                                aria-label={`Learn more about ${treatment.name} - ${treatment.description}`}
+                            >
+                                <div className="p-6 text-center">
+                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                                        <span className="text-3xl" role="img" aria-label={treatment.name}>{treatment.emoji}</span>
+                                    </div>
+                                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600">
+                                        {treatment.name}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 mt-2">{treatment.description}</p>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <AllHospitals />
+
+
+
+            <section id='insurance' className="py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12">
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                            Our Trusted Insurance Partners
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                            We partner with leading insurance providers to ensure you receive the best care and coverage.
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                        {[
+                            "Acko General Insurance",
+                            "Aditya Birla Health Insurance",
+                            "Bajaj Allianz General Insurance",
+                            "Bharti AXA General Insurance",
+                            "Care Health Insurance",
+                            "Cholamandalam MS General Insurance",
+                            "Edelweiss General Insurance",
+                            "Future Generali India Insurance",
+                            "Go Digit General Insurance",
+                            "HDFC ERGO General Insurance",
+                            "ICICI Lombard General Insurance",
+                            "Kotak Mahindra General Insurance",
+                            "IFFCO TOKIO General Insurance",
+                            "Liberty General Insurance",
+                            "Magma HDI General Insurance",
+                            "Manipal Cigna Health Insurance",
+                            "Max Bupa Health Insurance",
+                            "Navi General Insurance",
+                            "National Insurance Company",
+                            "Reliance General Insurance",
+                            "Royal Sundaram General Insurance",
+                            "SBI General Insurance",
+                            "Star Health and Allied Insurance",
+                            "Tata AIG General Insurance",
+                            "The New India Assurance Company",
+                            "The Oriental Insurance Company",
+                            "United India Insurance Company",
+                            "Universal Sompo General Insurance"
+                        ].map((partner, i) => (
+                            <div
+                                key={i}
+                                className="p-4 overflow-hidden hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200 bg-gray-50 rounded-lg shadow-sm text-center hover:shadow-md transition-all"
+                            >
+                                <p className="font-medium text-gray-800 text-sm">{partner}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id='about' className="py-16 bg-blue-50">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-12">
+                    <div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                        <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                            To empower patients by providing India&apos;s most trusted and comprehensive platform for all elective surgeries, ensuring access to top-tier medical expertise and personalized care.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Vision</h2>
+                        <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+                            To transform lives by making advanced, affordable, and high-quality healthcare accessible to everyone. We strive to help every individual live a healthier, longer, and happier life through expert medical solutions and compassionate support.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* Values Section */}
+            <div className='bg-gray-50 py-12 md:py-16 mt-12'>
+                <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                    <h3 className='text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10'>
+                        Our Values
+                    </h3>
+                    <div className='text-center text-black font-sans p-2 max-w-4xl mx-auto mb-8'>
+                        At Eyehealthcure, we are committed to transparency, integrity, and accountability in every aspect of our care. We believe in building trust through fairness and inclusivity, ensuring that everyone has access to high-quality healthcare. Your well-being is our priority, and we strive to deliver compassionate, world-class medical solutions tailored to your needs.
+                    </div>
+
+                    <div className='w-full max-w-4xl mx-auto px-4 mb-5'>
+                        <Carousel
+                            opts={{
+                                align: "start",
+                                loop: true,
+                            }}
+                            plugins={[
+                                Autoplay({
+                                    delay: 3000
+                                })
+                            ]}
+                            className="w-full"
+                        >
+                            <CarouselContent className="-ml-2 md:-ml-4">
+                                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                                    <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="p-6 md:p-8 text-center space-y-3">
+                                            <div className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4">
+                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">Passion</h3>
+                                            <p className="text-sm md:text-base text-gray-600">Dedication to improving lives with exceptional care.</p>
+                                        </div>
+                                    </Card>
+                                </CarouselItem>
+
+                                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                                    <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="p-6 md:p-8 text-center space-y-3">
+                                            <div className="w-16 h-16 mx-auto bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4">
+                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">Integrity</h3>
+                                            <p className="text-sm md:text-base text-gray-600">Building trust through honesty and fairness.</p>
+                                        </div>
+                                    </Card>
+                                </CarouselItem>
+
+                                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                                    <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="p-6 md:p-8 text-center space-y-3">
+                                            <div className="w-16 h-16 mx-auto bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center mb-4">
+                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">Transparency</h3>
+                                            <p className="text-sm md:text-base text-gray-600">Always honest and upfront in all we do.</p>
+                                        </div>
+                                    </Card>
+                                </CarouselItem>
+
+                                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                                    <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="p-6 md:p-8 text-center space-y-3">
+                                            <div className="w-16 h-16 mx-auto bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mb-4">
+                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">Accountability</h3>
+                                            <p className="text-sm md:text-base text-gray-600">Taking ownership and delivering promises.</p>
+                                        </div>
+                                    </Card>
+                                </CarouselItem>
+
+                                <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+                                    <Card className="border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                        <div className="p-6 md:p-8 text-center space-y-3">
+                                            <div className="w-16 h-16 mx-auto bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mb-4">
+                                                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl md:text-2xl font-bold text-gray-900">Keep Promises</h3>
+                                            <p className="text-sm md:text-base text-gray-600">Ensuring trust through commitment and action.</p>
+                                        </div>
+                                    </Card>
+                                </CarouselItem>
+                            </CarouselContent>
+
+                            <CarouselPrevious className="hidden md:flex -left-12" />
+                            <CarouselNext className="hidden md:flex -right-12" />
+                        </Carousel>
+                    </div>
+
+                    {/* Features Section */}
+                    <section className="py-16 bg-white rounded-lg mt-8">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="text-center mb-12">
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                    Why Choose Us?
+                                </h2>
+                                <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                                    Experience the difference with our patient-centered approach and advanced medical care.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                                {[
+                                    { name: "Quick Discharge", emoji: "⚡", desc: "Minimize hospital stay with our efficient processes." },
+                                    { name: "Advanced Equipment", emoji: "🔬", desc: "State-of-the-art technology for precise diagnosis and treatment." },
+                                    { name: "Expert Specialists", emoji: "👨‍⚕️", desc: "Highly qualified doctors with years of specialized experience." },
+                                    { name: "Affordable Treatment", emoji: "💰", desc: "Quality care at competitive prices, ensuring value for every patient." },
+                                    { name: "Painless Procedures", emoji: "😊", desc: "Modern techniques to ensure comfort and minimal discomfort." },
+                                    { name: "No Cost EMI's", emoji: "💳", desc: "Flexible payment options to make healthcare accessible." },
+                                    { name: "All Insurance Covered", emoji: "🛡️", desc: "Seamless insurance processing for hassle-free treatment." },
+                                    { name: "State-of-Art", emoji: "🏆", desc: "Internationally recognized facilities and best practices." },
+                                ].map((feature, i) => (
+                                    <div
+                                        key={i}
+                                        className="group p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+                                    >
+                                        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-50 flex items-center justify-center">
+                                            <span className="text-3xl" role="img" aria-label={feature.name}>{feature.emoji}</span>
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-900 text-center mb-2 group-hover:text-blue-600">
+                                            {feature.name}
+                                        </h3>
+                                        <p className="text-sm text-gray-600 text-center">
+                                            {feature.desc}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id='contact' className="py-16 bg-blue-50 rounded-lg mt-8">
+                        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                Get in Touch
+                            </h2>
+                            <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+                                Have questions? We&apos;re here to help. Reach out to us anytime and our team will get back to you.
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                {[
+                                    {
+                                        title: "Call Us",
+                                        detail: "+91 9137909447",
+                                        sub: "Available 24/7",
+                                        icon: "📞",
+                                        href: "tel:+919137909447"
+                                    },
+                                    {
+                                        title: "Email Us",
+                                        detail: "info@eyehealthcure.com",
+                                        sub: "Response within 24 hours",
+                                        icon: "✉️",
+                                        href: "mailto:info@eyehealthcure.com"
+                                    },
+                                    {
+                                        title: "Visit Us",
+                                        detail: "Multiple Locations",
+                                        sub: "Mumbai, Delhi, Bangalore, Pune",
+                                        icon: "📍",
+                                        href: "#"
+                                    },
+                                ].map((contact, i) => (
+                                    <div
+                                        key={i}
+                                        className="p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all hover:scale-105 hover:transition-all hover:duration-200 hover:shadow-blue-200"
+                                    >
+                                        <div className="text-4xl mb-4" role="img" aria-label={contact.title}>{contact.icon}</div>
+                                        <h3 className="text-xl font-semibold text-gray-900 mb-2">{contact.title}</h3>
+                                        {contact.href !== "#" ? (
+                                            <a href={contact.href} className="text-blue-600 font-medium p-2 hover:underline">
+                                                {contact.detail}
+                                            </a>
+                                        ) : (
+                                            <p className="text-blue-600 font-medium p-2">{contact.detail}</p>
+                                        )}
+                                        <p className="text-sm text-gray-500">{contact.sub}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <Footer />
+        </div>
+    );
+};
+
+export default Page;
