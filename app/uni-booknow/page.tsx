@@ -91,7 +91,7 @@ const Page = () => {
       </nav>
 
             <div id='home' className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="flex justify-center  gap-12 lg:gap-16 items-center">
                     <div className="space-y-6">
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                             Expert Eye & Health Care, <span className="text-blue-600">When You Need It</span>
@@ -99,6 +99,32 @@ const Page = () => {
                         <p className="text-lg text-gray-600 mt-3">
                             At Eyehealthcure, we combine advanced technology with compassionate care to ensure the best outcomes for your health.
                         </p>
+
+
+                        <div className="flex justify-center lg:justify-end">
+                        <div className='min-w-full backdrop-blur-md flex flex-col p-3 rounded-md shadow-md bg-gradient-to-l from-orange-200 to-orange-200'>
+                            <p className='font-semibold p-1'>Book Free Consultation</p>
+                            <input type="text"
+                                value={patientName!}
+                                onChange={(e) => setPatientName(e.target.value)}
+                                placeholder='Patient Name' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
+                            <input type="text"
+                                value={Phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                prefix='+91' placeholder='Mobile Number' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
+                           {
+                            loading?
+                             <button
+                            disabled className='bg-gray-500 min-w-full rounded-md p-2  m-1'>Submitting</button>
+                        
+                            : <button
+                            onClick={BookConsultation}
+                            // type="submit" 
+                            className='bg-orange-500 min-w-full rounded-md hover:bg-orange-600 p-2  m-1'>BOOK NOW</button>
+                        
+                           }
+                           </div>
+                    </div>
 
                         <div className="space-y-5 mt-6">
                             <div className="flex items-start space-x-3">
@@ -143,30 +169,7 @@ const Page = () => {
                         </div>
                     </div>
 
-                    <div className="flex justify-center lg:justify-end">
-                        <div className='min-w-full backdrop-blur-md flex flex-col p-3 rounded-md shadow-md bg-gradient-to-l from-orange-200 to-orange-200'>
-                            <p className='font-semibold p-1'>Book Free Consultation</p>
-                            <input type="text"
-                                value={patientName!}
-                                onChange={(e) => setPatientName(e.target.value)}
-                                placeholder='Patient Name' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
-                            <input type="text"
-                                value={Phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                prefix='+91' placeholder='Mobile Number' className='focus:outline p-2 border border-orange-400 rounded-md m-1' />
-                           {
-                            loading?
-                             <button
-                            disabled className='bg-gray-500 min-w-full rounded-md p-2  m-1'>Submitting</button>
-                        
-                            : <button
-                            onClick={BookConsultation}
-                            // type="submit" 
-                            className='bg-orange-500 min-w-full rounded-md hover:bg-orange-600 p-2  m-1'>BOOK NOW</button>
-                        
-                           }
-                           </div>
-                    </div>
+                    
                 </div>
 
                 <div className="mt-16 flex justify-center">
